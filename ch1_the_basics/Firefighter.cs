@@ -13,21 +13,14 @@ namespace ch1_the_basics
 		public string Name { get; set; }
 		public int Age { get; set; }
 
-		public void SprayHose() {}
-
 		public override void DriveToPlaceOfInterest() {
 			GetInFiretruck ();
 			TurnOnSiren ();
 			FollowDirections ();
 		}
 
-		private void GetInFiretruck() {
-		}
-
-		private void TurnOnSiren() {
-		}
-
-		private void FollowDirections() {
-		}
+		private void GetInFiretruck() {}
+		private void TurnOnSiren() {}
+		private void FollowDirections() {}
 	}
 }
