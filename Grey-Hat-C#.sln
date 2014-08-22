@@ -21,6 +21,6 @@ Global
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch1_the_basics\ch1_the_basics.csproj
+		StartupItem = ch1_the_basics_advanced\ch1_the_basics_advanced.csproj
 	EndGlobalSection
 EndGlobal
