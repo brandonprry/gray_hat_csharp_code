@@ -35,4 +35,3 @@ namespace ch1_the_basics_advanced
 		private void FollowDirections() {}
 	}
 }
-
