@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vuln_xss_sqli_app", "ch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_vuln_soap_app", "ch4_vuln_soap_app\ch4_vuln_soap_app.csproj", "{5F4B9D7F-3BC0-4EA0-8DA7-A277A3A04757}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_reading_offline_hives", "ch11_reading_offline_hives\ch11_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -43,6 +45,10 @@ Global
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Debug|x86.Build.0 = Debug|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Release|x86.ActiveCfg = Release|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Release|x86.Build.0 = Release|x86
+		{26A8091A-68C1-4636-931C-CB4538338572}.Debug|x86.ActiveCfg = Debug|x86
+		{26A8091A-68C1-4636-931C-CB4538338572}.Debug|x86.Build.0 = Debug|x86
+		{26A8091A-68C1-4636-931C-CB4538338572}.Release|x86.ActiveCfg = Release|x86
+		{26A8091A-68C1-4636-931C-CB4538338572}.Release|x86.Build.0 = Release|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.ActiveCfg = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.Build.0 = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Release|x86.ActiveCfg = Release|x86
