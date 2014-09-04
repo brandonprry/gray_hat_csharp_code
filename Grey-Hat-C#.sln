@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_automating_sqlmap", "ch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_soap_fuzzer", "ch4_soap_fuzzer\ch4_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_connect_back_binds", "ch5_connect_back_binds\ch5_connect_back_binds.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_bind", "ch5_connect_back_binds\ch5_bind.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nessus", "ch6_automating_nessus\ch6_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch12_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_sqlmap", "ch10_automating_sqlmap\ch10_automating_sqlmap.csproj", "{8C935697-B3ED-4C91-88B2-48A525D055E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_connect_back", "ch5_connect_back\ch5_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.Build.0 = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Release|x86.ActiveCfg = Release|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Release|x86.Build.0 = Release|x86
+		{E8EAF06C-458C-4702-9832-C32C329B1621}.Debug|x86.ActiveCfg = Debug|x86
+		{E8EAF06C-458C-4702-9832-C32C329B1621}.Debug|x86.Build.0 = Debug|x86
+		{E8EAF06C-458C-4702-9832-C32C329B1621}.Release|x86.ActiveCfg = Release|x86
+		{E8EAF06C-458C-4702-9832-C32C329B1621}.Release|x86.Build.0 = Release|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.ActiveCfg = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.Build.0 = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.ActiveCfg = Release|x86

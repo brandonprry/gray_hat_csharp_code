@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{6A2658B6-036B-4D29-8057-ADFBBA98F933}</ProjectGuid>
+    <ProjectGuid>{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ch10_dirty_decompiler</RootNamespace>
-    <AssemblyName>ch10_dirty_decompiler</AssemblyName>
+    <RootNamespace>ch5_connect_back_binds</RootNamespace>
+    <AssemblyName>ch5_connect_back_binds</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +30,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
-    <Reference Include="ICSharpCode.Decompiler">
-      <HintPath>..\..\..\Downloads\ILSpy_2\ICSharpCode.Decompiler.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="bind\Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="bind\" />
+  </ItemGroup>
 </Project>
