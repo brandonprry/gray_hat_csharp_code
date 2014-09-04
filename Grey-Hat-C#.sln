@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_sqlmap", "c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_connect_back", "ch5_connect_back\ch5_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_automating_clamav", "ch14_automating_clamav\ch14_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -47,6 +49,10 @@ Global
 		{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}.Debug|x86.Build.0 = Debug|x86
 		{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}.Release|x86.ActiveCfg = Release|x86
 		{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}.Release|x86.Build.0 = Release|x86
+		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Debug|x86.ActiveCfg = Debug|x86
+		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Debug|x86.Build.0 = Debug|x86
+		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Release|x86.ActiveCfg = Release|x86
+		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Release|x86.Build.0 = Release|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Debug|x86.ActiveCfg = Debug|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Debug|x86.Build.0 = Debug|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Release|x86.ActiveCfg = Release|x86
