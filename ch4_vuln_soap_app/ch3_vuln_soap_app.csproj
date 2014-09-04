@@ -61,6 +61,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vulnerable.sql" />
+    <None Include="vulnerable.sql.txt" />
   </ItemGroup>
 </Project>

@@ -9,35 +9,33 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_xss_fuzzer", "ch2_xss_f
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_fuzzer", "ch2_sqli_fuzzer\ch2_sqli_fuzzer.csproj", "{B03B1A80-DE2E-495E-9979-883E25B61722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_automating_sqlmap", "ch3_automating_sqlmap\ch3_automating_sqlmap.csproj", "{89D88B34-72D4-4267-8FCD-95E8E666DA3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_soap_fuzzer", "ch4_soap_fuzzer\ch3_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_soap_fuzzer", "ch4_soap_fuzzer\ch4_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind", "ch5_connect_back_binds\ch4_bind.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_bind", "ch5_connect_back_binds\ch5_bind.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_automating_nessus", "ch6_automating_nessus\ch5_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nessus", "ch6_automating_nessus\ch6_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch7_automating_nexpose\ch6_automating_nexpose.csproj", "{AC57BD4B-9C28-41C6-A625-C134D3E6850F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_nexpose", "ch7_automating_nexpose\ch7_automating_nexpose.csproj", "{AC57BD4B-9C28-41C6-A625-C134D3E6850F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_openvas", "ch8_automating_openvas\ch7_automating_openvas.csproj", "{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_openvas", "ch8_automating_openvas\ch8_automating_openvas.csproj", "{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch9_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_cuckoo", "ch9_automating_cuckoo\ch9_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_dirty_decompiler", "ch10_dirty_decompiler\ch11_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_dirty_decompiler", "ch10_dirty_decompiler\ch10_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vuln_xss_sqli_app", "ch2_vuln_xss_sqli_app\ch2_vuln_xss_sqli_app.csproj", "{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_reading_offline_hives", "ch11_reading_offline_hives\ch13_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_reading_offline_hives", "ch11_reading_offline_hives\ch12_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch12_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch11_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_sqlmap", "ch10_automating_sqlmap\ch10_automating_sqlmap.csproj", "{8C935697-B3ED-4C91-88B2-48A525D055E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch10_automating_sqlmap\ch9_automating_sqlmap.csproj", "{8C935697-B3ED-4C91-88B2-48A525D055E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_connect_back", "ch5_connect_back\ch5_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back", "ch5_connect_back\ch4_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_automating_clamav", "ch14_automating_clamav\ch14_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav", "ch14_automating_clamav\ch13_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_vuln_soap_app", "ch4_vuln_soap_app\ch4_vuln_soap_app.csproj", "{EDD95C1F-A73E-48B2-8040-24363405263E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vuln_soap_app", "ch4_vuln_soap_app\ch3_vuln_soap_app.csproj", "{EDD95C1F-A73E-48B2-8040-24363405263E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,10 +79,6 @@ Global
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Debug|x86.Build.0 = Debug|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.ActiveCfg = Release|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.Build.0 = Release|x86
-		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Debug|x86.ActiveCfg = Debug|x86
-		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Debug|x86.Build.0 = Debug|x86
-		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Release|x86.ActiveCfg = Release|x86
-		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Release|x86.Build.0 = Release|x86
 		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.ActiveCfg = Debug|x86
 		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.Build.0 = Debug|x86
 		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Release|x86.ActiveCfg = Release|x86
@@ -123,6 +117,6 @@ Global
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch4_vuln_soap_app\ch4_vuln_soap_app.csproj
+		StartupItem = ch4_vuln_soap_app\ch3_vuln_soap_app.csproj
 	EndGlobalSection
 EndGlobal
