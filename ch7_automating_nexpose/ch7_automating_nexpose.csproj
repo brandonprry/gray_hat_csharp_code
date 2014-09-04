@@ -30,10 +30,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NexposeManager11.cs" />
+    <Compile Include="NexposeManager12.cs" />
+    <Compile Include="NexposeReportFilterType.cs" />
+    <Compile Include="NexposeReportFormat.cs" />
+    <Compile Include="NexposeSession.cs" />
+    <Compile Include="NexposeUtil.cs" />
+    <Compile Include="ReportConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

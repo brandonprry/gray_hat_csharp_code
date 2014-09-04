@@ -23,15 +23,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_openvas", "c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_cuckoo", "ch9_automating_cuckoo\ch9_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_dirty_decompiler", "ch10_dirty_decompiler\ch10_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_dirty_decompiler", "ch10_dirty_decompiler\ch11_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vuln_xss_sqli_app", "ch2_vuln_xss_sqli_app\ch2_vuln_xss_sqli_app.csproj", "{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_vuln_soap_app", "ch4_vuln_soap_app\ch4_vuln_soap_app.csproj", "{5F4B9D7F-3BC0-4EA0-8DA7-A277A3A04757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_reading_offline_hives", "ch11_reading_offline_hives\ch11_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_reading_offline_hives", "ch11_reading_offline_hives\ch13_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch12_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_sqlmap", "ch10_automating_sqlmap\ch10_automating_sqlmap.csproj", "{8C935697-B3ED-4C91-88B2-48A525D055E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Debug|x86.Build.0 = Debug|x86
 		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Release|x86.ActiveCfg = Release|x86
 		{89D88B34-72D4-4267-8FCD-95E8E666DA3C}.Release|x86.Build.0 = Release|x86
+		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.ActiveCfg = Debug|x86
+		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.Build.0 = Debug|x86
+		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Release|x86.ActiveCfg = Release|x86
+		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Release|x86.Build.0 = Release|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.ActiveCfg = Debug|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.Build.0 = Debug|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Release|x86.ActiveCfg = Release|x86
