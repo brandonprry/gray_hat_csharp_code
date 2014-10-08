@@ -9,7 +9,6 @@ namespace ch1_the_basics_advanced
 
 			PoliceOfficer officer = new PoliceOfficer ("Jane Hope", 32);
 			officer.PensionAmount = 5500;
-			officer.HasEmergency = true;
 
 			PrintNameAndAge(firefighter);
 			PrintNameAndAge(officer);
@@ -19,6 +18,9 @@ namespace ch1_the_basics_advanced
 
 			firefighter.DriveToPlaceOfInterest();
 			officer.DriveToPlaceOfInterest();
+
+			officer = new PoliceOfficer ("John Valor", 32, true);
+			officer.DriveToPlaceOfInterest ();
 		} 
 
 		static void PrintNameAndAge (IPerson person) {

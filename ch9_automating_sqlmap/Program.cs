@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ch10_automating_sqlmap
+namespace ch9_automating_sqlmap
 {
 	class MainClass
 	{

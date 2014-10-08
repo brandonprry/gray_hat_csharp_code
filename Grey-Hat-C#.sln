@@ -29,13 +29,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_reading_offline_hives"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch11_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch10_automating_sqlmap\ch9_automating_sqlmap.csproj", "{8C935697-B3ED-4C91-88B2-48A525D055E4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back", "ch5_connect_back\ch4_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav", "ch14_automating_clamav\ch13_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vuln_soap_app", "ch4_vuln_soap_app\ch3_vuln_soap_app.csproj", "{EDD95C1F-A73E-48B2-8040-24363405263E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch9_automating_sqlmap\ch9_automating_sqlmap.csproj", "{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics_advanced_pinvoke", "ch1_the_basics_advanced_pinvoke\ch1_the_basics_advanced_pinvoke.csproj", "{F841BCE9-C695-4EC5-836F-AE14171605DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +81,6 @@ Global
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Debug|x86.Build.0 = Debug|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.ActiveCfg = Release|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.Build.0 = Release|x86
-		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.ActiveCfg = Debug|x86
-		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Debug|x86.Build.0 = Debug|x86
-		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Release|x86.ActiveCfg = Release|x86
-		{8C935697-B3ED-4C91-88B2-48A525D055E4}.Release|x86.Build.0 = Release|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.ActiveCfg = Debug|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.Build.0 = Debug|x86
 		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Release|x86.ActiveCfg = Release|x86
@@ -95,6 +93,10 @@ Global
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Debug|x86.Build.0 = Debug|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Release|x86.ActiveCfg = Release|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Release|x86.Build.0 = Release|x86
+		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.ActiveCfg = Debug|x86
+		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.Build.0 = Debug|x86
+		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.ActiveCfg = Release|x86
+		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.Build.0 = Release|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.ActiveCfg = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.Build.0 = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Release|x86.ActiveCfg = Release|x86
@@ -111,12 +113,16 @@ Global
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.Build.0 = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.ActiveCfg = Release|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.Build.0 = Release|x86
+		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Debug|x86.ActiveCfg = Debug|x86
+		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Debug|x86.Build.0 = Debug|x86
+		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Release|x86.ActiveCfg = Release|x86
+		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Release|x86.Build.0 = Release|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Debug|x86.ActiveCfg = Debug|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Debug|x86.Build.0 = Debug|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.ActiveCfg = Release|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch4_vuln_soap_app\ch3_vuln_soap_app.csproj
+		StartupItem = ch1_the_basics_advanced_pinvoke\ch1_the_basics_advanced_pinvoke.csproj
 	EndGlobalSection
 EndGlobal

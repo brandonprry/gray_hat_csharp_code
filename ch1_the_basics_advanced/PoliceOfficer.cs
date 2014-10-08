@@ -6,19 +6,25 @@ namespace ch1_the_basics_advanced
 	{
 		private bool _hasEmergency = false;
 
-		public PoliceOfficer (string name, int age) {
+		public PoliceOfficer (string name, int age, bool hasEmergency = false) {
 			this.Name = name;
 			this.Age = age;
+			this.HasEmergency = hasEmergency;
 
-			this.DriveToPlaceOfInterest += delegate {
-				Console.WriteLine("Driving the police car");
-				GetInPoliceCar();
-
-				if (this.HasEmergency)
-					TurnOnSiren();
-
-				FollowDirections();
-			};
+			if (this.HasEmergency) {
+				this.DriveToPlaceOfInterest += delegate {
+					Console.WriteLine ("Driving the police car with siren");
+					GetInPoliceCar ();
+					TurnOnSiren ();
+					FollowDirections ();
+				};
+			} else {
+				this.DriveToPlaceOfInterest += delegate {
+					Console.WriteLine ("Driving the police car");
+					GetInPoliceCar ();
+					FollowDirections ();
+				};
+			}
 		}
 
 		//implement the IPerson interface
