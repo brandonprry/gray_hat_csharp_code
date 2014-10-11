@@ -34,6 +34,39 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="clam-sharp\AssemblyInfo.cs" />
+    <Compile Include="clam-sharp\ClamBindings.cs" />
+    <Compile Include="clam-sharp\ClamBytecodeModeOptions.cs" />
+    <Compile Include="clam-sharp\ClamBytecodeSecurityOptions.cs" />
+    <Compile Include="clam-sharp\ClamCountSigsOptions.cs" />
+    <Compile Include="clam-sharp\ClamEngine.cs" />
+    <Compile Include="clam-sharp\ClamEngineDescriptor.cs" />
+    <Compile Include="clam-sharp\ClamEngineOptions.cs" />
+    <Compile Include="clam-sharp\ClamResult.cs" />
+    <Compile Include="clam-sharp\ClamReturnCode.cs" />
+    <Compile Include="clam-sharp\ClamScanOptions.cs" />
+    <Compile Include="clam-sharp\clamd-sharp\AssemblyInfo.cs" />
+    <Compile Include="clam-sharp\clamd-sharp\ClamdManager.cs" />
+    <Compile Include="clam-sharp\clamd-sharp\ClamdSession.cs" />
+    <Compile Include="clam-sharp\testing\AssemblyInfo.cs" />
+    <Compile Include="clam-sharp\testing\Main.cs" />
+    <Compile Include="clamd-sharp\AssemblyInfo.cs" />
+    <Compile Include="clamd-sharp\ClamdManager.cs" />
+    <Compile Include="clamd-sharp\ClamdSession.cs" />
+    <Compile Include="testing\AssemblyInfo.cs" />
+    <Compile Include="testing\Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="clam-sharp\" />
+    <Folder Include="clamd-sharp\" />
+    <Folder Include="testing\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="clam-sharp\clam-sharp.csproj" />
+    <None Include="clam-sharp\clamd-sharp\clamd-sharp.csproj" />
+    <None Include="clam-sharp\testing\testing.csproj" />
+    <None Include="clamd-sharp\clamd-sharp.csproj" />
+    <None Include="testing\testing.csproj" />
+  </ItemGroup>
 </Project>
