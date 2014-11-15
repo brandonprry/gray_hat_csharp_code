@@ -5,7 +5,7 @@ namespace clamsharp
 {
 	public class ClamEngine : IDisposable
 	{
-		private ClamEngineDescriptor engine;
+		private IntPtr engine;
 		
 		/// <summary>
 		/// Initializes a new instance of the <see cref="clamsharp.ClamEngine"/> class.

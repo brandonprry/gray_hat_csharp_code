@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics_advanced_pin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap_soap", "ch9_automating_sqlmap_soap\ch9_automating_sqlmap_soap.csproj", "{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_union", "ch2_sqli_union\ch2_sqli_union.csproj", "{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_blind", "ch2_sqli_blind\ch2_sqli_blind.csproj", "{141240CA-6A60-428A-A442-ED579CCC0138}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -55,6 +59,10 @@ Global
 		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Debug|x86.Build.0 = Debug|x86
 		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Release|x86.ActiveCfg = Release|x86
 		{0DFD4250-3A0F-460B-9B6A-7BB158864B75}.Release|x86.Build.0 = Release|x86
+		{141240CA-6A60-428A-A442-ED579CCC0138}.Debug|x86.ActiveCfg = Debug|x86
+		{141240CA-6A60-428A-A442-ED579CCC0138}.Debug|x86.Build.0 = Debug|x86
+		{141240CA-6A60-428A-A442-ED579CCC0138}.Release|x86.ActiveCfg = Release|x86
+		{141240CA-6A60-428A-A442-ED579CCC0138}.Release|x86.Build.0 = Release|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Debug|x86.ActiveCfg = Debug|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Debug|x86.Build.0 = Debug|x86
 		{169BD6BB-826B-4B7E-BD52-FFA17683675E}.Release|x86.ActiveCfg = Release|x86
@@ -99,6 +107,10 @@ Global
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Debug|x86.Build.0 = Debug|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Release|x86.ActiveCfg = Release|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Release|x86.Build.0 = Release|x86
+		{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}.Debug|x86.ActiveCfg = Debug|x86
+		{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}.Debug|x86.Build.0 = Debug|x86
+		{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}.Release|x86.ActiveCfg = Release|x86
+		{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}.Release|x86.Build.0 = Release|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.ActiveCfg = Debug|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.Build.0 = Debug|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.ActiveCfg = Release|x86
@@ -129,6 +141,6 @@ Global
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch1_the_basics_advanced_pinvoke\ch1_the_basics_advanced_pinvoke.csproj
+		StartupItem = ch2_sqli_union\ch2_sqli_union.csproj
 	EndGlobalSection
 EndGlobal
