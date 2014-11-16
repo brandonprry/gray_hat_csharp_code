@@ -141,6 +141,6 @@ Global
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch2_sqli_union\ch2_sqli_union.csproj
+		StartupItem = ch2_sqli_blind\ch2_sqli_blind.csproj
 	EndGlobalSection
 EndGlobal
