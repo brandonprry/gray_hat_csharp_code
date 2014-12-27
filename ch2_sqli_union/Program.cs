@@ -30,7 +30,7 @@ namespace ch2_sqli_union
 			url += "?searchquery=" + Uri.EscapeUriString(payload) + "&action=search";
 
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create (url);
-			request.Proxy = new WebProxy ("127.0.0.1", 8080);
+			//request.Proxy = new WebProxy ("127.0.0.1", 8080);
 
 			string response = string.Empty;
 			using (StreamReader reader = new StreamReader (request.GetResponse ().GetResponseStream ()))
