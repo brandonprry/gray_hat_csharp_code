@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ch2_xss_fuzzer
+namespace ch2_sqli_json_fuzzer
 {
 	class MainClass
 	{

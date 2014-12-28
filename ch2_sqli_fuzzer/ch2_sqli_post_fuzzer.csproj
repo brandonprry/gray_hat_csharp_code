@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{9A045861-7025-471F-B2A3-8BB4C4EC9143}</ProjectGuid>
+    <ProjectGuid>{B03B1A80-DE2E-495E-9979-883E25B61722}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ch2_xss_fuzzer</RootNamespace>
-    <AssemblyName>ch2_xss_fuzzer</AssemblyName>
+    <RootNamespace>ch2_sqli_fuzzer</RootNamespace>
+    <AssemblyName>ch2_sqli_fuzzer</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
