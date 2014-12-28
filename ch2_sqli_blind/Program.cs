@@ -15,7 +15,7 @@ namespace ch2_sqli_blind
 					System.Security.Cryptography.X509Certificates.X509Chain chain,
 					System.Net.Security.SslPolicyErrors sslPolicyErrors)
 			{
-				return true; //Verify any cert regardless of errors
+				return true; //Verify any cert regardless of errors in the cert chain
 			};
 
 			int countLength = 0;
@@ -103,7 +103,7 @@ namespace ch2_sqli_blind
 		}
 
 		private static string MakeRequest(string url) {
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create ("http://192.168.1.78/cgi-bin/badstore.cgi?action=search&searchquery="+url);
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create ("http://192.168.1.11/cgi-bin/badstore.cgi?action=search&searchquery="+url);
 			//request.Proxy = new WebProxy ("127.0.0.1", 8080);
 
 			string response = string.Empty;

@@ -5,9 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics", "ch1_the_b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics_advanced", "ch1_the_basics_advanced\ch1_the_basics_advanced.csproj", "{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_xss_fuzzer", "ch2_xss_fuzzer\ch2_xss_fuzzer.csproj", "{9A045861-7025-471F-B2A3-8BB4C4EC9143}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_fuzzer", "ch2_sqli_fuzzer\ch2_sqli_fuzzer.csproj", "{B03B1A80-DE2E-495E-9979-883E25B61722}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_post_fuzzer", "ch2_sqli_fuzzer\ch2_sqli_post_fuzzer.csproj", "{B03B1A80-DE2E-495E-9979-883E25B61722}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_soap_fuzzer", "ch4_soap_fuzzer\ch3_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
 EndProject
@@ -22,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch9_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_dirty_decompiler", "ch10_dirty_decompiler\ch10_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vuln_xss_sqli_app", "ch2_vuln_xss_sqli_app\ch2_vuln_xss_sqli_app.csproj", "{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_reading_offline_hives", "ch11_reading_offline_hives\ch12_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
 EndProject
@@ -44,6 +40,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_union", "ch2_sqli_union\ch2_sqli_union.csproj", "{B5C2A36F-983D-43A2-9C5D-ACBCC7E3B9DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_blind", "ch2_sqli_blind\ch2_sqli_blind.csproj", "{141240CA-6A60-428A-A442-ED579CCC0138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_get_fuzzer", "ch2_sqli_get_fuzzer\ch2_sqli_get_fuzzer.csproj", "{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_json_fuzzer", "ch2_sqli_json_fuzzer\ch2_sqli_json_fuzzer.csproj", "{C502EE07-4059-4785-8AA3-542C26163A62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,14 +71,14 @@ Global
 		{26A8091A-68C1-4636-931C-CB4538338572}.Debug|x86.Build.0 = Debug|x86
 		{26A8091A-68C1-4636-931C-CB4538338572}.Release|x86.ActiveCfg = Release|x86
 		{26A8091A-68C1-4636-931C-CB4538338572}.Release|x86.Build.0 = Release|x86
+		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Debug|x86.ActiveCfg = Debug|x86
+		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Debug|x86.Build.0 = Debug|x86
+		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Release|x86.ActiveCfg = Release|x86
+		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Release|x86.Build.0 = Release|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.ActiveCfg = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.Build.0 = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Release|x86.ActiveCfg = Release|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Release|x86.Build.0 = Release|x86
-		{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}.Debug|x86.ActiveCfg = Debug|x86
-		{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}.Debug|x86.Build.0 = Debug|x86
-		{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}.Release|x86.ActiveCfg = Release|x86
-		{58280C41-AC1E-42E5-9DB6-24D1B6341FB4}.Release|x86.Build.0 = Release|x86
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Debug|x86.ActiveCfg = Debug|x86
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Debug|x86.Build.0 = Debug|x86
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Release|x86.ActiveCfg = Release|x86
@@ -91,10 +91,6 @@ Global
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Debug|x86.Build.0 = Debug|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.ActiveCfg = Release|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.Build.0 = Release|x86
-		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.ActiveCfg = Debug|x86
-		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Debug|x86.Build.0 = Debug|x86
-		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Release|x86.ActiveCfg = Release|x86
-		{9A045861-7025-471F-B2A3-8BB4C4EC9143}.Release|x86.Build.0 = Release|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.ActiveCfg = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.Build.0 = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Release|x86.ActiveCfg = Release|x86
@@ -115,6 +111,10 @@ Global
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.Build.0 = Debug|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.ActiveCfg = Release|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.Build.0 = Release|x86
+		{C502EE07-4059-4785-8AA3-542C26163A62}.Debug|x86.ActiveCfg = Debug|x86
+		{C502EE07-4059-4785-8AA3-542C26163A62}.Debug|x86.Build.0 = Debug|x86
+		{C502EE07-4059-4785-8AA3-542C26163A62}.Release|x86.ActiveCfg = Release|x86
+		{C502EE07-4059-4785-8AA3-542C26163A62}.Release|x86.Build.0 = Release|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.ActiveCfg = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.Build.0 = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Release|x86.ActiveCfg = Release|x86
@@ -139,8 +139,5 @@ Global
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Debug|x86.Build.0 = Debug|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.ActiveCfg = Release|x86
 		{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}.Release|x86.Build.0 = Release|x86
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ch2_sqli_blind\ch2_sqli_blind.csproj
 	EndGlobalSection
 EndGlobal
