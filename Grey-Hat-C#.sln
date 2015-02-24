@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_post_fuzzer", "ch2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_soap_fuzzer", "ch4_soap_fuzzer\ch3_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind", "ch5_connect_back_binds\ch4_bind.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind_tcp", "ch5_connect_back_binds\ch4_bind_tcp.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_automating_nessus", "ch6_automating_nessus\ch5_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_reading_offline_hives"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch11_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back", "ch5_connect_back\ch4_connect_back.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch5_connect_back\ch4_connect_back_tcp.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav", "ch14_automating_clamav\ch13_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
@@ -44,6 +44,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_get_fuzzer", "ch2_sqli_get_fuzzer\ch2_sqli_get_fuzzer.csproj", "{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_json_fuzzer", "ch2_sqli_json_fuzzer\ch2_sqli_json_fuzzer.csproj", "{C502EE07-4059-4785-8AA3-542C26163A62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vulnerable_json_sqli", "ch2_vulnerable_json_sqli\vulnerable_json_sqli\vulnerable_json_sqli.csproj", "{A0062557-A06E-48CF-AE5D-488E67C7C85A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_client", "ch4_bind_udp\ch4_udp_client.csproj", "{F6A90F3C-7144-4710-B60B-5508C1FDD93A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_server\ch4_udp_server.csproj", "{68074B20-EAB0-4146-A1B3-FE0BF88B498A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +89,10 @@ Global
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Debug|x86.Build.0 = Debug|x86
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Release|x86.ActiveCfg = Release|x86
 		{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}.Release|x86.Build.0 = Release|x86
+		{68074B20-EAB0-4146-A1B3-FE0BF88B498A}.Debug|x86.ActiveCfg = Debug|x86
+		{68074B20-EAB0-4146-A1B3-FE0BF88B498A}.Debug|x86.Build.0 = Debug|x86
+		{68074B20-EAB0-4146-A1B3-FE0BF88B498A}.Release|x86.ActiveCfg = Release|x86
+		{68074B20-EAB0-4146-A1B3-FE0BF88B498A}.Release|x86.Build.0 = Release|x86
 		{6A2658B6-036B-4D29-8057-ADFBBA98F933}.Debug|x86.ActiveCfg = Debug|x86
 		{6A2658B6-036B-4D29-8057-ADFBBA98F933}.Debug|x86.Build.0 = Debug|x86
 		{6A2658B6-036B-4D29-8057-ADFBBA98F933}.Release|x86.ActiveCfg = Release|x86
@@ -91,6 +101,10 @@ Global
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Debug|x86.Build.0 = Debug|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.ActiveCfg = Release|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.Build.0 = Release|x86
+		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Debug|x86.Build.0 = Debug|Any CPU
+		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Release|x86.ActiveCfg = Release|Any CPU
+		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Release|x86.Build.0 = Release|Any CPU
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.ActiveCfg = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.Build.0 = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Release|x86.ActiveCfg = Release|x86
@@ -131,6 +145,10 @@ Global
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.Build.0 = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.ActiveCfg = Release|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.Build.0 = Release|x86
+		{F6A90F3C-7144-4710-B60B-5508C1FDD93A}.Debug|x86.ActiveCfg = Debug|x86
+		{F6A90F3C-7144-4710-B60B-5508C1FDD93A}.Debug|x86.Build.0 = Debug|x86
+		{F6A90F3C-7144-4710-B60B-5508C1FDD93A}.Release|x86.ActiveCfg = Release|x86
+		{F6A90F3C-7144-4710-B60B-5508C1FDD93A}.Release|x86.Build.0 = Release|x86
 		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Debug|x86.ActiveCfg = Debug|x86
 		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Debug|x86.Build.0 = Debug|x86
 		{F841BCE9-C695-4EC5-836F-AE14171605DC}.Release|x86.ActiveCfg = Release|x86

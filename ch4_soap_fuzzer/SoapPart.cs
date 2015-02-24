@@ -22,7 +22,5 @@ namespace fuzzer
 
 		public string Type  { get; set; }
 	}
-
-
 }
 

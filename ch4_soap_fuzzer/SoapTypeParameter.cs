@@ -18,11 +18,8 @@ namespace fuzzer
 		}
 
 		public int MinimumOccurence { get; set; }
-
 		public int MaximumOccurence { get; set; }
-
 		public string Name { get; set; }
-
 		public string Type { get; set; }
 	}
 }

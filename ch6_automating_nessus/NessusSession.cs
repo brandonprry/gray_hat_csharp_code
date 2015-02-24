@@ -5,26 +5,26 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace nessusssharp
+namespace ch6_automating_nessus
 {
-	public class NessusManagerSession : IDisposable
+	public class NessusSession : IDisposable
 	{
 		string _host;
 		string _port = "8834";
 		string _proto = "https";
 		
-		public NessusManagerSession (string host)
+		public NessusSession (string host)
 		{
 			_host = host;
 		}
 		
-		public NessusManagerSession (string host, int port)
+		public NessusSession (string host, int port)
 		{
 			_host = host;
 			_port = port.ToString();
 		}
 		
-		public NessusManagerSession (string protocol, string host, int port)
+		public NessusSession (string protocol, string host, int port)
 		{
 			_host = host;
 			_proto = protocol;

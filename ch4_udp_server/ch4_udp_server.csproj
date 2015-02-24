@@ -3,10 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{169BD6BB-826B-4B7E-BD52-FFA17683675E}</ProjectGuid>
+    <ProjectGuid>{68074B20-EAB0-4146-A1B3-FE0BF88B498A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ch6_automating_nessus</RootNamespace>
-    <AssemblyName>ch6_automating_nessus</AssemblyName>
+    <RootNamespace>ch4_udp_server</RootNamespace>
+    <AssemblyName>ch4_udp_server</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,13 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NessusManager.cs" />
-    <Compile Include="NessusSession.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

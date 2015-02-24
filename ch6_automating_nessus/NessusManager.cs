@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Xml;
 
-namespace nessusssharp
+namespace ch6_automating_nessus
 {
 	public class NessusManager : IDisposable
 	{
-		NessusManagerSession _session;
+		NessusSession _session;
 		
 		int RandomNumber { get { return new Random().Next(9999); } }
 		
@@ -16,7 +16,7 @@ namespace nessusssharp
 		/// <param name='sess'>
 		/// NessesManagerSession configured to connect to the nessus host.
 		/// </param>
-		public NessusManager (NessusManagerSession sess)
+		public NessusManager (NessusSession sess)
 		{
 			_session = sess;
 		}
