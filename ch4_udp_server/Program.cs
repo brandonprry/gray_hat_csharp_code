@@ -9,16 +9,16 @@ namespace ch4_udp_server
 	class MainClass
 	{
 		private const int listenPort = 11000;
-		public static int Main()
+		public static void Main(string[] args)
 		{
-			bool done = false;
 			UdpClient listener = new UdpClient(listenPort);
 			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
 			string received_data;
 			byte[] receive_byte_array;
+
 			try
 			{
-				while (!done)
+				while (true)
 				{
 					Console.WriteLine("Waiting for broadcast");
 					receive_byte_array = listener.Receive(ref groupEP);
@@ -51,7 +51,6 @@ namespace ch4_udp_server
 				Console.WriteLine(e.ToString());
 			}
 			listener.Close();
-			return 0;
 		}
 	}
 }

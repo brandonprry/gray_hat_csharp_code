@@ -31,8 +31,7 @@ namespace ch4_bind_udp
 			{
 				Console.WriteLine("Enter text to send, blank line to quit");
 				string text_to_send = Console.ReadLine();
-				if (text_to_send.Length == 0)
-					break;
+
 
 				byte[] send_buffer = Encoding.ASCII.GetBytes(text_to_send);
 
@@ -42,6 +41,9 @@ namespace ch4_bind_udp
 				try
 				{
 					sending_socket.SendTo(send_buffer, sending_end_point);
+
+					if (text_to_send.Length == 0)
+						break;
 
 					Console.WriteLine("Waiting for broadcast");
 					receive_byte_array = listener.Receive(ref groupEP);
