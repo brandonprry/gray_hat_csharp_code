@@ -5,19 +5,19 @@ namespace ch12_crossplatform_metasploit_payloads
 {
 	class MainClass
 	{
-		[DllImport("kernel32", SetLastError = true)]
+		[DllImport("kernel32")]
 		static extern IntPtr VirtualAlloc(IntPtr ptr, IntPtr size, IntPtr type, IntPtr mode);
 
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 		delegate void WindowsRun();
 
-		[DllImport("libc", SetLastError = true)]
+		[DllImport("libc")]
 		static extern IntPtr mprotect(IntPtr ptr, IntPtr length, IntPtr protection);
 
-		[DllImport("libc", SetLastError = true)]
+		[DllImport("libc")]
 		static extern IntPtr posix_memalign(ref IntPtr ptr, IntPtr alignment, IntPtr size);
 
-		[DllImport("libc", SetLastError = true)]
+		[DllImport("libc")]
 		static extern void free(IntPtr ptr);
 
 		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
