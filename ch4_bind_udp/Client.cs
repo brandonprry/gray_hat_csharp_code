@@ -43,6 +43,7 @@ namespace ch4_bind_udp
 					Console.WriteLine(" Exception {0}", ex.Message);
 				}
 			} 
+			listener.Close ();
 		} 
 	}
 }
