@@ -18,7 +18,7 @@ namespace connect_back
 					string filename = string.Empty;
 					string arg = string.Empty;
 
-					if (cmd.IndexOf(' ') > 0) { 
+					if (cmd.IndexOf(' ') > -1) { 
 						filename = cmd.Substring(0, cmd.IndexOf(' '));
 						arg = cmd.Substring(cmd.IndexOf(' '), cmd.Length - filename.Length);
 					} else {

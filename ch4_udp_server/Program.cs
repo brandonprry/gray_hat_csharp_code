@@ -10,7 +10,7 @@ namespace ch4_udp_server
 	{
 		public static void Main(string[] args)
 		{
-			int lport = 5555;
+			int lport = int.Parse(args[1]);
 			UdpClient listener = new UdpClient(lport);
 			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, lport);
 			string cmd;
@@ -48,7 +48,7 @@ namespace ch4_udp_server
 					Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
 						ProtocolType.Udp);
 
-					IPAddress sender = IPAddress.Parse("192.168.1.45");
+					IPAddress sender = IPAddress.Parse(args[0]);
 					IPEndPoint sendEP = new IPEndPoint(sender, lport);
 
 					byte[] results = Encoding.ASCII.GetBytes(prc.StandardOutput.ReadToEnd());

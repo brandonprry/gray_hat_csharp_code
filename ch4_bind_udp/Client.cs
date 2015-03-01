@@ -9,7 +9,7 @@ namespace ch4_bind_udp
 	{
 		static void Main(string[] args)
 		{
-			int lport = 5555;
+			int lport = int.Parse(args[1]);
 			UdpClient listener = new UdpClient(lport);
 			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, lport);
 			string output;
@@ -18,7 +18,7 @@ namespace ch4_bind_udp
 			Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
 				ProtocolType.Udp);
 
-			IPAddress addr = IPAddress.Parse("192.168.1.31");
+			IPAddress addr = IPAddress.Parse(args[0]);
 			IPEndPoint addrEP = new IPEndPoint(addr, lport);
 
 			Console.WriteLine("Enter command to send, blank line to quit");
