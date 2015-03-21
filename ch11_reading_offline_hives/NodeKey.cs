@@ -11,7 +11,7 @@ namespace VolatileReader.Registry
 		{
 			byte[] buf = hive.ReadBytes(4);
 			
-			if (buf[0] != 110 || buf[1] != 107)
+			if (buf[0] != 110 || buf[1] != 107) //nk
 				throw new NotSupportedException("Bad nk header");
 			
 			long startingOffset = hive.BaseStream.Position;

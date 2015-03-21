@@ -156,7 +156,5 @@ namespace ch12_crossplatform_metasploit_payloads
 				}
 			}
 		}
-
-
 	}
 }
