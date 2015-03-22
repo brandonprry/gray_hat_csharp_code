@@ -40,13 +40,13 @@
     <Compile Include="SoapBindingOperation.cs" />
     <Compile Include="SoapMessage.cs" />
     <Compile Include="SoapOperation.cs" />
-    <Compile Include="SoapPart.cs" />
     <Compile Include="SoapPort.cs" />
     <Compile Include="SoapPortType.cs" />
     <Compile Include="SoapService.cs" />
     <Compile Include="SoapType.cs" />
     <Compile Include="SoapTypeParameter.cs" />
     <Compile Include="WSDL.cs" />
+    <Compile Include="SoapMessagePart.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

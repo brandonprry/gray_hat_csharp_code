@@ -42,6 +42,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="CreateUser.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CreateUser.json" />
   </ItemGroup>
 </Project>

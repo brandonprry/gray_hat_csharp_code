@@ -4,9 +4,9 @@ using System.Xml;
 
 namespace fuzzer
 {
-	public class SoapPart
+	public class SoapMessagePart
 	{
-		public SoapPart (XmlNode part)
+		public SoapMessagePart (XmlNode part)
 		{
 			this.Name = part.Attributes["name"].Value;
 
