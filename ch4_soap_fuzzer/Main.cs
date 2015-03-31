@@ -76,7 +76,7 @@ namespace fuzzer
 				int i = 0;
 				SoapType type = null; //this is cheating, assumes only one part
 
-				foreach (SoapPart part in input.Parts) {
+				foreach (SoapMessagePart part in input.Parts) {
 					type = _wsdl.Types.Where (t => t.Name == part.Element.Split (':') [1]).Single ();
 					foreach (SoapTypeParameter param in type.Parameters) {
 						soap += "<" + param.Name + ">";
@@ -132,7 +132,7 @@ namespace fuzzer
 				SoapMessage input = _wsdl.Messages.Where (m => m.Name == po.Input.Split (':') [1]).Single ();
 
 				Dictionary<string, string> parameters = new Dictionary<string, string> ();
-				foreach (SoapPart part in input.Parts) {
+				foreach (SoapMessagePart part in input.Parts) {
 					parameters.Add (part.Name, part.Type);
 				}
 
@@ -179,7 +179,7 @@ namespace fuzzer
 				SoapMessage input = _wsdl.Messages.Where (m => m.Name == po.Input.Split (':') [1]).Single ();
 				Dictionary<string, string> parameters = new Dictionary<string, string> ();
 		
-				foreach (SoapPart part in input.Parts) {
+				foreach (SoapMessagePart part in input.Parts) {
 					parameters.Add (part.Name, part.Type);
 				}
 
