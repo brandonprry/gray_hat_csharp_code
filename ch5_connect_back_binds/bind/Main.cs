@@ -14,20 +14,23 @@ namespace bind
 			int port = int.Parse (args [0]);
 			TcpListener listener = new TcpListener (IPAddress.Any, port);
 
-			try {
-				listener.Start ();
-			} catch {
-				return;
-			}
-
 			while (true) {
+
+				try {
+					listener.Start ();
+				} catch {
+					return;
+				}
+
 				using (NetworkStream stream = new NetworkStream (listener.AcceptSocket ())) {
 					using (StreamReader rdr = new StreamReader (stream)) {
 						while (true) {
 							string cmd = rdr.ReadLine ();
 
-							if (string.IsNullOrEmpty (cmd))
+							if (string.IsNullOrEmpty (cmd)) {
+								listener.Stop ();	
 								break;
+							}
 
 							if (string.IsNullOrWhiteSpace (cmd))
 								continue;
