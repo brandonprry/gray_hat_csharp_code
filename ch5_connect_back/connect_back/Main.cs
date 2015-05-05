@@ -16,8 +16,11 @@ namespace connect_back
 						while (true) {				
 							string cmd = rdr.ReadLine ();
 
-							if (string.IsNullOrEmpty (cmd) || string.IsNullOrWhiteSpace(cmd))
+							if (string.IsNullOrEmpty (cmd))
 								break;
+
+							if (string.IsNullOrWhiteSpace (cmd))
+								continue;
 
 							string filename = string.Empty;
 							string arg = string.Empty;
