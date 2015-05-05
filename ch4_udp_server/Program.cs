@@ -11,55 +11,53 @@ namespace ch4_udp_server
 		public static void Main(string[] args)
 		{
 			int lport = int.Parse(args[0]);
-			UdpClient listener = new UdpClient(lport);
-			IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, lport);
-			string cmd;
-			byte[] input;
+			using (UdpClient listener = new UdpClient (lport)) {
+				IPEndPoint groupEP = new IPEndPoint (IPAddress.Any, lport);
+				string cmd;
+				byte[] input;
 
-			try
-			{
-				while (true)
-				{
-					input = listener.Receive(ref groupEP);
-					cmd = Encoding.ASCII.GetString(input, 0, input.Length);
+				try {
+					while (true) {
+						input = listener.Receive (ref groupEP);
+						cmd = Encoding.ASCII.GetString (input, 0, input.Length);
 
-					if (cmd == string.Empty)
-						break;
+						if (cmd == string.Empty)
+							break;
 						
-					string filename = string.Empty;
-					string arg = string.Empty;
+						string filename = string.Empty;
+						string arg = string.Empty;
 
-					if (cmd.IndexOf(' ') > -1) { 
-						filename = cmd.Substring(0, cmd.IndexOf(' '));
-						arg = cmd.Substring(cmd.IndexOf(' '), cmd.Length - filename.Length);
-					} else {
-						filename = cmd;
+						if (cmd.IndexOf (' ') > -1) { 
+							filename = cmd.Substring (0, cmd.IndexOf (' '));
+							arg = cmd.Substring (cmd.IndexOf (' '), cmd.Length - filename.Length);
+						} else {
+							filename = cmd;
+						}
+
+						Process prc = new Process ();
+						prc.StartInfo = new ProcessStartInfo ();
+						prc.StartInfo.FileName = filename;
+						prc.StartInfo.Arguments = arg;
+						prc.StartInfo.UseShellExecute = false;
+						prc.StartInfo.RedirectStandardOutput = true;
+						prc.Start ();
+						prc.WaitForExit ();
+
+						using (Socket sock = new Socket (AddressFamily.InterNetwork, SocketType.Dgram,
+							ProtocolType.Udp)) {
+
+							IPAddress sender = groupEP.Address;
+							IPEndPoint sendEP = new IPEndPoint (sender, lport);
+
+							byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
+							sock.SendTo (results, sendEP);
+						}
 					}
-
-					Process prc = new Process();
-					prc.StartInfo = new ProcessStartInfo();
-					prc.StartInfo.FileName = filename;
-					prc.StartInfo.Arguments = arg;
-					prc.StartInfo.UseShellExecute = false;
-					prc.StartInfo.RedirectStandardOutput = true;
-					prc.Start();
-					prc.WaitForExit();
-
-					Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
-						ProtocolType.Udp);
-
-					IPAddress sender = groupEP.Address;
-					IPEndPoint sendEP = new IPEndPoint(sender, lport);
-
-					byte[] results = Encoding.ASCII.GetBytes(prc.StandardOutput.ReadToEnd());
-					sock.SendTo(results, sendEP);
+				} catch (Exception e) {
+					Console.WriteLine (e.ToString ());
 				}
+				listener.Close ();
 			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.ToString());
-			}
-			listener.Close();
 		}
 	}
 }
