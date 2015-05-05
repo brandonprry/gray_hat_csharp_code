@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind_tcp", "ch5_connect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_automating_nessus", "ch6_automating_nessus\ch5_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch7_automating_nexpose\ch6_automating_nexpose.csproj", "{AC57BD4B-9C28-41C6-A625-C134D3E6850F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_openvas", "ch8_automating_openvas\ch7_automating_openvas.csproj", "{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch9_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
@@ -51,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_clamd", "ch13_automating_clamav_clamd\ch13_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch6_automating_nexpose\ch6_automating_nexpose.csproj", "{430D3EB9-A13B-4951-82FE-347A29D88008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -81,6 +81,10 @@ Global
 		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Debug|x86.Build.0 = Debug|x86
 		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Release|x86.ActiveCfg = Release|x86
 		{33AD7E3A-BE86-423C-87B2-4727A3D04BA3}.Release|x86.Build.0 = Release|x86
+		{430D3EB9-A13B-4951-82FE-347A29D88008}.Debug|x86.ActiveCfg = Debug|x86
+		{430D3EB9-A13B-4951-82FE-347A29D88008}.Debug|x86.Build.0 = Debug|x86
+		{430D3EB9-A13B-4951-82FE-347A29D88008}.Release|x86.ActiveCfg = Release|x86
+		{430D3EB9-A13B-4951-82FE-347A29D88008}.Release|x86.Build.0 = Release|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.ActiveCfg = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Debug|x86.Build.0 = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.Release|x86.ActiveCfg = Release|x86
@@ -105,10 +109,6 @@ Global
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.Build.0 = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Release|x86.ActiveCfg = Release|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Release|x86.Build.0 = Release|x86
-		{AC57BD4B-9C28-41C6-A625-C134D3E6850F}.Debug|x86.ActiveCfg = Debug|x86
-		{AC57BD4B-9C28-41C6-A625-C134D3E6850F}.Debug|x86.Build.0 = Debug|x86
-		{AC57BD4B-9C28-41C6-A625-C134D3E6850F}.Release|x86.ActiveCfg = Release|x86
-		{AC57BD4B-9C28-41C6-A625-C134D3E6850F}.Release|x86.Build.0 = Release|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Debug|x86.ActiveCfg = Debug|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Debug|x86.Build.0 = Debug|x86
 		{B03B1A80-DE2E-495E-9979-883E25B61722}.Release|x86.ActiveCfg = Release|x86
