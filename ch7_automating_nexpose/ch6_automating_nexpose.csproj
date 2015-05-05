@@ -34,7 +34,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< Upstream, based on origin/master
     <Compile Include="MainClass.cs" />
+=======
+>>>>>>> d3c1ed0 fdsa
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

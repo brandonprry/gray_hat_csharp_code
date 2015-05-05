@@ -126,7 +126,7 @@ namespace ch12_crossplatform_metasploit_payloads
 				try
 				{
 					int pagesize = 4096;
-					IntPtr length = (IntPtr)(payload.Length + pagesize - 1);
+					IntPtr length = (IntPtr)payload.Length;
 					success = posix_memalign(ref ptr, (IntPtr)32, length);
 					if (success != IntPtr.Zero)
 					{
