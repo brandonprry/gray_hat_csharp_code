@@ -23,7 +23,7 @@ namespace bind
 			while (true) {
 				using (NetworkStream stream = new NetworkStream (listener.AcceptSocket ())) {
 					using (StreamReader rdr = new StreamReader (stream)) {
-						while (stream.CanRead) {
+						while (true) {
 							string cmd = rdr.ReadLine ();
 
 							if (string.IsNullOrEmpty (cmd))
