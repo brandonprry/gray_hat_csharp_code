@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_crossplatform_metasplo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch5_connect_back\ch4_connect_back_tcp.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav", "ch14_automating_clamav\ch13_automating_clamav.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_filesystem", "ch14_automating_clamav\ch13_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vuln_soap_app", "ch4_vuln_soap_app\ch3_vuln_soap_app.csproj", "{EDD95C1F-A73E-48B2-8040-24363405263E}"
 EndProject
@@ -50,6 +50,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_client", "ch4_bind_udp\ch4_udp_client.csproj", "{F6A90F3C-7144-4710-B60B-5508C1FDD93A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_server\ch4_udp_server.csproj", "{68074B20-EAB0-4146-A1B3-FE0BF88B498A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_clamd", "ch13_automating_clamav_clamd\ch13_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Debug|x86.Build.0 = Debug|x86
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Release|x86.ActiveCfg = Release|x86
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Release|x86.Build.0 = Release|x86
+		{CEDB50B7-7587-4F74-9A43-308FD607D8E1}.Debug|x86.ActiveCfg = Debug|x86
+		{CEDB50B7-7587-4F74-9A43-308FD607D8E1}.Debug|x86.Build.0 = Debug|x86
+		{CEDB50B7-7587-4F74-9A43-308FD607D8E1}.Release|x86.ActiveCfg = Release|x86
+		{CEDB50B7-7587-4F74-9A43-308FD607D8E1}.Release|x86.Build.0 = Release|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.ActiveCfg = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Debug|x86.Build.0 = Debug|x86
 		{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}.Release|x86.ActiveCfg = Release|x86

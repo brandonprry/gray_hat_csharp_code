@@ -20,16 +20,6 @@ namespace testing
 						Console.WriteLine("File Clean!");
 				}
 			} //engine is disposed of here and the allocated engine freed
-
-			//these test clamd bindings
-//			using (ClamdSession session = new ClamdSession("127.0.0.1", 3310))
-//			{
-//				using (ClamdManager manager = new ClamdManager(session))
-//				{
-//					Console.WriteLine(manager.GetVersion());
-//					Console.WriteLine(manager.ScanWithArchiveSupport("/home/bperry/tmp"));
-//				}
-//			}
 		}
 	}
 }
