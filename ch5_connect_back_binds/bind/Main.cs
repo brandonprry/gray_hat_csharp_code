@@ -26,7 +26,7 @@ namespace bind
 						while (true) {
 							string cmd = rdr.ReadLine ();
 
-							if (string.IsNullOrEmpty (cmd))
+							if (string.IsNullOrEmpty (cmd) || string.IsNullOrWhiteSpace(cmd))
 								break;
 
 							string filename = string.Empty;
