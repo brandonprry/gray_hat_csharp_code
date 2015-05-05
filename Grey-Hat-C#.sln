@@ -45,8 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_get_fuzzer", "ch2_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_json_fuzzer", "ch2_sqli_json_fuzzer\ch2_sqli_json_fuzzer.csproj", "{C502EE07-4059-4785-8AA3-542C26163A62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vulnerable_json_sqli", "ch2_vulnerable_json_sqli\vulnerable_json_sqli\vulnerable_json_sqli.csproj", "{A0062557-A06E-48CF-AE5D-488E67C7C85A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_client", "ch4_bind_udp\ch4_udp_client.csproj", "{F6A90F3C-7144-4710-B60B-5508C1FDD93A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_server\ch4_udp_server.csproj", "{68074B20-EAB0-4146-A1B3-FE0BF88B498A}"
@@ -103,10 +101,6 @@ Global
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Debug|x86.Build.0 = Debug|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.ActiveCfg = Release|x86
 		{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}.Release|x86.Build.0 = Release|x86
-		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Debug|x86.Build.0 = Debug|Any CPU
-		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Release|x86.ActiveCfg = Release|Any CPU
-		{A0062557-A06E-48CF-AE5D-488E67C7C85A}.Release|x86.Build.0 = Release|Any CPU
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.ActiveCfg = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Debug|x86.Build.0 = Debug|x86
 		{A54886E3-D225-4D6C-84E8-7E6BBC4C593E}.Release|x86.ActiveCfg = Release|x86
