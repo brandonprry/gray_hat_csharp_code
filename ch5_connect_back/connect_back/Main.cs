@@ -13,8 +13,12 @@ namespace connect_back
 			using (TcpClient client = new TcpClient (args [0], int.Parse (args [1]))) {
 				using (Stream stream = client.GetStream ()) {
 					using (StreamReader rdr = new StreamReader (stream)) {
-						while (stream.CanRead) {				
+						while (true) {				
 							string cmd = rdr.ReadLine ();
+
+							if (string.IsNullOrEmpty (cmd))
+								break;
+
 							string filename = string.Empty;
 							string arg = string.Empty;
 

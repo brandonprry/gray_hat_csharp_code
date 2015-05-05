@@ -25,6 +25,10 @@ namespace bind
 					using (StreamReader rdr = new StreamReader (stream)) {
 						while (stream.CanRead) {
 							string cmd = rdr.ReadLine ();
+
+							if (string.IsNullOrEmpty (cmd))
+								break;
+
 							string filename = string.Empty;
 							string arg = string.Empty;
 
