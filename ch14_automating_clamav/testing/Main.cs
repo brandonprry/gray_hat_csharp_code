@@ -1,6 +1,5 @@
 using System;
 using clamsharp;
-using clamdsharp;
 
 namespace testing
 {
