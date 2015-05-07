@@ -50,10 +50,8 @@ namespace bind
 								prc.StartInfo.UseShellExecute = false;
 								prc.StartInfo.RedirectStandardOutput = true;
 								prc.Start ();
+								prc.StandardOutput.BaseStream.CopyTo(stream);
 								prc.WaitForExit ();
-
-								byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
-								stream.Write (results, 0, results.Length);
 							} catch{
 								string error = "Error running command " + cmd + "\n";
 								byte[] errorBytes = Encoding.ASCII.GetBytes (error);
