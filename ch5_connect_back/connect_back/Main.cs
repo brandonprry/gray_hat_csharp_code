@@ -17,8 +17,12 @@ namespace connect_back
 						while (true) {				
 							string cmd = rdr.ReadLine ();
 
-							if (string.IsNullOrEmpty (cmd))
+							if (string.IsNullOrEmpty (cmd)) {
+								rdr.Close ();
+								stream.Close ();
+								client.Close ();
 								return;
+							}
 
 							if (string.IsNullOrWhiteSpace (cmd))
 								continue;
