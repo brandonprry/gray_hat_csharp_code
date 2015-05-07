@@ -1,6 +1,7 @@
 using System;
 using System.Net.Sockets;
 using System.Net;
+using System.Linq;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
@@ -28,22 +29,18 @@ namespace bind
 							string cmd = rdr.ReadLine ();
 
 							if (string.IsNullOrEmpty (cmd)) {
+								rdr.Close ();
+								stream.Close ();
 								listener.Stop ();	
 								break;
 							}
 
 							if (string.IsNullOrWhiteSpace (cmd))
 								continue;
-							
-							string filename = string.Empty;
-							string arg = string.Empty;
 
-							if (cmd.IndexOf (' ') > -1) { 
-								filename = cmd.Substring (0, cmd.IndexOf (' '));
-								arg = cmd.Substring (cmd.IndexOf (' '), cmd.Length - filename.Length);
-							} else {
-								filename = cmd;
-							}
+							string[] split = cmd.Trim().Split(' ');
+							string filename = split.First();
+							string arg = string.Join(" ", split.Skip(1));
 
 							try {
 								Process prc = new Process ();

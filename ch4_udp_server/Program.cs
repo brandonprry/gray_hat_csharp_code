@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ch4_udp_server
 {
@@ -23,16 +24,10 @@ namespace ch4_udp_server
 
 						if (cmd == string.Empty)
 							break;
-						
-						string filename = string.Empty;
-						string arg = string.Empty;
 
-						if (cmd.IndexOf (' ') > -1) { 
-							filename = cmd.Substring (0, cmd.IndexOf (' '));
-							arg = cmd.Substring (cmd.IndexOf (' '), cmd.Length - filename.Length);
-						} else {
-							filename = cmd;
-						}
+						string[] split = cmd.Trim().Split(' ');
+						string filename = split.First();
+						string arg = string.Join(" ", split.Skip(1));
 
 						Process prc = new Process ();
 						prc.StartInfo = new ProcessStartInfo ();
