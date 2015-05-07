@@ -32,7 +32,7 @@ namespace bind
 								rdr.Close ();
 								stream.Close ();
 								listener.Stop ();	
-								break;
+								return;
 							}
 
 							if (string.IsNullOrWhiteSpace (cmd))

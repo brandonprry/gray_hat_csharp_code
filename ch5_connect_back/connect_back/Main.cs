@@ -18,7 +18,7 @@ namespace connect_back
 							string cmd = rdr.ReadLine ();
 
 							if (string.IsNullOrEmpty (cmd))
-								break;
+								return;
 
 							if (string.IsNullOrWhiteSpace (cmd))
 								continue;
