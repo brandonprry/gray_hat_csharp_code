@@ -13,13 +13,13 @@ namespace ch4_udp_server
 		{
 			int lport = int.Parse(args[0]);
 			using (UdpClient listener = new UdpClient (lport)) {
-				IPEndPoint groupEP = new IPEndPoint (IPAddress.Any, lport);
+				IPEndPoint localEP = new IPEndPoint (IPAddress.Any, lport);
 				string cmd;
 				byte[] input;
 
 				try {
 					while (true) {
-						input = listener.Receive (ref groupEP);
+						input = listener.Receive (ref localEP);
 						cmd = Encoding.ASCII.GetString (input, 0, input.Length);
 
 						if (cmd == string.Empty)
@@ -41,11 +41,11 @@ namespace ch4_udp_server
 						using (Socket sock = new Socket (AddressFamily.InterNetwork, SocketType.Dgram,
 							ProtocolType.Udp)) {
 
-							IPAddress sender = groupEP.Address;
-							IPEndPoint sendEP = new IPEndPoint (sender, lport);
+							IPAddress sender = localEP.Address;
+							IPEndPoint remoteEP = new IPEndPoint (sender, lport);
 
 							byte[] results = Encoding.ASCII.GetBytes (prc.StandardOutput.ReadToEnd ());
-							sock.SendTo (results, sendEP);
+							sock.SendTo (results, remoteEP);
 						}
 					}
 				} catch (Exception e) {

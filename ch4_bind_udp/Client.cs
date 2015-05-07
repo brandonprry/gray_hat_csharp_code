@@ -11,7 +11,7 @@ namespace ch4_bind_udp
 		{
 			int lport = int.Parse(args[1]);
 			using (UdpClient listener = new UdpClient (lport)) {
-				IPEndPoint groupEP = new IPEndPoint (IPAddress.Any, lport);
+				IPEndPoint remoteEP = new IPEndPoint (IPAddress.Any, lport);
 				string output;
 				byte[] bytes;
 
@@ -32,7 +32,7 @@ namespace ch4_bind_udp
 						if (command.Length == 0)
 							break;
 
-						bytes = listener.Receive (ref groupEP);
+						bytes = listener.Receive (ref remoteEP);
 						output = Encoding.ASCII.GetString (bytes, 0, bytes.Length);
 						Console.WriteLine (output);
 					} catch (Exception ex) {

