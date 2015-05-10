@@ -15,31 +15,37 @@ namespace ch4_bind_udp
 				string output;
 				byte[] bytes;
 
-				Socket sock = new Socket (AddressFamily.InterNetwork, SocketType.Dgram,
-					             ProtocolType.Udp);
+				using (Socket sock = new Socket (AddressFamily.InterNetwork, SocketType.Dgram,
+					                     ProtocolType.Udp)) {
 
-				IPAddress addr = IPAddress.Parse (args [0]);
-				IPEndPoint addrEP = new IPEndPoint (addr, lport);
+					IPAddress addr = IPAddress.Parse (args [0]);
+					IPEndPoint addrEP = new IPEndPoint (addr, lport);
 
-				Console.WriteLine ("Enter command to send, blank line to quit");
-				while (true) {
-					string command = Console.ReadLine ();
+					Console.WriteLine ("Enter command to send, blank line to quit");
+					while (true) {
+						string command = Console.ReadLine ();
 
-					byte[] buff = Encoding.ASCII.GetBytes (command);
-					try {
-						sock.SendTo (buff, addrEP);
+						byte[] buff = Encoding.ASCII.GetBytes (command);
+						try {
+							sock.SendTo (buff, addrEP);
 
-						if (command.Length == 0)
-							break;
+							if (string.IsNullOrEmpty (command)) {
+								sock.Close();
+								listener.Close();
+								return;
+							}
 
-						bytes = listener.Receive (ref remoteEP);
-						output = Encoding.ASCII.GetString (bytes, 0, bytes.Length);
-						Console.WriteLine (output);
-					} catch (Exception ex) {
-						Console.WriteLine (" Exception {0}", ex.Message);
-					}
-				} 
-				listener.Close ();
+							if (string.IsNullOrWhiteSpace(command))
+								continue;
+
+							bytes = listener.Receive (ref remoteEP);
+							output = Encoding.ASCII.GetString (bytes, 0, bytes.Length);
+							Console.WriteLine (output);
+						} catch (Exception ex) {
+							Console.WriteLine (" Exception {0}", ex.Message);
+						}
+					} 
+				}
 			}
 		} 
 	}

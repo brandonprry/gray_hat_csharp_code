@@ -8,7 +8,7 @@ namespace ch12_crossplatform_metasploit_payloads
 		[DllImport("kernel32")]
 		static extern IntPtr VirtualAlloc(IntPtr ptr, IntPtr size, IntPtr type, IntPtr mode);
 
-		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+		[UnmanagedFunctionPointer(CallingConvention.Winapi)]
 		delegate void WindowsRun();
 
 		[DllImport("libc")]

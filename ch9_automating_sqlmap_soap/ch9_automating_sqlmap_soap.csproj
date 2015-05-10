@@ -34,14 +34,26 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlmapLogItem.cs" />
     <Compile Include="SqlmapManager.cs" />
     <Compile Include="SqlmapSession.cs" />
     <Compile Include="SqlmapStatus.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="SoapBinding.cs" />
+    <Compile Include="SoapBindingOperation.cs" />
+    <Compile Include="SoapMessage.cs" />
+    <Compile Include="SoapMessagePart.cs" />
+    <Compile Include="SoapOperation.cs" />
+    <Compile Include="SoapPort.cs" />
+    <Compile Include="SoapPortType.cs" />
+    <Compile Include="SoapService.cs" />
+    <Compile Include="SoapType.cs" />
+    <Compile Include="SoapTypeParameter.cs" />
+    <Compile Include="WSDL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

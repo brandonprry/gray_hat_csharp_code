@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDD95C1F-A73E-48B2-8040-24363405263E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>ch4_vuln_soap_app</RootNamespace>
-    <AssemblyName>ch4_vuln_soap_app</AssemblyName>
     <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{EEB08819-DAE4-4638-B095-13511EF7EE08}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ch3_vulnerable_soap_endpoint</RootNamespace>
+    <AssemblyName>ch3_vulnerable_soap_endpoint</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -16,6 +16,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
@@ -23,33 +24,34 @@
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="Mono.Security">
+      <HintPath>..\packages\Npgsql.2.2.5\lib\net45\Mono.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
-      <HintPath>..\..\..\Downloads\Npgsql-2\Npgsql.dll</HintPath>
+      <HintPath>..\packages\Npgsql.2.2.5\lib\net45\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
   </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
   <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Vulnerable.asmx" />
-    <Content Include="web.config" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -60,7 +62,15 @@
       <DependentUpon>Vulnerable.asmx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
   <ItemGroup>
-    <None Include="vulnerable.sql.txt" />
+    <None Include="vulnerable.sql" />
   </ItemGroup>
 </Project>

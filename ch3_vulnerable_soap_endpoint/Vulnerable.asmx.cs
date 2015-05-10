@@ -1,6 +1,5 @@
 
 using System;
-using System.Data;
 using System.Web;
 using System.Web.Services;
 using Npgsql;
@@ -10,11 +9,10 @@ namespace SQLInjectionSOAPService
 {
 	public class VulnerableService : System.Web.Services.WebService
 	{
-		string _connstr = "Server=192.168.1.15;Port=5432;User Id=postgres;Password=secret;Database=vulnerable_endpoint;";
 		[WebMethod]
 		public string AddUser (string username, string password)
 		{
-			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
+			NpgsqlConnection conn = new NpgsqlConnection ("Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable;");
 			conn.Open ();
 
 
@@ -30,7 +28,7 @@ namespace SQLInjectionSOAPService
 		public List<string> ListUsers ()
 		{		   
 			List<string> users = new List<string> ();
-			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
+			NpgsqlConnection conn = new NpgsqlConnection ("Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable;");
 			conn.Open ();
 
 			NpgsqlCommand command = new NpgsqlCommand ("select * from users;", conn);	
@@ -49,7 +47,7 @@ namespace SQLInjectionSOAPService
 		[WebMethod]
 		public string GetUser (string username)
 		{
-			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
+NpgsqlConnection conn = new NpgsqlConnection ("Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable;");
 			conn.Open ();
 
 			NpgsqlCommand command = new NpgsqlCommand ("select * from users where username = '" + username + "';", conn);	
@@ -67,7 +65,7 @@ namespace SQLInjectionSOAPService
 		[WebMethod]
 		public bool DeleteUser (string username)
 		{
-			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
+			NpgsqlConnection conn = new NpgsqlConnection ("Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable;");
 			conn.Open ();
 
 

@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_filesystem", "ch14_automating_clamav\ch13_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vuln_soap_app", "ch4_vuln_soap_app\ch3_vuln_soap_app.csproj", "{EDD95C1F-A73E-48B2-8040-24363405263E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch9_automating_sqlmap\ch9_automating_sqlmap.csproj", "{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics_advanced_pinvoke", "ch1_the_basics_advanced_pinvoke\ch1_the_basics_advanced_pinvoke.csproj", "{F841BCE9-C695-4EC5-836F-AE14171605DC}"
@@ -50,6 +48,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_clamd", "ch13_automating_clamav_clamd\ch13_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch6_automating_nexpose\ch6_automating_nexpose.csproj", "{430D3EB9-A13B-4951-82FE-347A29D88008}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vulnerable_soap_endpoint", "ch3_vulnerable_soap_endpoint\ch3_vulnerable_soap_endpoint.csproj", "{EEB08819-DAE4-4638-B095-13511EF7EE08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,10 +137,10 @@ Global
 		{E8EAF06C-458C-4702-9832-C32C329B1621}.Debug|x86.Build.0 = Debug|x86
 		{E8EAF06C-458C-4702-9832-C32C329B1621}.Release|x86.ActiveCfg = Release|x86
 		{E8EAF06C-458C-4702-9832-C32C329B1621}.Release|x86.Build.0 = Release|x86
-		{EDD95C1F-A73E-48B2-8040-24363405263E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EDD95C1F-A73E-48B2-8040-24363405263E}.Debug|x86.Build.0 = Debug|Any CPU
-		{EDD95C1F-A73E-48B2-8040-24363405263E}.Release|x86.ActiveCfg = Release|Any CPU
-		{EDD95C1F-A73E-48B2-8040-24363405263E}.Release|x86.Build.0 = Release|Any CPU
+		{EEB08819-DAE4-4638-B095-13511EF7EE08}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEB08819-DAE4-4638-B095-13511EF7EE08}.Debug|x86.Build.0 = Debug|Any CPU
+		{EEB08819-DAE4-4638-B095-13511EF7EE08}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEB08819-DAE4-4638-B095-13511EF7EE08}.Release|x86.Build.0 = Release|Any CPU
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.ActiveCfg = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Debug|x86.Build.0 = Debug|x86
 		{F299269B-D259-4DB5-9A05-CF38CC4D0DDA}.Release|x86.ActiveCfg = Release|x86
