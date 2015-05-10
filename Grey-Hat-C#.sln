@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vulnerable_soap_endpoint", "ch3_vulnerable_soap_endpoint\ch3_vulnerable_soap_endpoint.csproj", "{EEB08819-DAE4-4638-B095-13511EF7EE08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vulnerable_json_endpoint", "ch2_vulnerable_json_endpoint\ch2_vulnerable_json_endpoint.csproj", "{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -121,6 +123,10 @@ Global
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Debug|x86.Build.0 = Debug|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.ActiveCfg = Release|x86
 		{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}.Release|x86.Build.0 = Release|x86
+		{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}.Debug|x86.Build.0 = Debug|Any CPU
+		{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}.Release|x86.ActiveCfg = Release|Any CPU
+		{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}.Release|x86.Build.0 = Release|Any CPU
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Debug|x86.ActiveCfg = Debug|x86
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Debug|x86.Build.0 = Debug|x86
 		{C502EE07-4059-4785-8AA3-542C26163A62}.Release|x86.ActiveCfg = Release|x86
