@@ -4,7 +4,7 @@ using System.IO;
 
 namespace clamdsharp
 {
-	public class ClamdSession : IDisposable
+	public class ClamdSession
 	{
 		private string _host = null;
 		private int _port;
@@ -18,18 +18,18 @@ namespace clamdsharp
 		public string Execute (string command)
 		{
 			string resp = string.Empty;
-			using (NetworkStream stream = new TcpClient(_host, _port).GetStream()) {
-				byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
-				stream.Write(data, 0, data.Length);
+			using (TcpClient client = new TcpClient (_host, _port)) {
+				using (NetworkStream stream = client.GetStream ()) {
+					byte[] data = System.Text.Encoding.ASCII.GetBytes (command);
+					stream.Write (data, 0, data.Length);
 
-				using (StreamReader rdr = new StreamReader(stream))
-					resp = rdr.ReadToEnd();
+					using (StreamReader rdr = new StreamReader (stream))
+						resp = rdr.ReadToEnd ();
+				}
 			}
 
 			return resp;
 		}
-
-		public void Dispose() {}
 	}
 }
 

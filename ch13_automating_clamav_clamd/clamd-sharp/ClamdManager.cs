@@ -56,7 +56,9 @@ namespace clamdsharp
 			return _session.Execute("MULTISCAN " + path);
 		}
 
-		public void Dispose() {}
+		public void Dispose() {
+			_session = null;
+		}
 	}
 }
 

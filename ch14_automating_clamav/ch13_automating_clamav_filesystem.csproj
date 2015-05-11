@@ -50,7 +50,4 @@
     <Folder Include="clam-sharp\" />
     <Folder Include="testing\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="testing\testing.csproj" />
-  </ItemGroup>
 </Project>
