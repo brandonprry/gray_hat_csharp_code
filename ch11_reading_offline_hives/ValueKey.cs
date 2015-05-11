@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace VolatileReader.Registry
+namespace ntregsharp
 {
 	public class ValueKey
 	{

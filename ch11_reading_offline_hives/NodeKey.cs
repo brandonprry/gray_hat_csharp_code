@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace VolatileReader.Registry
+namespace ntregsharp
 {
 	public class NodeKey
 	{
@@ -76,7 +76,8 @@ namespace VolatileReader.Registry
 					{
 						hive.BaseStream.Position = topOfList + (i*8);
 						int offset = BitConverter.ToInt32(hive.ReadBytes(4),0);
-						byte[] check = hive.ReadBytes(4);
+						//byte[] check = hive.ReadBytes(4);
+						hive.BaseStream.Position += 4;
 						hive.BaseStream.Position = 0x1000 + offset + 0x04;
 						this.ChildNodes.Add(new NodeKey(hive) { ParentNodeKey = this });
 					}

@@ -1,14 +1,10 @@
 using System;
 using System.IO;
 
-namespace VolatileReader.Registry
+namespace ntregsharp
 {
 	public class RegistryHive
 	{
-		public RegistryHive ()
-		{
-		}
-		
 		public RegistryHive(string file)
 		{
 			if (!File.Exists(file))
