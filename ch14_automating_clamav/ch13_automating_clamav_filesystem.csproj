@@ -43,11 +43,10 @@
     <Compile Include="clam-sharp\ClamResult.cs" />
     <Compile Include="clam-sharp\ClamReturnCode.cs" />
     <Compile Include="clam-sharp\ClamScanOptions.cs" />
-    <Compile Include="testing\Main.cs" />
+    <Compile Include="Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="clam-sharp\" />
-    <Folder Include="testing\" />
   </ItemGroup>
 </Project>
