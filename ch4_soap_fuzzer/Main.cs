@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 
 namespace fuzzer
@@ -29,9 +30,8 @@ namespace fuzzer
 
 			Console.WriteLine ("Fetched and loaded the web service description.");
 
-			foreach (SoapService service in _wsdl.Services) {
+			foreach (SoapService service in _wsdl.Services) 
 				FuzzService (service);
-			}
 		}
 
 		static void FuzzService (SoapService service)
@@ -67,32 +67,43 @@ namespace fuzzer
 				string url = _endpoint;
 				SoapOperation po = portType.Operations.Where (p => p.Name == op.Name).Single ();
 				SoapMessage input = _wsdl.Messages.Where (m => m.Name == po.Input.Split (':') [1]).Single ();
-				string soap = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
-				soap += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"";
-				soap += " xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"";
-				soap += " xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">";
-				soap += "<soap:Body>";
-				soap += "<" + op.Name + " xmlns=\"" + op.SoapAction.Replace (op.Name, string.Empty) + "\">";
-				int i = 0;
-				SoapType type = null; //this is cheating, assumes only one part
 
+				XElement soapBody = new XElement ("soap:Body");
+				XElement soapOperation = new XElement (op.Name,
+					                         new XAttribute ("xmlns", op.SoapAction.Replace (op.Name, string.Empty)));
+
+				soapBody.Add (soapOperation);
+				int i = 0;
+				int j = 0;
+				Dictionary<int, Guid> paramMap = new Dictionary<int, Guid> ();
+				Dictionary<int, SoapType> typeMap = new Dictionary<int, SoapType> ();
 				foreach (SoapMessagePart part in input.Parts) {
-					type = _wsdl.Types.Where (t => t.Name == part.Element.Split (':') [1]).Single ();
+					SoapType type = _wsdl.Types.Where (t => t.Name == part.Element.Split (':') [1]).Single ();
 					foreach (SoapTypeParameter param in type.Parameters) {
-						soap += "<" + param.Name + ">";
-						if (param.Type.EndsWith ("string"))
-							soap += "fds" + i++;
-						soap += "</" + param.Name + ">";
+						XElement soapParam = new XElement (param.Name);
+
+						if (param.Type.EndsWith ("string")) {
+							Guid guid = Guid.NewGuid ();
+							paramMap.Add (i, guid);
+							soapParam.SetValue ("fds" + guid.ToString());
+						}
+						soapOperation.Add (soapParam);
+						i++;
 					}
+					typeMap.Add (j, type);
+					j++;
 				}
 
-				soap += "</" + op.Name + ">";
-				soap += "</soap:Body>";
-				soap += "</soap:Envelope>";
-
+				XDocument soapDoc = new XDocument(new XDeclaration("1.0", "utf-16", "true"),
+					new XElement("soap:Envelope", 
+						new XAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"),
+						new XAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema"),
+						new XAttribute("xmlns:soap", "http://schemas.xmlsoap.org/soap/envelope/"),
+						soapBody));
+									
 				Dictionary<string, string> vulnValues = new Dictionary<string, string>();
 				for (int k = 0; k <= i; k++) {
-					string testSoap = soap.Replace ("fds" + k, "fd'sa");
+					string testSoap = soapDoc.ToString().Replace ("fds" + paramMap[k].ToString(), "fd'sa");
 					byte[] data = System.Text.Encoding.ASCII.GetBytes (testSoap);
 
 					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (url);
@@ -113,7 +124,7 @@ namespace fuzzer
 						if (resp.Contains ("syntax error"))
 						{
 							vulnValues.Add("fds" + k, op.SoapAction);
-							Console.WriteLine ("Possible SQL injection vector in parameter: " + type.Parameters [k].Name);
+							Console.WriteLine ("Possible SQL injection vector in parameter: " + typeMap[k].Parameters [k].Name);
 						}
 					}
 				}

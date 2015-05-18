@@ -29,35 +29,45 @@ namespace fuzzer
 		private void ParseTypes (XmlDocument wsdl, XmlNamespaceManager nsManager)
 		{
 			this.Types = new List<SoapType> ();
-			foreach (XmlNode type in wsdl.DocumentElement.SelectNodes("/wsdl:definitions/wsdl:types/xs:schema/xs:element", nsManager))
+			string xpath = "/wsdl:definitions/wsdl:types/xs:schema/xs:element";
+			XmlNodeList nodes = wsdl.DocumentElement.SelectNodes(xpath, nsManager);
+			foreach (XmlNode type in nodes)
 				this.Types.Add (new SoapType (type));
 		}
 
 		private void ParseMessages (XmlDocument wsdl, XmlNamespaceManager nsManager)
 		{
 			this.Messages = new List<SoapMessage> ();
-			foreach (XmlNode node in wsdl.DocumentElement.SelectNodes("/wsdl:definitions/wsdl:message", nsManager))
+			string xpath = "/wsdl:definitions/wsdl:message";
+			XmlNodeList nodes = wsdl.DocumentElement.SelectNodes(xpath, nsManager);
+			foreach (XmlNode node in nodes)
 				this.Messages.Add (new SoapMessage (node));
 		}
 
 		private void ParsePortTypes (XmlDocument wsdl, XmlNamespaceManager nsManager)
 		{
 			this.PortTypes = new List<SoapPortType> ();
-			foreach (XmlNode node in wsdl.DocumentElement.SelectNodes("/wsdl:definitions/wsdl:portType", nsManager)) 
+			string xpath = "/wsdl:definitions/wsdl:portType";
+			XmlNodeList nodes = wsdl.DocumentElement.SelectNodes(xpath, nsManager);
+			foreach (XmlNode node in nodes) 
 				this.PortTypes.Add (new SoapPortType (node));
 		}
 
 		private void ParseBindings (XmlDocument wsdl, XmlNamespaceManager nsManager)
 		{
 			this.Bindings = new List<SoapBinding> ();
-			foreach (XmlNode node in wsdl.DocumentElement.SelectNodes("/wsdl:definitions/wsdl:binding", nsManager)) 
+			string xpath = "/wsdl:definitions/wsdl:binding";
+			XmlNodeList nodes = wsdl.DocumentElement.SelectNodes(xpath, nsManager);
+			foreach (XmlNode node in nodes) 
 				this.Bindings.Add (new SoapBinding (node));
 		}
 
 		private void ParseServices (XmlDocument wsdl, XmlNamespaceManager nsManager)
 		{
 			this.Services = new List<SoapService> ();
-			foreach (XmlNode node in wsdl.DocumentElement.SelectNodes("/wsdl:definitions/wsdl:service", nsManager)) 
+			string xpath = "/wsdl:definitions/wsdl:service";
+			XmlNodeList nodes = wsdl.DocumentElement.SelectNodes(xpath, nsManager);
+			foreach (XmlNode node in nodes) 
 				this.Services.Add (new SoapService (node));
 		}
 	}
