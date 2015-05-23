@@ -18,10 +18,10 @@ namespace fuzzer
 
 			JObject obj = JObject.Parse (json);
 
-			IterateAndFuzz(obj);
+			IterateAndFuzz(args[0], obj);
 		}
 
-		private static void IterateAndFuzz (JObject obj)
+		private static void IterateAndFuzz (string url, JObject obj)
 		{
 			foreach (var pair in (JObject)obj.DeepClone()) {
 				if (pair.Value.Type != JTokenType.String && pair.Value.Type != JTokenType.Object) {
@@ -34,21 +34,21 @@ namespace fuzzer
 					string oldVal = (string)pair.Value;
 					obj[pair.Key] = "fd'sa";
 
-					if (Fuzz(obj.Root))
+					if (Fuzz(url, obj.Root))
 						Console.WriteLine("SQL injection vector: " + pair.Key);
 
 					obj[pair.Key] = oldVal;
 				}
 				else if (pair.Value.Type == JTokenType.Object) {
-					IterateAndFuzz((JObject)pair.Value);
+					IterateAndFuzz(url, (JObject)pair.Value);
 				}
 			}
 		}
 
-		private static bool Fuzz(JToken obj) {
+		private static bool Fuzz(string url, JToken obj) {
 			byte[] data = System.Text.Encoding.ASCII.GetBytes ("JSON=" + obj.ToString ());
 
-			HttpWebRequest req = (HttpWebRequest)WebRequest.Create ("http://127.0.0.1:8080/Vulnerable.ashx");
+			HttpWebRequest req = (HttpWebRequest)WebRequest.Create (url);
 			req.Method = "POST";
 			req.ContentLength = data.Length;
 			req.ContentType = "application/x-www-form-urlencoded";
@@ -62,9 +62,7 @@ namespace fuzzer
 				using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
 					resp = rdr.ReadToEnd ();
 
-				if (resp.Contains ("syntax error"))
-					return true;
-				return false;
+				return resp.Contains ("syntax error");
 			}
 
 			return false;
