@@ -17,8 +17,7 @@ namespace ntregsharp
 			
 			this.NameLength = BitConverter.ToInt16(buf,0);
 			
-			this.DataLength
-				 = BitConverter.ToInt32(hive.ReadBytes(4),0);
+			this.DataLength = BitConverter.ToInt32(hive.ReadBytes(4),0);
 			
 			//dataoffset
 			byte[] databuf = hive.ReadBytes(4);
@@ -41,17 +40,11 @@ namespace ntregsharp
 		}
 		
 		public short NameLength { get; set; }
-		
 		public int DataLength { get; set; }
-		
 		public int DataOffset { get; set; }
-		
 		public int ValueType { get; set; }
-		
 		public string Name { get; set; }
-		
 		public byte[] Data { get; set; }
-		
 		public string String { get; set; }
 	}
 }

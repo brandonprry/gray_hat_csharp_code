@@ -36,9 +36,7 @@ namespace ntregsharp
 		}
 		
 		public string Filepath { get; set; }
-		
 		public NodeKey RootKey { get; set; }
-				
 		public bool WasExported { get; set; }
 	}
 }
