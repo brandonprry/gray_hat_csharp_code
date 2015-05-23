@@ -69,8 +69,9 @@ namespace fuzzer
 				SoapMessage input = _wsdl.Messages.Single (m => m.Name == po.Input.Split (':') [1]);
 
 				XNamespace soapNS = "http://schemas.xmlsoap.org/soap/envelope/";
+				XNamespace xmlNS = op.SoapAction.Replace (op.Name, string.Empty);
 				XElement soapBody = new XElement (soapNS + "Body");
-				XElement soapOperation = new XElement (op.Name/*, new XAttribute("xmlns", "http://tempuri.org")*/);
+				XElement soapOperation = new XElement (xmlNS + op.Name);
 
 				soapBody.Add (soapOperation);
 				int i = 0;
@@ -80,7 +81,7 @@ namespace fuzzer
 				foreach (SoapMessagePart part in input.Parts) {
 					SoapType type = _wsdl.Types.Single (t => t.Name == part.Element.Split (':') [1]);
 					foreach (SoapTypeParameter param in type.Parameters) {
-						XElement soapParam = new XElement (param.Name);
+						XElement soapParam = new XElement (xmlNS + param.Name);
 
 						if (param.Type.EndsWith ("string")) {
 							Guid guid = Guid.NewGuid ();
@@ -96,9 +97,8 @@ namespace fuzzer
 
 				XDocument soapDoc = new XDocument(new XDeclaration("1.0", "utf-16", "true"),
 					new XElement(soapNS + "Envelope",
-						new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
-						new XAttribute(XNamespace.Xmlns + "xsd", "http://www.w3.org/2001/XMLSchema"),
 						new XAttribute(XNamespace.Xmlns + "soap", soapNS),
+						new XAttribute("xmlns", xmlNS),
 						soapBody));
 									
 				for (int k = 0; k < i; k++) {
@@ -110,7 +110,6 @@ namespace fuzzer
 					req.Method = "POST";
 					req.ContentType = "text/xml";
 					req.ContentLength = data.Length;
-					req.Proxy = new WebProxy ("http://127.0.0.1:8080");
 					req.GetRequestStream ().Write (data, 0, data.Length);
 
 					string resp = string.Empty;
@@ -122,7 +121,7 @@ namespace fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error"))
-							Console.WriteLine ("Possible SQL injection vector in parameter: " + typeMap[k].Parameters [k].Name);
+							Console.WriteLine ("Possible SQL injection vector in parameter: " + typeMap[0].Parameters [k].Name);
 					}
 				}
 			}
