@@ -20,12 +20,7 @@ namespace vulnerable_json_sqli
 		
 		public virtual void ProcessRequest (HttpContext context)
 		{
-			if (string.IsNullOrEmpty (context.Request ["JSON"])) {
-				context.Response.Write ("Need a JSON parameter");
-				return;
-			}
-
-			JObject obj = JObject.Parse (context.Request ["JSON"]);
+			JObject obj = JObject.Parse (new System.IO.StreamReader(context.Request.InputStream).ReadToEnd());
 
 			string method = (string)obj ["method"];
 
