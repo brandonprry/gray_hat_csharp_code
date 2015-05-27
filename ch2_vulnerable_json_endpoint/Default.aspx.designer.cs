@@ -19,6 +19,28 @@ namespace ch2_vulnerable_json_endpoint {
 		
 		protected System.Web.UI.WebControls.TextBox txtPassword;
 		
+		protected System.Web.UI.WebControls.TextBox txtAge;
+		
+		protected System.Web.UI.WebControls.TextBox txtLine1;
+		
+		protected System.Web.UI.WebControls.TextBox txtLine2;
+		
+		protected System.Web.UI.WebControls.TextBox txtCity;
+		
+		protected System.Web.UI.WebControls.TextBox txtState;
+		
+		protected System.Web.UI.WebControls.TextBox txtZIP;
+		
+		protected System.Web.UI.WebControls.TextBox txtFirst;
+		
+		protected System.Web.UI.WebControls.TextBox txtMiddleName;
+		
+		protected System.Web.UI.WebControls.TextBox txtLastName;
+		
 		protected System.Web.UI.WebControls.Button btnSubmitNewUser;
+		
+		protected System.Web.UI.WebControls.TextBox txtUserList;
+		
+		protected System.Web.UI.WebControls.Button btnListUsers;
 	}
 }
