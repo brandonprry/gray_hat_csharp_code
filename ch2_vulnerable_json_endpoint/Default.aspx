@@ -15,7 +15,7 @@
 
 	// construct an HTTP request
 	var xhr = new XMLHttpRequest();
-	xhr.open('post', 'Vulnerable.ashx', true);
+	xhr.open('post', 'Vulnerable.ashx', false);
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
 	// send the collected data as JSON
@@ -31,7 +31,7 @@
 
 	// construct an HTTP request
 	var xhr = new XMLHttpRequest();
-	xhr.open('post', 'Vulnerable.ashx', true);
+	xhr.open('post', 'Vulnerable.ashx', false);
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
 	// send the collected data as JSON
