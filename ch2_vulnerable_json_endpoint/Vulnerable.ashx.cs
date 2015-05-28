@@ -5,6 +5,7 @@ using System.Web.UI;
 using Npgsql;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace vulnerable_json_sqli
 {
@@ -31,10 +32,9 @@ namespace vulnerable_json_sqli
 			}
 
 			if (method == "list") {
-				List<JObject> users = ListUsers (obj ["username"].Value<string>());
+				JObject[] users = ListUsers (obj ["username"].Value<string>());
 
-				foreach (JObject user in users)
-					context.Response.Write (user.ToString ());
+				context.Response.Write (JsonConvert.SerializeObject (users));
 				
 
 			} else if (method == "create") {
