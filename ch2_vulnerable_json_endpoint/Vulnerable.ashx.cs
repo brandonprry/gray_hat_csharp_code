@@ -11,7 +11,7 @@ namespace vulnerable_json_sqli
 	public class Vulnerable : System.Web.IHttpHandler
 	{
 		
-		string _connstr = "Server=192.168.1.5;Port=5432;User Id=postgres;Password=secret;Database=vulnerable_json;";
+		string _connstr = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable_json;";
 
 		public virtual bool IsReusable {
 			get {
@@ -121,7 +121,7 @@ namespace vulnerable_json_sqli
 			try {
 				conn.Open ();
 
-				NpgsqlCommand cmd = new NpgsqlCommand ("SELECT username FROM USERS WHERE USERNAME LIKE \"%" + username + "%\";", conn);
+				NpgsqlCommand cmd = new NpgsqlCommand ("SELECT username FROM USERS WHERE USERNAME LIKE '%" + username + "%';", conn);
 				NpgsqlDataReader rdr = cmd.ExecuteReader ();
 
 				while (rdr.Read ()) {

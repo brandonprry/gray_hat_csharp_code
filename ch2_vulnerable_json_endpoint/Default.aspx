@@ -40,7 +40,7 @@
 	alert(response);
 	}
 
-	function deleteUser(string username) {
+	function deleteUser(username) {
 
 	}
 	</script>
