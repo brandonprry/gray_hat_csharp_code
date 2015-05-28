@@ -47,6 +47,18 @@
 	}
 
 	function deleteUser(username) {
+		var data = {
+			username: username,
+			method: 'delete'
+		};
+
+		// construct an HTTP request
+		var xhr = new XMLHttpRequest();
+		xhr.open('post', 'Vulnerable.ashx', false);
+		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+		// send the collected data as JSON
+		xhr.send(JSON.stringify(data));
 
 	}
 	</script>
