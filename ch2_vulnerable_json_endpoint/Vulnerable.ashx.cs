@@ -112,7 +112,7 @@ namespace vulnerable_json_sqli
 			return true;
 		}
 
-		private List<JObject> ListUsers (string username)
+		private JObject[] ListUsers (string username)
 		{
 
 			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
@@ -134,7 +134,7 @@ namespace vulnerable_json_sqli
 				conn.Close ();
 			}
 
-			return users;
+			return users.ToArray();
 		}
 	}
 }

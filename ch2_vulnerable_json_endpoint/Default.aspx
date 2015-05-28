@@ -25,7 +25,7 @@
 
 	function listUsers() {
 		 var data = {
-	 username: document.getElementById('txtUserSearch').value,
+	 username: document.getElementById('txtUserList').value,
 	 method: 'list'
 	 };
 
