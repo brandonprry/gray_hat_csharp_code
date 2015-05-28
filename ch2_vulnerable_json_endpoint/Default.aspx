@@ -43,7 +43,7 @@
 		}
 
 		var div = document.getElementById('divUsers');
-		div.innerHtml = html;
+		div.innerHTML = html;
 	}
 
 	function deleteUser(username) {
