@@ -39,7 +39,7 @@
 
 		var html = '';
 		for (i = 0; i < response.length; i++){
-			html += "<div>"+response[0]["username"]+"&nbsp;<input type='submit' value='Delete User' onclick=\"deleteUser('"+response[0]["username"]+"');return false;\" /></div>";
+			html += "<div>"+response[i]["username"]+"&nbsp;<input type='submit' value='Delete User' onclick=\"deleteUser('"+response[i]["username"]+"');return false;\" /></div>";
 		}
 
 		var div = document.getElementById('divUsers');
