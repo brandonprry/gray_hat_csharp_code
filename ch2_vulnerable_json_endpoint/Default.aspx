@@ -7,37 +7,43 @@
 <body>
 	<script>
 	function createNewUser(){
-	 var data = {
-	 username: document.getElementById('txtUsername').value,
-	 password: document.getElementById('txtPassword').value,
-	 method: 'create'
-	 };
+		var data = {
+			username: document.getElementById('txtUsername').value,
+			password: document.getElementById('txtPassword').value,
+			method: 'create'
+		};
 
-	// construct an HTTP request
-	var xhr = new XMLHttpRequest();
-	xhr.open('post', 'Vulnerable.ashx', false);
-	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		// construct an HTTP request
+		var xhr = new XMLHttpRequest();
+		xhr.open('post', 'Vulnerable.ashx', false);
+		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
-	// send the collected data as JSON
-	xhr.send(JSON.stringify(data));
-
+		// send the collected data as JSON
+		xhr.send(JSON.stringify(data));
 	}
 
 	function listUsers() {
-		 var data = {
-	 username: document.getElementById('txtUserList').value,
-	 method: 'list'
-	 };
+		var data = {
+			username: document.getElementById('txtUserList').value,
+			method: 'list'
+		};
 
-	// construct an HTTP request
-	var xhr = new XMLHttpRequest();
-	xhr.open('post', 'Vulnerable.ashx', false);
-	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		// construct an HTTP request
+		var xhr = new XMLHttpRequest();
+		xhr.open('post', 'Vulnerable.ashx', false);
+		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
-	// send the collected data as JSON
-	xhr.send(JSON.stringify(data));
-	var response = JSON.parse(xhr.responseText);
-	alert(response);
+		// send the collected data as JSON
+		xhr.send(JSON.stringify(data));
+		var response = JSON.parse(xhr.responseText);
+
+		var html = '';
+		for (i = 0; i < response.length; i++){
+			html += "<div>"+response[0]["username"]+"&nbsp;<input type='submit' value='Delete User' onclick=\"deleteUser('"+response[0]["username"]+"');return false;\" /></div>";
+		}
+
+		var div = document.getElementById('divUsers');
+		div.innerHtml = html;
 	}
 
 	function deleteUser(username) {
