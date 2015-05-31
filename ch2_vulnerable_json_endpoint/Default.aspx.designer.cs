@@ -33,9 +33,9 @@ namespace ch2_vulnerable_json_endpoint {
 		
 		protected System.Web.UI.WebControls.TextBox txtFirst;
 		
-		protected System.Web.UI.WebControls.TextBox txtMiddleName;
+		protected System.Web.UI.WebControls.TextBox txtMiddle;
 		
-		protected System.Web.UI.WebControls.TextBox txtLastName;
+		protected System.Web.UI.WebControls.TextBox txtLast;
 		
 		protected System.Web.UI.WebControls.Button btnSubmitNewUser;
 		

@@ -102,10 +102,10 @@
 			<div><asp:TextBox id="txtFirst" runat="server" /></div>
 			<br />
 			<div>Middle Name</div>
-			<div><asp:TextBox id="txtMiddleName" runat="server" /></div>
+			<div><asp:TextBox id="txtMiddle" runat="server" /></div>
 			<br />
 			<div>Last Name</div>
-			<div><asp:TextBox id="txtLastName" runat="server" /></div>
+			<div><asp:TextBox id="txtLast" runat="server" /></div>
 			<br />
 			<asp:Button id="btnSubmitNewUser" Text="Create User" runat="server" OnClientClick="createNewUser(); return false;" />
 		</div>
