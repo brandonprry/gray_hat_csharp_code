@@ -10,6 +10,15 @@
 		var data = {
 			username: document.getElementById('txtUsername').value,
 			password: document.getElementById('txtPassword').value,
+			age: parseInt(document.getElementById('txtAge').value),
+			line1: document.getElementById('txtLine1').value,
+			line2: document.getElementById('txtLine2').value,
+			city: document.getElementById('txtCity').value,
+			state:document.getElementById('txtState').value,
+			zip: parseInt(document.getElementById('txtZIP'),
+			first: document.getElementById('txtFirst').value,
+			middle: document.getElementById('txtMiddle').value,
+			last: document.getElementById('txtLast').value,
 			method: 'create'
 		};
 

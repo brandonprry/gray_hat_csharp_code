@@ -33,10 +33,8 @@ namespace vulnerable_json_sqli
 
 			if (method == "list") {
 				JObject[] users = ListUsers (obj ["username"].Value<string>());
-
 				context.Response.Write (JsonConvert.SerializeObject (users));
-				
-
+				return;
 			} else if (method == "create") {
 				string username = (string)obj ["username"];
 				string password = (string)obj ["password"];
@@ -57,7 +55,7 @@ namespace vulnerable_json_sqli
 
 				bool success = CreateUser (username, password, age, line1, line2, city, state, zip, first, middle, last);
 
-				context.Response.Write ("{ success : " + success.ToString () + " }");
+				context.Response.Write ("{ \"success\" : " + success.ToString () + " }");
 				return;
 			} else if (method == "delete") {
 				string username = (string)obj ["username"];
@@ -69,7 +67,7 @@ namespace vulnerable_json_sqli
 
 				bool success = DeleteUser (username);
 
-				context.Response.Write ("{ success : " + success.ToString () + " }");
+				context.Response.Write ("{ \"success\" : " + success.ToString () + " }");
 				return;
 			} else {
 				context.Response.Write ("Don't recognize: " + method + ". Need list, create, or delete.");
