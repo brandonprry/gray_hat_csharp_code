@@ -38,7 +38,7 @@
 		var response = JSON.parse(xhr.responseText);
 
 		var html = '';
-		for (i = 0; i < response.length; i++){
+		for (i = 0; i < response.length; i++){ //>
 			html += "<div>"+response[i]["username"]+"&nbsp;<input type='submit' value='Delete User' onclick=\"deleteUser('"+response[i]["username"]+"');return false;\" /></div>";
 		}
 
@@ -63,7 +63,8 @@
 	}
 	</script>
 	<form id="form1" runat="server">
-		<div>
+		<div style="display:inline-block;">
+			<h2>Create a user</h2>
 			<div>Username</div>
 			<div><asp:TextBox id="txtUsername" runat="server" /></div>
 			<br />
@@ -99,10 +100,13 @@
 			<br />
 			<asp:Button id="btnSubmitNewUser" Text="Create User" runat="server" OnClientClick="createNewUser(); return false;" />
 		</div>
-		<div>
-			<div>List Users</div>
-			<div><asp:TextBox runat="server" id="txtUserList" /></div>
-			<asp:Button id="btnListUsers" Text="List User" runat="server" OnClientClick="listUsers(); return false;" />
+		<div style="display:inline-block;vertical-align:top;margin-left:100px;">
+			
+			<h2>List Users</h2>
+			<div>
+			<div>Search</div>
+			<asp:TextBox runat="server" id="txtUserList" /></div>
+			<asp:Button id="btnListUsers" Text="List Users" runat="server" OnClientClick="listUsers(); return false;" />
 			<div id="divUsers">
 			</div>
 		</div>
