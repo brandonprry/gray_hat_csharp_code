@@ -15,7 +15,7 @@
 			line2: document.getElementById('txtLine2').value,
 			city: document.getElementById('txtCity').value,
 			state:document.getElementById('txtState').value,
-			zip: parseInt(document.getElementById('txtZIP'),
+			zip: parseInt(document.getElementById('txtZIP').value),
 			first: document.getElementById('txtFirst').value,
 			middle: document.getElementById('txtMiddle').value,
 			last: document.getElementById('txtLast').value,
