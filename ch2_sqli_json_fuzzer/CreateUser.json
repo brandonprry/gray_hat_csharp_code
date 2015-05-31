@@ -1,18 +1,15 @@
-﻿{
-	"method" : "create",
-	"username" : "whatthebobby",
-	"password" : "propane",
-	"age" : 42,
-	"address" : {
-		"line1" : "123 Rainy St",
-		"line2" : "",
-		"city" : "Arlen",
-		"state" : "Texas",
-		"zip" : 76013
-	},
-	"full_name" : {
-		"first" : "Hank",
-		"middle" : "",
-		"last" : "Hill"
-	}
-}
+﻿POST /Vulnerable.ashx HTTP/1.1
+Host: 192.168.1.56:8080
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:26.0) Gecko/20100101 Firefox/26.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/json; charset=UTF-8
+Referer: http://192.168.1.56:8080/Default.aspx
+Content-Length: 190
+Cookie: ASP.NET_SessionId=BE373935F167CD6587077CDF
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+{"username":"whatthebobby","password":"propane1","age":42,"line1":"123 Main St","line2":"","city":"Arlen","state":"TX","zip":78727,"first":"Hank","middle":"","last":"Hill","method":"create"}

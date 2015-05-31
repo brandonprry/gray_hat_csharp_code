@@ -12,9 +12,11 @@ namespace fuzzer
 		{
 			Assembly asm = Assembly.GetExecutingAssembly ();
 
-			string json = string.Empty;
-			using (StreamReader rdr = new StreamReader(asm.GetManifestResourceStream("fuzzer.CreateUser.json")))
-				json = rdr.ReadToEnd ();
+			string[] request = null;
+			using (StreamReader rdr = new StreamReader (asm.GetManifestResourceStream ("ch2_sqli_json_fuzzer.CreateUser.json")))
+				request = rdr.ReadToEnd ().Split('\n');
+
+			string json = request [request.Length - 1];
 
 			JObject obj = JObject.Parse (json);
 
@@ -24,13 +26,12 @@ namespace fuzzer
 		private static void IterateAndFuzz (string url, JObject obj)
 		{
 			foreach (var pair in (JObject)obj.DeepClone()) {
-				if (pair.Value.Type != JTokenType.String && pair.Value.Type != JTokenType.Object) {
-					Console.WriteLine("Skipping JSON key: " + pair.Key);
-					continue;
-				}
-
-				if (pair.Value.Type == JTokenType.String) {
+				if (pair.Value.Type == JTokenType.String || pair.Value.Type == JTokenType.Integer) {
 					Console.WriteLine("Fuzzing key: " + pair.Key);
+
+					if (pair.Value.Type == JTokenType.Integer)
+						Console.WriteLine ("Converting int type to string to fuzz");
+
 					string oldVal = (string)pair.Value;
 					obj[pair.Key] = "fd'sa";
 
@@ -46,12 +47,12 @@ namespace fuzzer
 		}
 
 		private static bool Fuzz(string url, JToken obj) {
-			byte[] data = System.Text.Encoding.ASCII.GetBytes ("JSON=" + obj.ToString ());
+			byte[] data = System.Text.Encoding.ASCII.GetBytes (obj.ToString ());
 
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create (url);
 			req.Method = "POST";
 			req.ContentLength = data.Length;
-			req.ContentType = "application/x-www-form-urlencoded";
+			req.ContentType = "application/javascript";
 
 			req.GetRequestStream ().Write (data, 0, data.Length);
 
@@ -62,7 +63,7 @@ namespace fuzzer
 				using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
 					resp = rdr.ReadToEnd ();
 
-				return resp.Contains ("syntax error");
+				return (resp.Contains ("syntax error") || resp.Contains("unterminated quoted string"));
 			}
 
 			return false;
