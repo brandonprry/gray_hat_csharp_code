@@ -83,8 +83,8 @@ namespace vulnerable_json_sqli
 				conn.Open ();
 
 				string sql = "INSERT INTO USERS VALUES ('";
-				sql += username + "','" + password + "," + age + ",'" + line1 + "','" + line2 + "','";
-				sql += city + "','" + state + "'," + zip + "');";
+				sql += username + "','" + password + "'," + age + ",'" + line1 + "','" + line2 + "','";
+				sql += city + "','" + state + "'," + zip + ");";
 				NpgsqlCommand cmd = new NpgsqlCommand (sql, conn);
 				cmd.ExecuteNonQuery ();
 			} finally {
