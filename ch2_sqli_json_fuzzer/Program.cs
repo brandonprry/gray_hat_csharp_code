@@ -10,17 +10,17 @@ namespace fuzzer
 	{
 		public static void Main (string[] args)
 		{
-			Assembly asm = Assembly.GetExecutingAssembly ();
-
+			string url = args [0];
+			string requestFile = args [1];
 			string[] request = null;
-			using (StreamReader rdr = new StreamReader (asm.GetManifestResourceStream ("ch2_sqli_json_fuzzer.CreateUser.json")))
+
+			using (StreamReader rdr = new StreamReader (File.OpenRead(requestFile)))
 				request = rdr.ReadToEnd ().Split('\n');
 
 			string json = request [request.Length - 1];
-
 			JObject obj = JObject.Parse (json);
 
-			IterateAndFuzz(args[0], obj);
+			IterateAndFuzz(url, obj);
 		}
 
 		private static void IterateAndFuzz (string url, JObject obj)
