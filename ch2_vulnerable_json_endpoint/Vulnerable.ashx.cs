@@ -38,12 +38,12 @@ namespace vulnerable_json_sqli
 			} else if (method == "create") {
 				string username = (string)obj ["username"];
 				string password = (string)obj ["password"];
-				string age = (string)obj ["age"];
+				string age = (string)obj ["age"] ?? "0";
 				string line1 = (string)obj ["line1"];
 				string line2 = (string)obj ["line2"];
 				string city = (string)obj ["city"];
 				string state = (string)obj ["state"];
-				string zip = (string)obj ["zip"];
+				string zip = (string)obj ["zip"] ?? "0";
 				string first = (string)obj ["first"];
 				string middle = (string)obj ["middle"];
 				string last = (string)obj ["last"];

@@ -20,6 +20,7 @@ namespace fuzzer
 			string json = request [request.Length - 1];
 			JObject obj = JObject.Parse (json);
 
+			Console.WriteLine ("Fuzzing POST requests to URL " + url);
 			IterateAndFuzz(url, obj);
 		}
 
@@ -32,16 +33,15 @@ namespace fuzzer
 					if (pair.Value.Type == JTokenType.Integer)
 						Console.WriteLine ("Converting int type to string to fuzz");
 
-					string oldVal = (string)pair.Value;
-					obj[pair.Key] = "fd'sa";
+					JToken oldVal = pair.Value;
+					obj[pair.Key] = pair.Value.ToString() + "'";
 
-					if (Fuzz(url, obj.Root))
-						Console.WriteLine("SQL injection vector: " + pair.Key);
+					if (Fuzz (url, obj.Root))
+						Console.WriteLine ("SQL injection vector: " + pair.Key);
+					else
+						Console.WriteLine (pair.Key + " does not seem vulnerable.");
 
 					obj[pair.Key] = oldVal;
-				}
-				else if (pair.Value.Type == JTokenType.Object) {
-					IterateAndFuzz(url, (JObject)pair.Value);
 				}
 			}
 		}

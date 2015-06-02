@@ -18,7 +18,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Commandlineparameters>http://192.168.1.56:8080/Vulnerable.ashx /Users/bperry/tmp/reqs/req_vulnjson</Commandlineparameters>
+    <Commandlineparameters>http://192.168.1.56/Vulnerable.ashx /Users/bperry/tmp/reqs/req_vulnjson</Commandlineparameters>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
