@@ -54,14 +54,15 @@ namespace fuzzer
 			req.ContentLength = data.Length;
 			req.ContentType = "application/javascript";
 
-			req.GetRequestStream ().Write (data, 0, data.Length);
+			using (Stream stream = req.GetRequestStream ())
+				stream.Write (data, 0, data.Length);
 
 			string resp = string.Empty;
 			try {
 				req.GetResponse ();
-			} catch (WebException ex) {
-				using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
-					resp = rdr.ReadToEnd ();
+			} catch (WebException e) {
+				using (StreamReader r = new StreamReader(e.Response.GetResponseStream()))
+					resp = r.ReadToEnd ();
 
 				return (resp.Contains ("syntax error") || resp.Contains("unterminated quoted string"));
 			}
