@@ -5,27 +5,24 @@ using System.Web.UI;
 using Npgsql;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace vulnerable_json_sqli
 {
 	public class Vulnerable : System.Web.IHttpHandler
 	{
 		
-		string _connstr = "Server=192.168.1.5;Port=5432;User Id=postgres;Password=secret;Database=vulnerable_json;";
+		string _connstr = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=secret;Database=vulnerable_json;";
+
 		public virtual bool IsReusable {
 			get {
 				return false;
 			}
 		}
-		
+
 		public virtual void ProcessRequest (HttpContext context)
 		{
-			if (string.IsNullOrEmpty (context.Request ["JSON"])) {
-				context.Response.Write ("Need a JSON parameter");
-				return;
-			}
-
-			JObject obj = JObject.Parse (context.Request ["JSON"]);
+			JObject obj = JObject.Parse (new System.IO.StreamReader (context.Request.InputStream).ReadToEnd ());
 
 			string method = (string)obj ["method"];
 
@@ -35,51 +32,60 @@ namespace vulnerable_json_sqli
 			}
 
 			if (method == "list") {
-				List<JObject> users = ListUsers();
-
-				foreach (JObject user in users) 
-					context.Response.Write(user.ToString());
-				
-
+				JObject[] users = ListUsers (obj ["username"].Value<string>());
+				context.Response.Write (JsonConvert.SerializeObject (users));
+				return;
 			} else if (method == "create") {
-				string username = (string)obj["username"];
-				string password = (string)obj["password"];
+				string username = (string)obj ["username"];
+				string password = (string)obj ["password"];
+				string age = (string)obj ["age"] ?? "0";
+				string line1 = (string)obj ["line1"];
+				string line2 = (string)obj ["line2"];
+				string city = (string)obj ["city"];
+				string state = (string)obj ["state"];
+				string zip = (string)obj ["zip"] ?? "0";
+				string first = (string)obj ["first"];
+				string middle = (string)obj ["middle"];
+				string last = (string)obj ["last"];
 
-				if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) {
-					context.Response.Write("Need a username and a password");
+				if (string.IsNullOrEmpty (username) || string.IsNullOrEmpty (password)) {
+					context.Response.Write ("Need a username and a password");
 					return;
 				}
 
-				bool success = CreateUser(username, password);
+				bool success = CreateUser (username, password, age, line1, line2, city, state, zip, first, middle, last);
 
-				context.Response.Write("{ success : " + success.ToString() + " }");
+				context.Response.Write ("{ \"success\" : " + success.ToString () + " }");
 				return;
 			} else if (method == "delete") {
-				string username = (string)obj["username"];
+				string username = (string)obj ["username"];
 
-				if (string.IsNullOrEmpty(username)) {
-					context.Response.Write("Need a username");
+				if (string.IsNullOrEmpty (username)) {
+					context.Response.Write ("Need a username");
 					return;
 				}
 
-				bool success = DeleteUser(username);
+				bool success = DeleteUser (username);
 
-				context.Response.Write("{ success : " + success.ToString() + " }");
+				context.Response.Write ("{ \"success\" : " + success.ToString () + " }");
 				return;
 			} else {
-				context.Response.Write("Don't recognize: " + method + ". Need list, create, or delete.");
+				context.Response.Write ("Don't recognize: " + method + ". Need list, create, or delete.");
 				return;
 			}
 		}
 
-		private bool CreateUser (string username, string password)
+		private bool CreateUser (string username, string password, string age, string line1, string line2, string city, string state, string zip, string first, string middle, string last)
 		{
 			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
 
 			try {
 				conn.Open ();
 
-				NpgsqlCommand cmd = new NpgsqlCommand ("INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('" + username + "', '" + password + "');", conn);
+				string sql = "INSERT INTO USERS VALUES ('";
+				sql += username + "','" + password + "'," + age + ",'" + line1 + "','" + line2 + "','";
+				sql += city + "','" + state + "'," + zip + ");";
+				NpgsqlCommand cmd = new NpgsqlCommand (sql, conn);
 				cmd.ExecuteNonQuery ();
 			} finally {
 				conn.Close ();
@@ -104,7 +110,7 @@ namespace vulnerable_json_sqli
 			return true;
 		}
 
-		private List<JObject> ListUsers ()
+		private JObject[] ListUsers (string username)
 		{
 
 			NpgsqlConnection conn = new NpgsqlConnection (_connstr);
@@ -113,14 +119,12 @@ namespace vulnerable_json_sqli
 			try {
 				conn.Open ();
 
-			 
-				NpgsqlCommand cmd = new NpgsqlCommand ("SELECT * FROM USERS;", conn);
+				NpgsqlCommand cmd = new NpgsqlCommand ("SELECT username FROM USERS WHERE USERNAME LIKE '%" + username + "%';", conn);
 				NpgsqlDataReader rdr = cmd.ExecuteReader ();
 
-
-				while (rdr.Read()) {
-					string json = "{ username : \"" + (string)rdr [0] + "\", password : \"" + (string)rdr [1] + "\" }";
-					JObject obj = JObject.Parse (json);
+				while (rdr.Read ()) {
+					JObject obj = new JObject ();
+					obj ["username"] = (string)rdr [0];
 					users.Add (obj);
 				}
 
@@ -128,7 +132,7 @@ namespace vulnerable_json_sqli
 				conn.Close ();
 			}
 
-			return users;
+			return users.ToArray();
 		}
 	}
 }

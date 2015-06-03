@@ -1,0 +1,12 @@
+﻿create table users(
+  username text,
+  password text,
+  age integer,
+  line1 text,
+  line2 text,
+  city text,
+  state text,
+  zip integer,
+  first text,
+  middle text,
+  last text);
