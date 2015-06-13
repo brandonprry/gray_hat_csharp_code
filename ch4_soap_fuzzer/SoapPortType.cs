@@ -10,9 +10,8 @@ namespace fuzzer
 		{
 			this.Name = node.Attributes ["name"].Value;
 			this.Operations = new List<SoapOperation>();
-			foreach (XmlNode op in node.ChildNodes) {
+			foreach (XmlNode op in node.ChildNodes) 
 				this.Operations.Add(new SoapOperation(op));
-			}
 		}
 
 		public string Name { get; set; } 

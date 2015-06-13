@@ -15,8 +15,6 @@ namespace fuzzer
 					this.Input = message.Attributes["message"].Value;
 				else if (message.Name.EndsWith("output"))
 					this.Output = message.Attributes["message"].Value;
-				else 
-					throw new Exception("Don't know element: " + message.Name);
 			}
 		}
 

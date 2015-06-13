@@ -20,9 +20,6 @@ namespace fuzzer
 					this.Verb = op.Attributes["verb"].Value;
 					this.IsHTTP = true;
 				}
-				else if (op.Name == "soap:binding" || op.Name == "soap12:binding") {
-					//do nothing really
-				}
 			}
 		}
 
