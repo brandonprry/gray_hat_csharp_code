@@ -35,6 +35,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="nexpose-sharp\NexposeAPIVersion.cs" />
+    <Compile Include="nexpose-sharp\NexposeManager.cs" />
+    <Compile Include="nexpose-sharp\NexposeReportFilterType.cs" />
+    <Compile Include="nexpose-sharp\NexposeReportFormat.cs" />
+    <Compile Include="nexpose-sharp\NexposeSession.cs" />
+    <Compile Include="nexpose-sharp\NexposeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="nexpose-sharp\" />
+  </ItemGroup>
 </Project>
