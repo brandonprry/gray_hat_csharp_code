@@ -76,23 +76,19 @@ namespace clamsharp
 			IntPtr vname = (IntPtr)null;
 			ClamReturnCode ret = ClamBindings.cl_scanfile(filepath, ref vname, ref scanned, engine, options);
 			
-			if (ret == ClamReturnCode.CL_VIRUS)
-			{
-				string virus = Marshal.PtrToStringAnsi(vname);
+			if (ret == ClamReturnCode.CL_VIRUS) {
+				string virus = Marshal.PtrToStringAnsi (vname);
 				
-				ClamResult result = new ClamResult();
+				ClamResult result = new ClamResult ();
 				result.ReturnCode = ret;
 				result.VirusName = virus;
 				result.FullPath = filepath;
 				
 				return result;
-			}
-			else if (ret == ClamReturnCode.CL_CLEAN)
+			} else if (ret == ClamReturnCode.CL_CLEAN)
 				return null;
 			else
-				throw new Exception("Expected either CL_CLEAN or CL_VIRUS, got: " + ret);
-
-			return null;
+				throw new Exception ("Expected either CL_CLEAN or CL_VIRUS, got: " + ret);
 		}
 		
 		/// <summary>

