@@ -19,7 +19,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
-    <Commandlineparameters>http://192.168.1.75/cgi-bin/badstore.cgi?searchquery=test&amp;action=search&amp;x=14&amp;y=17</Commandlineparameters>
+    <Commandlineparameters>http://10.37.129.3/cgi-bin/badstore.cgi?searchquery=test&amp;action=search&amp;x=14&amp;y=17</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>

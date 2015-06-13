@@ -30,10 +30,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="cuckoo-sharp\CuckooManager.cs" />
+    <Compile Include="cuckoo-sharp\CuckooSession.cs" />
+    <Compile Include="cuckoo-sharp\FileTask.cs" />
+    <Compile Include="cuckoo-sharp\Machine.cs" />
+    <Compile Include="cuckoo-sharp\Sample.cs" />
+    <Compile Include="cuckoo-sharp\Task.cs" />
+    <Compile Include="cuckoo-sharp\TaskFactory.cs" />
+    <Compile Include="cuckoo-sharp\URLTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="cuckoo-sharp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

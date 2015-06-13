@@ -1,4 +1,5 @@
-﻿using System; 
+﻿
+using System; 
 using System.Net; 
 using System.IO; 
 
@@ -7,6 +8,7 @@ namespace SQLiXSS_fuzzer {
 		public static void Main (string[] args) { 
 			string url = args [0]; 
 			string[] parms = url.Remove (0, url.IndexOf ("?")+1).Split ('&'); 
+
 
 			foreach (string parm in parms) {
 				string xssUrl = url.Replace(parm, parm + "fd<xss>sa"); 

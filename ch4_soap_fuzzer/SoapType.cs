@@ -19,7 +19,4 @@ namespace fuzzer
 		public string Name { get; set; }
 		public List<SoapTypeParameter> Parameters { get; set; }
 	}
-
 }
-
-
