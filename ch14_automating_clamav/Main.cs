@@ -1,5 +1,5 @@
 using System;
-using clamsharp;
+using ch13_automating_clamav_filesystem;
 
 namespace testing
 {
