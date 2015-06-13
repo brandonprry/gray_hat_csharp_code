@@ -4,7 +4,7 @@ using System.Net;
 using System.IO;
 using System.Reflection;
 
-namespace fuzzer
+namespace ch3_soap_fuzzer
 {
 	class MainClass
 	{

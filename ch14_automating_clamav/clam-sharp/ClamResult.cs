@@ -1,10 +1,7 @@
 using System;
 
-namespace clamsharp
+namespace ch13_automating_clamav_filesystem
 {
-	/// <summary>
-	/// This class encompasses the relevant information returned when a file is scanned.
-	/// </summary>
 	public class ClamResult
 	{
 		public ClamReturnCode ReturnCode { get; set; }

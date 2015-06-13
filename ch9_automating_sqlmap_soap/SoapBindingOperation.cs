@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 
-namespace fuzzer
+namespace ch3_soap_fuzzer
 {
 	public class SoapBindingOperation
 	{

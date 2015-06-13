@@ -1,8 +1,7 @@
 using System;
 
-namespace clamsharp
+namespace ch13_automating_clamav_filesystem
 {
-	//some of these will *never* be returned. Added only to be thorough.
 	public enum ClamReturnCode
 	{
 		CL_CLEAN = 0,

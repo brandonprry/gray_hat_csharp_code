@@ -1,6 +1,6 @@
 using System;
 
-namespace clamsharp
+namespace ch13_automating_clamav_filesystem
 {
 	public enum ClamBytecodeModeOptions
 	{

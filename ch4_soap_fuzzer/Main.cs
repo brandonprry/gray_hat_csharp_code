@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 
-namespace fuzzer
+namespace ch3_soap_fuzzer
 {
 	class MainClass
 	{

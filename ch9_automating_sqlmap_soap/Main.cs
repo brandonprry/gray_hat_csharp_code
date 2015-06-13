@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using sqlmapsharp;
 
-namespace fuzzer
+namespace ch3_soap_fuzzer
 {
 	class MainClass
 	{

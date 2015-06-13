@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace fuzzer
+namespace ch3_soap_fuzzer
 {
 	public class SoapMessagePart
 	{
