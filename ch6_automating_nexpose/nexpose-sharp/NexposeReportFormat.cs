@@ -1,6 +1,6 @@
 using System;
 
-namespace nexposesharp
+namespace ch6_automating_nexpose
 {
 	public enum NexposeReportFormat
 	{

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using nexposesharp;
+using ch6_automating_nexpose;
 
-namespace nexposesharp
+namespace ch6_automating_nexpose
 {
 	public class NexposeUtil
 	{		

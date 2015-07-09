@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 
-namespace openvassharp
+namespace ch7_automating_openvas
 {
 	public class OpenVASSession : IDisposable
 	{

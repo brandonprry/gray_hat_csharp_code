@@ -19,9 +19,7 @@ namespace ch3_soap_fuzzer
 		}
 
 		public string Name { get; set; }
-
 		public string Input { get; set; }
-
 		public string Output { get; set; }
 	}
 

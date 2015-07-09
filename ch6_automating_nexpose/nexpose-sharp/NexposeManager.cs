@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 
-namespace nexposesharp
+namespace ch6_automating_nexpose
 {
 	public class NexposeManager : IDisposable
 	{

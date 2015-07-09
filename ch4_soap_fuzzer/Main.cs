@@ -1,10 +1,10 @@
 using System;
-using System.Linq;
-using System.Xml;
-using System.Net;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
+using System.Xml;
 using System.Xml.Linq;
 
 
@@ -24,9 +24,8 @@ namespace ch3_soap_fuzzer
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create (_endpoint + "?WSDL");
 			XmlDocument wsdlDoc = new XmlDocument ();
 
-			using (StreamReader rdr = new StreamReader (req.GetResponse ().GetResponseStream ()))
-				wsdlDoc.LoadXml (rdr.ReadToEnd ());
-		
+			wsdlDoc.Load (req.GetResponse ().GetResponseStream ());
+
 			_wsdl = new WSDL (wsdlDoc);
 
 			Console.WriteLine ("Fetched and loaded the web service description.");
@@ -142,11 +141,11 @@ namespace ch3_soap_fuzzer
 					parameters.Add (part.Name, part.Type);
 
 				bool first = true;
-				List<Guid> guidMap = new List<Guid> ();
+				List<Guid> guidList = new List<Guid> ();
 				foreach (var param in parameters) {
 					if (param.Value.EndsWith ("string")) {
 						Guid guid = Guid.NewGuid ();
-						guidMap.Add (guid);
+						guidList.Add (guid);
 						url += (first ? "?" : "&") + param.Key + "=" + guid.ToString();
 					}
 					if (first)
@@ -156,7 +155,7 @@ namespace ch3_soap_fuzzer
 				Console.WriteLine ("Fuzzing full url: " + url);
 
 				int k = 0;
-				foreach(Guid guid in guidMap) {
+				foreach(Guid guid in guidList) {
 					string testUrl = url.Replace (guid.ToString(), "fd'sa");
 					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (testUrl);
 					string resp = string.Empty;

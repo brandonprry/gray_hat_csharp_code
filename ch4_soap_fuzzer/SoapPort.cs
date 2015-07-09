@@ -15,11 +15,8 @@ namespace ch3_soap_fuzzer
 		}
 
 		public string Name { get; set; }
-
 		public string Binding { get; set; }
-
 		public string ElementType { get; set; }
-
 		public string Location { get; set; }
 	}
 

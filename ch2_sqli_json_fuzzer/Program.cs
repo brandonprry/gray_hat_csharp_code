@@ -17,7 +17,7 @@ namespace ch3_soap_fuzzer
 			using (StreamReader rdr = new StreamReader (File.OpenRead(requestFile)))
 				request = rdr.ReadToEnd ().Split('\n');
 
-			string json = request [request.Length - 1];
+			string json = request [request.Length - 2];
 			JObject obj = JObject.Parse (json);
 
 			Console.WriteLine ("Fuzzing POST requests to URL " + url);

@@ -2,7 +2,7 @@ using System;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace openvassharp
+namespace ch7_automating_openvas
 {
 	public class OpenVASManager : IDisposable
 	{
