@@ -29,8 +29,8 @@ namespace ch6_automating_nessus
 			return _session.MakeRequest ("POST", "/scans/" + scanID + "/launch", null, _session.Token);
 		}
 
-		public JObject GetScans() {
-			return _session.MakeRequest ("GET", "/scans", null, _session.Token);
+		public JObject GetScan(int scanID) {
+			return _session.MakeRequest ("GET", "/scans/" + scanID, null, _session.Token);
 		}
 
 		public void Dispose()
