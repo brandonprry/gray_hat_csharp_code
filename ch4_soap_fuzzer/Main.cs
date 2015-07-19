@@ -77,21 +77,18 @@ namespace ch3_soap_fuzzer
 				soapBody.Add (soapOperation);
 
 				List<Guid> paramList = new List<Guid> ();
-				List<SoapType> typeList = new List<SoapType> ();
-				foreach (SoapMessagePart part in input.Parts) {
-					SoapType type = _wsdl.Types.Single (t => t.Name == part.Element.Split (':') [1]);
-					foreach (SoapTypeParameter param in type.Parameters) {
-						XElement soapParam = new XElement (xmlNS + param.Name);
+				SoapType type = _wsdl.Types.Single (t => t.Name == input.Parts [0].Element.Split (':') [1]);
+				foreach (SoapTypeParameter param in type.Parameters) {
+					XElement soapParam = new XElement (xmlNS + param.Name);
 
-						if (param.Type.EndsWith ("string")) {
-							Guid guid = Guid.NewGuid ();
-							paramList.Add (guid);
-							soapParam.SetValue (guid.ToString ());
-						}
-						soapOperation.Add (soapParam);
+					if (param.Type.EndsWith ("string")) {
+						Guid guid = Guid.NewGuid ();
+						paramList.Add (guid);
+						soapParam.SetValue (guid.ToString ());
 					}
-					typeList.Add (type);
+					soapOperation.Add (soapParam);
 				}
+
 
 				XDocument soapDoc = new XDocument (new XDeclaration ("1.0", "utf-16", "true"),
 					                    new XElement (soapNS + "Envelope",
@@ -119,7 +116,7 @@ namespace ch3_soap_fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error"))
-							Console.WriteLine ("Possible SQL injection vector in parameter: " + typeList [0].Parameters [k].Name);
+							Console.WriteLine ("Possible SQL injection vector in parameter: " + type.Parameters [k].Name);
 					}
 					k++;
 				}
