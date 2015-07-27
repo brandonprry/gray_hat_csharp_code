@@ -1,15 +1,12 @@
 using System;
-using System.IO;
 using System.Net;
 using System.Text;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
-using System.Xml;
 using System.Xml.Linq;
-using System.Text.RegularExpressions;
 
-namespace ch7_automating_openvas
+namespace ch8_automating_openvas
 {
 	public class OpenVASSession : IDisposable
 	{
@@ -141,15 +138,9 @@ namespace ch7_automating_openvas
 				bytes = sslStream.Read (buffer, 0, buffer.Length);
 
 				Decoder decoder = Encoding.ASCII.GetDecoder ();
-				char[ ] chars = new char[decoder.GetCharCount (buffer, 0, bytes)];
+				char[] chars = new char[decoder.GetCharCount (buffer, 0, bytes)];
 				decoder.GetChars (buffer, 0, bytes, chars, 0);
 				messageData.Append (chars);
-				
-				// Check for EOF.
-				if (bytes < buffer.Length) {
-					bytes = 0;
-					return messageData.ToString ();
-				}
 				
 				buffer = new byte[2048]; //clear cruft
 			} while (bytes != 0);

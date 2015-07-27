@@ -17,7 +17,7 @@ namespace ch6_automating_nessus
 			using (NessusSession session = new NessusSession ("192.168.1.14", "admin", "password")) {
 				using (NessusManager manager = new NessusManager (session)) {
 					JObject policies = manager.GetScanPolicies ();
-					Console.WriteLine (policies.ToString ());
+					//Console.WriteLine (policies.ToString ());
 					string discoveryPolicyID = string.Empty;
 					foreach (JObject obj in policies["templates"]){
 						if (obj ["name"].Value<string> () == "basic")
@@ -34,7 +34,7 @@ namespace ch6_automating_nessus
 
 					while (scanStatus ["info"] ["status"].Value<string> () != "completed") {
 						Console.WriteLine ("Scan status: " + scanStatus ["info"] ["status"].Value<string> ());
-						Thread.Sleep (300);
+						Thread.Sleep (500);
 						scanStatus = manager.GetScan (scanID);
 					}
 

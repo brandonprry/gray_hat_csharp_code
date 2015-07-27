@@ -18,7 +18,7 @@ namespace testing
 					else
 						Console.WriteLine("File Clean!");
 				}
-			} //engine is disposed of here and the allocated engine freed
+			} //engine is disposed of here and the allocated engine freed automatically
 		}
 	}
 }

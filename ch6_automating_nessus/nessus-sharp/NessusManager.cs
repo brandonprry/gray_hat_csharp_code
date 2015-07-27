@@ -35,9 +35,8 @@ namespace ch6_automating_nessus
 
 		public void Dispose()
 		{
-			if (_session.Authenticated) {
+			if (_session.Authenticated)
 				_session.LogOut ();
-			}
 			
 			_session = null;
 		}

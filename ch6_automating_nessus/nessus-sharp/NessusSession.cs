@@ -30,19 +30,6 @@ namespace ch6_automating_nessus
 			return true;
 		}
 
-		public void LogOut(){
-			if (this.Authenticated) {
-				MakeRequest ("DELETE", "/session", null, this.Token);
-				this.Authenticated = false;
-			}
-		}
-
-
-		public void Dispose() {
-			if (this.Authenticated)
-				this.LogOut ();
-		}
-
 		public JObject MakeRequest(string verb, string uri, JObject data = null, string token = null){
 			string url = "https://" + this.Host + ":8834" + uri;
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create (url);
@@ -54,6 +41,7 @@ namespace ch6_automating_nessus
 
 			request.ContentType = "application/json";
 
+
 			if (data != null) {
 				byte[] bytes = System.Text.Encoding.ASCII.GetBytes (data.ToString ());
 				request.ContentLength = bytes.Length;
@@ -62,13 +50,29 @@ namespace ch6_automating_nessus
 				request.ContentLength = 0;
 
 			string response = string.Empty;
+			try {
 			using (StreamReader reader = new StreamReader (request.GetResponse ().GetResponseStream ()))
 				response = reader.ReadToEnd ();
+			} catch {
+				return new JObject ();
+			}
 
 			if (string.IsNullOrEmpty (response))
 				return new JObject ();
 
 			return JObject.Parse (response);
+		}
+
+		public void LogOut(){
+			if (this.Authenticated) {
+				MakeRequest ("DELETE", "/session", null, this.Token);
+				this.Authenticated = false;
+			}
+		}
+
+		public void Dispose() {
+			if (this.Authenticated)
+				this.LogOut ();
 		}
 
 		public string Host { get; set; }
