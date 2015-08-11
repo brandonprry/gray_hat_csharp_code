@@ -9,10 +9,11 @@ namespace ch8_automating_openvas
 	{
 		public static void Main (string[] args)
 		{
-			using (OpenVASSession session = new OpenVASSession ("admin", "admin", "192.168.0.94")) {
+
+			using (OpenVASSession session = new OpenVASSession ("admin", "admin", "192.168.1.19")) {
 				using (OpenVASManager manager = new OpenVASManager (session)) {
 
-					XDocument target = manager.CreateSimpleTarget ("192.168.0.94", Guid.NewGuid ().ToString ());
+					XDocument target = manager.CreateSimpleTarget ("192.168.1.31", Guid.NewGuid ().ToString ());
 					string targetID = target.Root.Attribute ("id").Value;
 
 					XDocument configs = manager.GetScanConfigurations ();

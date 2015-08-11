@@ -5,6 +5,8 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Xml.Linq;
+using System.IO;
+using System.Xml;
 
 namespace ch8_automating_openvas
 {
@@ -68,15 +70,16 @@ namespace ch8_automating_openvas
 					                    )));
 			
 			this.Stream.Write (enc.GetBytes (authXML.ToString ()));
+
+			this.Stream.Flush ();
 				
-			string response = ReadMessage (this.Stream);
 
-			XDocument doc = XDocument.Parse (response);
+			XDocument response = ReadMessage (this.Stream);
 
-			if (doc.Root.Attribute ("status").Value != "200")
+			if (response.Root.Attribute ("status").Value != "200")
 				throw new Exception ("Authentication failed");
 
-			return doc;		
+			return response;		
 		}
 
 		public XDocument ExecuteCommand (XDocument doc, bool requiresAuthentication = false)
@@ -94,17 +97,20 @@ namespace ch8_automating_openvas
 				this.GetStream ();
 			
 			string xml = doc.ToString ();
-			string response = string.Empty;
+			XDocument response;
 			try {
 				this.Stream.Write (enc.GetBytes (xml), 0, xml.Length);
+
+				this.Stream.Flush();
 
 				response = ReadMessage (this.Stream);
 
 				this.Stream = null;
 
-				return XDocument.Parse (response);
+				return response;
 			} catch (Exception ex) {
 				this.Stream = null;
+
 				throw ex;
 			}
 		}
@@ -124,28 +130,37 @@ namespace ch8_automating_openvas
 				} catch (Exception ex) {
 					throw ex;
 				}
-				
+					
 				_stream = s;
 			}
 		}
 
-		private string ReadMessage (SslStream sslStream)
+		private XDocument ReadMessage (SslStream sslStream)
 		{
-			byte[ ] buffer = new byte[2048];
-			StringBuilder messageData = new StringBuilder ();
-			int bytes = -1;
-			do {
-				bytes = sslStream.Read (buffer, 0, buffer.Length);
-
-				Decoder decoder = Encoding.ASCII.GetDecoder ();
-				char[] chars = new char[decoder.GetCharCount (buffer, 0, bytes)];
-				decoder.GetChars (buffer, 0, bytes, chars, 0);
-				messageData.Append (chars);
-				
-				buffer = new byte[2048]; //clear cruft
-			} while (bytes != 0);
 			
-			return messageData.ToString ();
+			using (var stream = new MemoryStream())
+			{	
+				byte[] buffer = new byte[2048]; // read in chunks of 2KB
+				int bytesRead;
+				while((bytesRead = sslStream.Read(buffer, 0, buffer.Length)) > 0)
+				{
+					sslStream.Flush ();
+					stream.Write(buffer, 0, bytesRead);
+
+					try { 
+						string xml = System.Text.Encoding.ASCII.GetString(stream.ToArray());
+						return XDocument.Parse(xml);
+					}
+					catch (Exception ex) {
+						if (ex.GetType() == typeof(XmlException))
+							continue;
+						else
+							throw ex;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		private static bool ValidateServerCertificate (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
