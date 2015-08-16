@@ -2,6 +2,9 @@
 using System.Xml.Linq;
 using System.Threading;
 using System.Linq;
+using System.Xml.XPath;
+using System.Xml;
+
 
 namespace ch8_automating_openvas
 {
@@ -36,16 +39,24 @@ namespace ch8_automating_openvas
 
 					while (status.Descendants ("status").First ().Value != "Done") {
 						Thread.Sleep (500);
-						Console.WriteLine (status.Descendants (XName.Get ("progress")).First ().Nodes ().OfType<XText> ().First ().Value);
+						Console.Clear ();
+						string percentComplete = status.Descendants (XName.Get ("progress")).First ().Nodes ().OfType<XText> ().First ().Value;
+						Console.WriteLine ("The scan is " + percentComplete + "% done.");
 						status = manager.GetTasks (taskID);
 					}
 
 					XDocument results = manager.GetTaskResults (taskID);
 
-					Console.WriteLine (results.ToString ());
+					var name = results.XPathSelectElements ("//get_reports_response/report/report/results");
+
+					Console.WriteLine (name.ToString ());
+
+					foreach (var elem in name) {
+						Console.WriteLine (elem.ToString ());
+					}
+
 				}
 			}
 		}
 	}
-
 }

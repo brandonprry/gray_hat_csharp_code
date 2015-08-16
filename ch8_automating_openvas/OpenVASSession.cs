@@ -14,7 +14,7 @@ namespace ch8_automating_openvas
 	public class OpenVASSession : IDisposable
 	{
 		private SslStream _stream;
-	
+
 		public OpenVASSession (string username, string password, string host, int port = 9390)
 		{
 			this.ServerIPAddress = IPAddress.Parse (host);
@@ -23,8 +23,11 @@ namespace ch8_automating_openvas
 		}
 
 		public string Username { get; set; }
+
 		public string Password { get; set; }
+
 		public IPAddress ServerIPAddress { get; set; }
+
 		public int ServerPort { get; set; }
 
 		public SslStream Stream { 
@@ -44,10 +47,6 @@ namespace ch8_automating_openvas
 		public XDocument Authenticate (string username, string password)
 		{
 			ASCIIEncoding enc = new ASCIIEncoding ();
-			
-			this.Username = username;
-			this.Password = password;
-
 			XDocument authXML = new XDocument (
 				                    new XElement ("authenticate",
 					                    new XElement ("credentials", 
@@ -62,6 +61,9 @@ namespace ch8_automating_openvas
 
 			if (response.Root.Attribute ("status").Value != "200")
 				throw new Exception ("Authentication failed");
+
+			this.Username = username;
+			this.Password = password;
 
 			return response;		
 		}
@@ -88,7 +90,7 @@ namespace ch8_automating_openvas
 			if (_stream == null || !_stream.CanRead) {
 				TcpClient client = new TcpClient (this.ServerIPAddress.ToString (), this.ServerPort);
 
-				_stream = new SslStream (c.GetStream (), false, new RemoteCertificateValidationCallback (ValidateServerCertificate), 
+				_stream = new SslStream (client.GetStream (), false, new RemoteCertificateValidationCallback (ValidateServerCertificate), 
 					(sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) => null);
 				
 				_stream.AuthenticateAsClient ("OpenVAS", null, SslProtocols.Tls, false);
@@ -97,21 +99,20 @@ namespace ch8_automating_openvas
 
 		private XDocument ReadMessage (SslStream sslStream)
 		{
-			using (var stream = new MemoryStream())
-			{	
-				byte[] buffer = new byte[2048]; // read in chunks of 2KB
+			using (var stream = new MemoryStream ()) {	
+				byte[] buffer = new byte[2048];
 				int bytesRead;
-				while((bytesRead = sslStream.Read(buffer, 0, buffer.Length)) > 0)
-				{
+				while ((bytesRead = sslStream.Read (buffer, 0, buffer.Length)) > 0) {
 					sslStream.Flush ();
-					stream.Write(buffer, 0, bytesRead);
+					stream.Write (buffer, 0, bytesRead);
 
-					try { 
-						string xml = System.Text.Encoding.ASCII.GetString(stream.ToArray());
-						return XDocument.Parse(xml);
-					}
-					catch (XmlException ex) {
-						continue;
+					if (bytesRead < buffer.Length) {
+						try { 
+							string xml = System.Text.Encoding.ASCII.GetString (stream.ToArray ());
+							return XDocument.Parse (xml);
+						} catch {
+							continue;
+						}
 					}
 				}
 			}
