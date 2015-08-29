@@ -11,6 +11,8 @@ namespace ch8_automating_openvas
 		{
 			if (session != null)
 				_session = session;
+			else
+				throw new Exception ("Session cannot be null");
 		}
 
 		public XDocument GetVersion ()
@@ -20,7 +22,7 @@ namespace ch8_automating_openvas
 
 		public XDocument GetScanConfigurations ()
 		{
-			return _session.ExecuteCommand (XDocument.Parse ("<get_configs />"), true);
+			return _session.ExecuteCommand (XDocument.Parse ("<get_configs />"));
 		}
 
 		public XDocument CreateSimpleTarget (string cidrRange, string targetName)
@@ -30,7 +32,7 @@ namespace ch8_automating_openvas
 					                            new XElement ("name", targetName),
 					                            new XElement ("hosts", cidrRange)));
 			
-			return _session.ExecuteCommand (createTargetXML, true);
+			return _session.ExecuteCommand (createTargetXML);
 		}
 
 		public XDocument CreateSimpleTask (string name, string comment, Guid configID, Guid targetID)
@@ -46,7 +48,7 @@ namespace ch8_automating_openvas
 						                          new XAttribute ("id", targetID.ToString ()))));
 
 
-			return _session.ExecuteCommand (createTaskXML, true);
+			return _session.ExecuteCommand (createTaskXML);
 		}
 
 		public XDocument StartTask (Guid taskID)
@@ -55,7 +57,7 @@ namespace ch8_automating_openvas
 				                         new XElement ("start_task",
 					                         new XAttribute ("task_id", taskID.ToString ())));
 			
-			return _session.ExecuteCommand (startTaskXML, true);
+			return _session.ExecuteCommand (startTaskXML);
 		}
 
 		public XDocument GetTasks (Guid? taskID = null)
@@ -64,9 +66,9 @@ namespace ch8_automating_openvas
 			if (taskID != null)
 				return _session.ExecuteCommand (new XDocument (
 					new XElement ("get_tasks", 
-						new XAttribute ("task_id", taskID.ToString ()))), true);
+						new XAttribute ("task_id", taskID.ToString ()))));
 
-			return _session.ExecuteCommand (XDocument.Parse ("<get_tasks />"), true);
+			return _session.ExecuteCommand (XDocument.Parse ("<get_tasks />"));
 		}
 
 		public XDocument GetTaskResults (Guid taskID)
@@ -75,7 +77,7 @@ namespace ch8_automating_openvas
 				                              new XElement ("get_results",
 					                              new XAttribute ("task_id", taskID.ToString ())));
 			
-			return _session.ExecuteCommand (getTaskResultsXML, true);
+			return _session.ExecuteCommand (getTaskResultsXML);
 		}
 
 		public void Dispose ()

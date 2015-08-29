@@ -38,26 +38,19 @@ namespace ch8_automating_openvas
 				return _stream;
 			}
 			
-			set {
-				_stream = value;	
-			}
-				
+			set { _stream = value; }
 		}
 
 		public XDocument Authenticate (string username, string password)
 		{
-			ASCIIEncoding enc = new ASCIIEncoding ();
 			XDocument authXML = new XDocument (
 				                    new XElement ("authenticate",
 					                    new XElement ("credentials", 
-						                    new XElement ("use" +
-						                    "rname", username),
+						                    new XElement ("username", username),
 						                    new XElement ("password", password)
 					                    )));
 			
-			this.Stream.Write (enc.GetBytes (authXML.ToString ()));
-
-			XDocument response = ReadMessage (this.Stream);
+			XDocument response = this.ExecuteCommand (authXML);
 
 			if (response.Root.Attribute ("status").Value != "200")
 				throw new Exception ("Authentication failed");
@@ -68,21 +61,36 @@ namespace ch8_automating_openvas
 			return response;		
 		}
 
-		public XDocument ExecuteCommand (XDocument doc, bool requiresAuthentication = false)
+		public XDocument ExecuteCommand (XDocument doc)
 		{
 			ASCIIEncoding enc = new ASCIIEncoding ();
-
-			if (requiresAuthentication) {
-				if (this.Username == null || this.Password == null)
-					throw new Exception ("Username or password null");
-				
-				this.Authenticate (this.Username, this.Password);
-			}
 			
 			string xml = doc.ToString ();
 			this.Stream.Write (enc.GetBytes (xml), 0, xml.Length);
 
 			return ReadMessage (this.Stream);
+		}
+
+		private XDocument ReadMessage (SslStream sslStream)
+		{
+			using (var stream = new MemoryStream ()) {	
+				int bytesRead = 0;
+				do {
+					byte[] buffer = new byte[2048];
+					bytesRead = sslStream.Read (buffer, 0, buffer.Length);
+					stream.Write (buffer, 0, bytesRead);
+					if (bytesRead < buffer.Length) {
+						try { 
+							string xml = System.Text.Encoding.ASCII.GetString (stream.ToArray ());
+							return XDocument.Parse (xml);
+						} catch {
+							continue;
+						}
+					}
+				} while (bytesRead > 0);
+			}
+
+			return null;
 		}
 
 		private void GetStream ()
@@ -97,29 +105,6 @@ namespace ch8_automating_openvas
 			}
 		}
 
-		private XDocument ReadMessage (SslStream sslStream)
-		{
-			using (var stream = new MemoryStream ()) {	
-				byte[] buffer = new byte[2048];
-				int bytesRead;
-				while ((bytesRead = sslStream.Read (buffer, 0, buffer.Length)) > 0) {
-					sslStream.Flush ();
-					stream.Write (buffer, 0, bytesRead);
-
-					if (bytesRead < buffer.Length) {
-						try { 
-							string xml = System.Text.Encoding.ASCII.GetString (stream.ToArray ());
-							return XDocument.Parse (xml);
-						} catch {
-							continue;
-						}
-					}
-				}
-			}
-
-			return null;
-		}
-
 		private bool ValidateServerCertificate (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
 		{
 			return true;
@@ -132,7 +117,6 @@ namespace ch8_automating_openvas
 				_stream = null;
 			}
 		}
-		
 	}
 }
 
