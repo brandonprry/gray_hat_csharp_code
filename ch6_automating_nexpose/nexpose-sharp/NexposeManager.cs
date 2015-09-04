@@ -82,7 +82,11 @@ namespace ch6_automating_nexpose
 		}
 
 		public XDocument DeleteSite(int siteID) {
-			return null;
+			XDocument xml = new XDocument (
+				                new XElement ("SiteDeleteRequest",
+					                new XAttribute ("session-id", _session.SessionID),
+					                new XAttribute ("site-id", siteID)));
+			return (XDocument)_session.ExecuteCommand (xml);
 		}
 
 		public XDocument GetSystemInformation(){

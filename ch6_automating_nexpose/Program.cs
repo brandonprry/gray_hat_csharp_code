@@ -38,6 +38,8 @@ namespace ch6_automating_nexpose
 
 					File.WriteAllBytes ("/tmp/fdsa.pdf", report);
 
+					XDocument delSite = manager.DeleteSite (siteID);
+					Console.WriteLine (delSite.ToString ());
 					Console.WriteLine ("done");
 				}
 			}
