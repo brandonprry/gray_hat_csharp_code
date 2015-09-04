@@ -79,12 +79,16 @@ namespace ch6_automating_nexpose
 					xml = reader.ReadToEnd ();
 
 				if (r.ContentType.Contains("multipart/mixed")) {
-					string[] splitRequest = xml.Split (new string[] {"--AxB9sl3299asdjvbA"}, StringSplitOptions.None);
-					splitRequest = splitRequest [2].Split (new string[] { "\r\n\r\n" }, StringSplitOptions.None);
+					string[] splitRequest = xml
+						.Split (new string[] {"--AxB9sl3299asdjvbA"}, StringSplitOptions.None);
+					
+					splitRequest = splitRequest [2]
+						.Split (new string[] { "\r\n\r\n" }, StringSplitOptions.None);
 
-					string base64Data = splitRequest [1].Substring (0, splitRequest [1].IndexOf ("DQo="));
+					string base64Data = splitRequest [1]
+						.Substring (0, splitRequest [1].IndexOf ("DQo="));
+					
 					return Convert.FromBase64String (base64Data);
-				
 				}
 			}
 

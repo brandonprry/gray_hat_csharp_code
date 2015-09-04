@@ -7,25 +7,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_the_basics_advanced", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_sqli_post_fuzzer", "ch2_sqli_fuzzer\ch2_sqli_post_fuzzer.csproj", "{B03B1A80-DE2E-495E-9979-883E25B61722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_soap_fuzzer", "ch4_soap_fuzzer\ch3_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_soap_fuzzer", "ch3_soap_fuzzer\ch3_soap_fuzzer.csproj", "{5522B720-A3FC-4543-B6C6-4BE017727417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind_tcp", "ch5_connect_back_binds\ch4_bind_tcp.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_bind_tcp", "ch4_connect_back_binds\ch4_bind_tcp.csproj", "{5E53D836-4908-4A7F-ADBC-61C0F20CEA8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_automating_nessus", "ch6_automating_nessus\ch5_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch5_automating_nessus", "ch5_automating_nessus\ch5_automating_nessus.csproj", "{169BD6BB-826B-4B7E-BD52-FFA17683675E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_openvas", "ch8_automating_openvas\ch7_automating_openvas.csproj", "{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_openvas", "ch7_automating_openvas\ch7_automating_openvas.csproj", "{0C13895D-2B5B-4AF3-BF56-9A3B8D4B5D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch9_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch8_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_dirty_decompiler", "ch10_dirty_decompiler\ch10_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_reading_offline_hives", "ch11_reading_offline_hives\ch12_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_reading_offline_hives", "ch11_reading_offline_hives\ch11_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_crossplatform_metasploit_payloads", "ch12_crossplatform_metasploit_payloads\ch11_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_crossplatform_metasploit_payloads", "ch4_crossplatform_metasploit_payloads\ch4_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch5_connect_back\ch4_connect_back_tcp.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch4_connect_back\ch4_connect_back_tcp.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_filesystem", "ch14_automating_clamav\ch13_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_clamav_filesystem", "ch12_automating_clamav\ch12_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch9_automating_sqlmap\ch9_automating_sqlmap.csproj", "{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}"
 EndProject
@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_client", "ch4_bind_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_server\ch4_udp_server.csproj", "{68074B20-EAB0-4146-A1B3-FE0BF88B498A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_clamav_clamd", "ch13_automating_clamav_clamd\ch13_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_clamav_clamd", "ch12_automating_clamav_clamd\ch12_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch6_automating_nexpose\ch6_automating_nexpose.csproj", "{430D3EB9-A13B-4951-82FE-347A29D88008}"
 EndProject
