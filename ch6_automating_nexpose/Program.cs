@@ -29,7 +29,7 @@ namespace ch6_automating_nexpose
 					XDocument status = manager.GetScanStatus (scanID);
 
 					while (status.Root.Attribute ("status").Value != "finished") {
-						Thread.Sleep (500);
+						Thread.Sleep (1000);
 						status = manager.GetScanStatus (scanID);
 						Console.WriteLine (DateTime.Now.ToLongTimeString() + ": " + status.ToString ());
 					}
@@ -38,9 +38,7 @@ namespace ch6_automating_nexpose
 
 					File.WriteAllBytes ("/tmp/fdsa.pdf", report);
 
-					XDocument delSite = manager.DeleteSite (siteID);
-					Console.WriteLine (delSite.ToString ());
-					Console.WriteLine ("done");
+					manager.DeleteSite (siteID);
 				}
 			}
 		}
