@@ -92,7 +92,6 @@ namespace ch6_automating_nexpose
 				}
 			}
 
-
 			return XDocument.Parse (xml);
 		}
 

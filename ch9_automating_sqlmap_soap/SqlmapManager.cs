@@ -29,22 +29,10 @@ namespace sqlmapsharp
 
 		public bool SetOption (string taskid, string option, object value)
 		{
-			string json = "{ ";
+			JObject json = new JObject ();
+			json [option] = JToken.FromObject (value);
 
-			json += "\"" + option + "\" : ";
-
-			if (value is string)
-				json += "\"" + (value as string) + "\"";
-			else if (value is bool)
-				json += ((bool)value ? "true" : "false");
-			else if (value is int)
-				json += value;
-			else
-				throw new Exception("Can't handle type: " + value.GetType().Name);
-
-			json += " }";
-
-			JToken tok = JObject.Parse(_session.ExecutePost("/option/" + taskid + "/set", json));
+			JToken tok = JObject.Parse(_session.ExecutePost("/option/" + taskid + "/set", json.ToString()));
 
 			return (bool)tok.SelectToken("success");
 		}
@@ -70,39 +58,17 @@ namespace sqlmapsharp
 
 		public bool StartTask (string taskid, Dictionary<string, object> options)
 		{
-			string json = "{ ";
+			JObject json = new JObject ();
 
 			foreach (var pair in options) {
 				string option = pair.Key;
 				object value = pair.Value;
 
-				json += "\"" + option + "\" : ";
-
-				if (value is JValue)
-				{
-					JValue val = value as JValue;
-					if (val.Type == JTokenType.String)
-						json += "\"" + val.ToString() + "\"";
-					else if (val.Type == JTokenType.Boolean)
-						json += ((bool)val ? "true" : "false");
-					else if (val.Type == JTokenType.Integer)
-						json += val;
-					else if (val.Type == JTokenType.Null)
-						json += "null";
-					else
-						throw new Exception ("Can't handle type: " + val.Type);
-				}
-				else if (value is string)
-					json += "\"" + value.ToString() + "\"";
-				else
-					throw new Exception("Not sure how to deal with type: " + value.GetType().Name);
-
-				json += ",";
+				json [option] = JToken.FromObject(value);
+			
 			}
-			json = json.Remove(json.Length-1);
-			json += " }";
 
-			JToken tok = JObject.Parse(_session.ExecutePost("/scan/" + taskid + "/start", json));
+			JToken tok = JObject.Parse(_session.ExecutePost("/scan/" + taskid + "/start", json.ToString()));
 			return (bool)tok.SelectToken("success");
 		}
 

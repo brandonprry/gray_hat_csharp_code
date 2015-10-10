@@ -26,6 +26,7 @@ namespace Example
 
 					if (task.Status == "failure")
 					{
+						Console.WriteLine ("There was an error:");
 						foreach (object error in task.Errors)
 							Console.WriteLine(error.ToString());
 
