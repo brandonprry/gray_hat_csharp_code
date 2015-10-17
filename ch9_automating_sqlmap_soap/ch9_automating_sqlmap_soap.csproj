@@ -40,10 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlmapLogItem.cs" />
-    <Compile Include="SqlmapManager.cs" />
-    <Compile Include="SqlmapSession.cs" />
-    <Compile Include="SqlmapStatus.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="SoapBinding.cs" />
     <Compile Include="SoapBindingOperation.cs" />
@@ -56,9 +52,16 @@
     <Compile Include="SoapType.cs" />
     <Compile Include="SoapTypeParameter.cs" />
     <Compile Include="WSDL.cs" />
+    <Compile Include="sqlmapsharp\SqlmapLogItem.cs" />
+    <Compile Include="sqlmapsharp\SqlmapManager.cs" />
+    <Compile Include="sqlmapsharp\SqlmapSession.cs" />
+    <Compile Include="sqlmapsharp\SqlmapStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="sqlmapsharp\" />
   </ItemGroup>
 </Project>

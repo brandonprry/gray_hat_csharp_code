@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using sqlmapsharp;
 using System.Xml.Linq;
 
-namespace ch3_soap_fuzzer
+namespace ch9_soap_fuzzer
 {
 	class MainClass
 	{
@@ -41,18 +41,19 @@ namespace ch3_soap_fuzzer
 
 			foreach (SoapPort port in service.Ports) { 
 				Console.WriteLine ("Fuzzing " + port.ElementType.Split (':') [0] + " port: " + port.Name);
-				SoapBinding binding = _wsdl.Bindings.Where (b => b.Name == port.Binding.Split (':') [1]).Single ();
+				SoapBinding binding = _wsdl.Bindings.Single (b => b.Name == port.Binding.Split (':') [1]);
 
 				if (binding.IsHTTP)
 					FuzzHttpPort (binding);
-				else
-					FuzzSoapPort (binding);
+				//else
+				//	FuzzSoapPort (binding);
 			}
 		}
 
 		static void FuzzHttpPort (SoapBinding binding) {
-			if (binding.Verb == "GET")
-				FuzzHttpGetPort (binding);
+			if (binding.Verb == "GET") {
+			}
+			//	FuzzHttpGetPort (binding);
 			else if (binding.Verb == "POST")
 				FuzzHttpPostPort (binding);
 			else
@@ -60,7 +61,7 @@ namespace ch3_soap_fuzzer
 		}
 
 		static void FuzzSoapPort (SoapBinding binding) {
-			SoapPortType portType = _wsdl.PortTypes.Where (pt => pt.Name == binding.Type.Split (':') [1]).Single ();
+			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
 
 			foreach (SoapBindingOperation op in binding.Operations) {
 				Console.WriteLine ("Fuzzing operation: " + op.Name);
@@ -125,96 +126,40 @@ namespace ch3_soap_fuzzer
 				}
 
 				foreach (var pair in vulnValues)
-					TestPostRequestWithSqlmap(_endpoint, soapDoc.ToString(), pair.Value, pair.Key);
+					TestPostRequestWithSqlmap(_endpoint, soapDoc.ToString(), pair.Value, pair.Key.ToString());
 			}
 		}
 
 		static void FuzzHttpGetPort (SoapBinding binding)
 		{
-			SoapPortType portType = _wsdl.PortTypes.Where (pt => pt.Name == binding.Type.Split (':') [1]).Single ();
-			List<string> vulnUrls = new List<string> ();
-			foreach (SoapBindingOperation op in binding.Operations) {
-				Console.WriteLine ("Fuzzing operation: " + op.Name);
-
-				string url = _endpoint + op.Location;
-				SoapOperation po = portType.Operations.Where (p => p.Name == op.Name).Single ();
-				SoapMessage input = _wsdl.Messages.Where (m => m.Name == po.Input.Split (':') [1]).Single ();
-
-				Dictionary<string, string> parameters = new Dictionary<string, string> ();
-				foreach (SoapMessagePart part in input.Parts) {
-					parameters.Add (part.Name, part.Type);
-				}
-
-				bool first = true;
-				int i = 0;
-				foreach (var param in parameters) {
-					if (param.Value.EndsWith ("string"))
-						url += (first ? "?" : "&") + param.Key + "=fds" + i++;
-					if (first)
-						first = false;
-				}
-
-				Console.WriteLine ("Fuzzing full url: " + url);
-
-				for (int k = 0; k <= i; k++) {
-					string testUrl = url.Replace ("fds" + k, "fd'sa");
-					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (testUrl);
-					string resp = string.Empty;
-					try {
-						using (StreamReader rdr = new StreamReader(req.GetResponse().GetResponseStream()))
-							resp = rdr.ReadToEnd ();
-					} catch (WebException ex) {
-						using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
-							resp = rdr.ReadToEnd ();
-
-						if (resp.Contains ("syntax error")) {
-							if (!vulnUrls.Contains (url))
-								vulnUrls.Add (url);
-
-							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
-						}
-					}
-				}
-			}
-
-			foreach (string url in vulnUrls) 
-				TestGetRequestWithSqlmap(url);
-		}
-
-		static void FuzzHttpPostPort (SoapBinding binding) {
-//			SoapPortType portType = _wsdl.PortTypes.Where (pt => pt.Name == binding.Type.Split (':') [1]).Single ();
+//			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
+//			List<string> vulnUrls = new List<string> ();
 //			foreach (SoapBindingOperation op in binding.Operations) {
 //				Console.WriteLine ("Fuzzing operation: " + op.Name);
 //
 //				string url = _endpoint + op.Location;
-//				SoapOperation po = portType.Operations.Where (p => p.Name == op.Name).Single ();
-//				SoapMessage input = _wsdl.Messages.Where (m => m.Name == po.Input.Split (':') [1]).Single ();
-//				Dictionary<string, string> parameters = new Dictionary<string, string> ();
+//				SoapOperation po = portType.Operations.Single (p => p.Name == op.Name);
+//				SoapMessage input = _wsdl.Messages.Single (m => m.Name == po.Input.Split (':') [1]);
 //
+//				Dictionary<string, string> parameters = new Dictionary<string, string> ();
 //				foreach (SoapMessagePart part in input.Parts) {
 //					parameters.Add (part.Name, part.Type);
 //				}
 //
-//				string postParams = string.Empty;
 //				bool first = true;
 //				int i = 0;
 //				foreach (var param in parameters) {
 //					if (param.Value.EndsWith ("string"))
-//						postParams += (first ? "" : "&") + param.Key + "=fds" + i++;
+//						url += (first ? "?" : "&") + param.Key + "=fds" + i++;
 //					if (first)
 //						first = false;
 //				}
 //
+//				Console.WriteLine ("Fuzzing full url: " + url);
+//
 //				for (int k = 0; k <= i; k++) {
-//					string testParams = postParams.Replace ("fds" + k, "fd'sa");
-//					byte[] data = System.Text.Encoding.ASCII.GetBytes (testParams);
-//
-//					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (url);
-//					req.Method = "POST";
-//					req.ContentType = "application/x-www-form-urlencoded";
-//					req.ContentLength = data.Length;
-//					req.GetRequestStream ().Write (data, 0, data.Length);
-//
+//					string testUrl = url.Replace ("fds" + k, "fd'sa");
+//					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (testUrl);
 //					string resp = string.Empty;
 //					try {
 //						using (StreamReader rdr = new StreamReader(req.GetResponse().GetResponseStream()))
@@ -223,13 +168,74 @@ namespace ch3_soap_fuzzer
 //						using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
 //							resp = rdr.ReadToEnd ();
 //
-//						if (resp.Contains ("syntax error"))
+//						if (resp.Contains ("syntax error")) {
+//							if (!vulnUrls.Contains (url))
+//								vulnUrls.Add (url);
+//
 //							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
+//						}
 //					}
 //				}
 //			}
+//
+//			foreach (string url in vulnUrls) 
+//				TestGetRequestWithSqlmap(url);
 
 			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
+			List<string[]> vulns = new List<string[]> ();
+			foreach (SoapBindingOperation op in binding.Operations) {
+				Console.WriteLine ("Fuzzing operation: " + op.Name);
+
+				string url = _endpoint + op.Location;
+				SoapOperation po = portType.Operations.Single (p => p.Name == op.Name);
+				SoapMessage input = _wsdl.Messages.Single (m => m.Name == po.Input.Split (':') [1]);
+
+				Dictionary<string, string> parameters = new Dictionary<string, string> ();
+				foreach (SoapMessagePart part in input.Parts) 
+					parameters.Add (part.Name, part.Type);
+
+				bool first = true;
+				List<Guid> guidList = new List<Guid> ();
+				foreach (var param in parameters) {
+					if (param.Value.EndsWith ("string")) {
+						Guid guid = Guid.NewGuid ();
+						guidList.Add (guid);
+						url += (first ? "?" : "&") + param.Key + "=" + guid.ToString();
+					}
+					if (first)
+						first = false;
+				}
+
+				Console.WriteLine ("Fuzzing full url: " + url);
+
+				int k = 0;
+				foreach(Guid guid in guidList) {
+					string testUrl = url.Replace (guid.ToString(), "fd'sa");
+					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (testUrl);
+					string resp = string.Empty;
+					try {
+						using (StreamReader rdr = new StreamReader (req.GetResponse ().GetResponseStream ()))
+							resp = rdr.ReadToEnd ();
+					} catch (WebException ex) {
+						using (StreamReader rdr = new StreamReader (ex.Response.GetResponseStream ()))
+							resp = rdr.ReadToEnd ();
+
+						if (resp.Contains ("syntax error")) {
+							vulns.Add (new string[] { url, input.Parts [k].Name });
+							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
+						}
+					}
+					k++;
+				}
+			}
+
+			foreach (var vuln in vulns)
+				TestGetRequestWithSqlmap (vuln[0], vuln[1]);
+		}
+
+		static void FuzzHttpPostPort (SoapBinding binding) {
+			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
+			List<string[]> vulns = new List<string[]> ();
 			foreach (SoapBindingOperation op in binding.Operations) {
 				Console.WriteLine ("Fuzzing operation: " + op.Name);
 
@@ -256,7 +262,6 @@ namespace ch3_soap_fuzzer
 				}
 
 				int k = 0;
-				List<Guid> vulnParams = new List<Guid> ();
 				foreach (Guid guid in guids) {
 					string testParams = postParams.Replace (guid.ToString (), "fd'sa");
 					byte[] data = System.Text.Encoding.ASCII.GetBytes (testParams);
@@ -276,18 +281,18 @@ namespace ch3_soap_fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error")) {
+							vulns.Add (new string[] { url, testParams, guid.ToString() });
 							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
-							vulnParams.Add (guid);
 						}
 					}
 					k++;
 				}
 			}
-
-
+			foreach (string[] vuln in vulns)
+				TestPostRequestWithSqlmap (vuln [0], vuln [1], null, vuln [2]);
 		}
 
-		static void TestGetRequestWithSqlmap (string url)
+		static void TestGetRequestWithSqlmap (string url, string parameter)
 		{
 			Console.WriteLine("Testing url with sqlmap: " + url);
 			using (SqlmapSession session = new SqlmapSession("127.0.0.1", 8775)) {
@@ -295,7 +300,8 @@ namespace ch3_soap_fuzzer
 					string taskid = manager.NewTask();
 					var options = manager.GetOptions(taskid);
 					options["url"] = url;
-					options["proxy"] = "http://127.0.0.1:8081";
+					options ["testParameter"] = parameter;
+					//options["proxy"] = "http://127.0.0.1:8081";
 					options ["flushSession"] = "true";
 					manager.StartTask(taskid, options);
 
@@ -316,7 +322,7 @@ namespace ch3_soap_fuzzer
 			}
 		}
 
-		static void TestPostRequestWithSqlmap(string url, string data, string soapAction, Guid vulnValue) {
+		static void TestPostRequestWithSqlmap(string url, string data, string soapAction, string vulnValue) {
 			Console.WriteLine("Testing url with sqlmap: " + url);
 			using (SqlmapSession session = new SqlmapSession("127.0.0.1", 8775)) {
 				using (SqlmapManager manager = new SqlmapManager(session)) {
@@ -324,16 +330,20 @@ namespace ch3_soap_fuzzer
 					string taskid = manager.NewTask();
 					var options = manager.GetOptions(taskid);
 					options["url"] = url;
-					options["proxy"] = "http://127.0.0.1:8081";
-					options["data"] = data.Replace(vulnValue.ToString(), "1*").Trim();
+					//options ["testParameter"] = parameter;
+					options["proxy"] = "http://127.0.0.1:8080";
+					options["data"] = data.Replace(vulnValue, "1*").Trim();
 					options["skipUrlEncode"] = "true";
-					options ["flushSession"] = "true";
+					options["flushSession"] = "true";
 
-					if (!string.IsNullOrEmpty (soapAction)) {
-						string headers = @"Content-Type: text/xml
+					string headers = string.Empty;
+					if (!string.IsNullOrEmpty (soapAction))
+						headers = @"Content-Type: text/xml
 SOAPAction: " + soapAction;
-						options ["headers"] = headers;
-					}
+					else 
+						headers = @"Content-Type: application/x-www-form-urlencoded";
+	
+					options ["headers"] = headers;
 
 					manager.StartTask(taskid, options);
 

@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 
-namespace ch3_soap_fuzzer
+namespace ch9_soap_fuzzer
 {
 	public class SoapTypeParameter
 	{

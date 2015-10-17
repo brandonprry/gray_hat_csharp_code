@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace ch3_soap_fuzzer
+namespace ch9_soap_fuzzer
 {
 	public class WSDL
 	{
