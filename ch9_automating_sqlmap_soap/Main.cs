@@ -45,15 +45,14 @@ namespace ch9_soap_fuzzer
 
 				if (binding.IsHTTP)
 					FuzzHttpPort (binding);
-				//else
-				//	FuzzSoapPort (binding);
+				else
+					FuzzSoapPort (binding);
 			}
 		}
 
 		static void FuzzHttpPort (SoapBinding binding) {
-			if (binding.Verb == "GET") {
-			}
-			//	FuzzHttpGetPort (binding);
+			if (binding.Verb == "GET") 
+				FuzzHttpGetPort (binding);
 			else if (binding.Verb == "POST")
 				FuzzHttpPostPort (binding);
 			else
@@ -132,55 +131,6 @@ namespace ch9_soap_fuzzer
 
 		static void FuzzHttpGetPort (SoapBinding binding)
 		{
-//			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
-//			List<string> vulnUrls = new List<string> ();
-//			foreach (SoapBindingOperation op in binding.Operations) {
-//				Console.WriteLine ("Fuzzing operation: " + op.Name);
-//
-//				string url = _endpoint + op.Location;
-//				SoapOperation po = portType.Operations.Single (p => p.Name == op.Name);
-//				SoapMessage input = _wsdl.Messages.Single (m => m.Name == po.Input.Split (':') [1]);
-//
-//				Dictionary<string, string> parameters = new Dictionary<string, string> ();
-//				foreach (SoapMessagePart part in input.Parts) {
-//					parameters.Add (part.Name, part.Type);
-//				}
-//
-//				bool first = true;
-//				int i = 0;
-//				foreach (var param in parameters) {
-//					if (param.Value.EndsWith ("string"))
-//						url += (first ? "?" : "&") + param.Key + "=fds" + i++;
-//					if (first)
-//						first = false;
-//				}
-//
-//				Console.WriteLine ("Fuzzing full url: " + url);
-//
-//				for (int k = 0; k <= i; k++) {
-//					string testUrl = url.Replace ("fds" + k, "fd'sa");
-//					HttpWebRequest req = (HttpWebRequest)WebRequest.Create (testUrl);
-//					string resp = string.Empty;
-//					try {
-//						using (StreamReader rdr = new StreamReader(req.GetResponse().GetResponseStream()))
-//							resp = rdr.ReadToEnd ();
-//					} catch (WebException ex) {
-//						using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
-//							resp = rdr.ReadToEnd ();
-//
-//						if (resp.Contains ("syntax error")) {
-//							if (!vulnUrls.Contains (url))
-//								vulnUrls.Add (url);
-//
-//							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
-//						}
-//					}
-//				}
-//			}
-//
-//			foreach (string url in vulnUrls) 
-//				TestGetRequestWithSqlmap(url);
-
 			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
 			List<string[]> vulns = new List<string[]> ();
 			foreach (SoapBindingOperation op in binding.Operations) {
@@ -299,9 +249,12 @@ namespace ch9_soap_fuzzer
 				using (SqlmapManager manager = new SqlmapManager(session)) {
 					string taskid = manager.NewTask();
 					var options = manager.GetOptions(taskid);
-					options["url"] = url;
+					options ["url"] = url;
+					options ["level"] = 1;
+					options ["risk"] = 1;
+					options ["dbms"] = "postgresql";
 					options ["testParameter"] = parameter;
-					//options["proxy"] = "http://127.0.0.1:8081";
+					options ["proxy"] = "http://192.168.2.207:8080";
 					options ["flushSession"] = "true";
 					manager.StartTask(taskid, options);
 
@@ -330,18 +283,20 @@ namespace ch9_soap_fuzzer
 					string taskid = manager.NewTask();
 					var options = manager.GetOptions(taskid);
 					options["url"] = url;
+					options ["level"] = 1;
+					options ["risk"] = 1;
+					options ["dbms"] = "postgresql";
 					//options ["testParameter"] = parameter;
-					options["proxy"] = "http://127.0.0.1:8080";
+					options["proxy"] = "http://192.168.2.207:8080";
 					options["data"] = data.Replace(vulnValue, "1*").Trim();
 					options["skipUrlEncode"] = "true";
 					options["flushSession"] = "true";
 
 					string headers = string.Empty;
 					if (!string.IsNullOrEmpty (soapAction))
-						headers = @"Content-Type: text/xml
-SOAPAction: " + soapAction;
+						headers = "Content-Type: text/xml\nSOAPAction: " + soapAction;
 					else 
-						headers = @"Content-Type: application/x-www-form-urlencoded";
+						headers = "Content-Type: application/x-www-form-urlencoded";
 	
 					options ["headers"] = headers;
 
