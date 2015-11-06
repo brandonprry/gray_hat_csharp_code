@@ -16,6 +16,7 @@ namespace ch9_automating_sqlmap
 
 					Dictionary<string, object> options = manager.GetOptions(taskid); 
 					options["url"] = args[0]; 
+					options ["flushSession"] = true;
 
 					manager.StartTask(taskid, options); 
 

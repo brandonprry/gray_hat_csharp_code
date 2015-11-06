@@ -1,6 +1,7 @@
 using System;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace sqlmapsharp
 {
@@ -68,43 +69,11 @@ namespace sqlmapsharp
 			return (bool)tok.SelectToken("success");
 		}
 
-		public bool StartTask (string taskid, Dictionary<string, object> options)
-		{
-			string json = "{ ";
-
-			foreach (var pair in options) {
-				string option = pair.Key;
-				object value = pair.Value;
-
-				json += "\"" + option + "\" : ";
-
-				if (value is JValue)
-				{
-					JValue val = value as JValue;
-					if (val.Type == JTokenType.String)
-						json += "\"" + val.ToString() + "\"";
-					else if (val.Type == JTokenType.Boolean)
-						json += ((bool)val ? "true" : "false");
-					else if (val.Type == JTokenType.Integer)
-						json += val;
-					else if (val.Type == JTokenType.Null)
-						json += "null";
-					else
-						throw new Exception ("Can't handle type: " + val.Type);
-				}
-				else if (value is string)
-					json += "\"" + value.ToString() + "\"";
-				else
-					throw new Exception("Not sure how to deal with type: " + value.GetType().Name);
-
-				json += ",";
-			}
-			json = json.Remove(json.Length-1);
-			json += " }";
-
-			JToken tok = JObject.Parse(_session.ExecutePost("/scan/" + taskid + "/start", json));
-			return (bool)tok.SelectToken("success");
-		}
+		public bool StartTask(string taskID, Dictionary<string, object> opts) { 
+			string json = JsonConvert.SerializeObject(opts); 
+			JToken tok = JObject.Parse(_session.ExecutePost("/scan/" + taskID + "/start", json)); 
+			return (bool)tok.SelectToken("success"); 
+		} 
 
 		public SqlmapStatus GetScanStatus (string taskid)
 		{
