@@ -43,11 +43,17 @@ namespace ch14_automating_arachni
 		}
 
 		public string Host { get; set; }
+
 		public int Port { get; set; }
+
 		public string Token { get; set; }
+
 		public bool IsInstanceStream { get; set; }
+
 		public string InstanceHost { get; set; }
+
 		public int InstancePort { get; set; }
+
 		public string InstanceName { get; set; }
 
 		public MessagePackObject ExecuteCommand (string command, object[] args, string token = null)
@@ -90,7 +96,7 @@ namespace ch14_automating_arachni
 		public byte[] DecompressData (byte[] inData)
 		{
 			using (MemoryStream outMemoryStream = new MemoryStream ()) {
-				using (ZOutputStream outZStream = new ZOutputStream (outMemoryStream)){
+				using (ZOutputStream outZStream = new ZOutputStream (outMemoryStream)) {
 					outZStream.Write (inData, 0, inData.Length);
 					return outMemoryStream.ToArray ();
 				}

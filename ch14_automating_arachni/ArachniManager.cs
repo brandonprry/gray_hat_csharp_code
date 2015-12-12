@@ -27,12 +27,13 @@ namespace ch14_automating_arachni
 			return _session.ExecuteCommand ("service.scan", new object[]{ args }, _session.Token);
 		}
 
-		public MessagePackObject GetProgress(List<uint> digests = null) {
+		public MessagePackObject GetProgress (List<uint> digests = null)
+		{
 			Dictionary<string, object> args = new Dictionary<string, object> ();
 			args ["with"] = "issues";
 			if (digests != null) {
 				args ["without"] = new Dictionary<string, object> ();
-				((Dictionary<string, object>)args ["without"]) ["issues"] = digests.ToArray();
+				((Dictionary<string, object>)args ["without"]) ["issues"] = digests.ToArray ();
 			}
 			return _session.ExecuteCommand ("service.progress", new object[] { args }, _session.Token);
 		}

@@ -23,7 +23,7 @@ namespace ch14_automating_arachni
 						foreach (MessagePackObject p in progress.AsDictionary()["issues"].AsEnumerable()) {
 							MessagePackObjectDictionary dict = p.AsDictionary ();
 							Console.WriteLine ("Issue found: " + dict ["name"].AsString ());
-							issues.Add (dict ["digest"].AsUInt32());
+							issues.Add (dict ["digest"].AsUInt32 ());
 						}
 						Thread.Sleep (10000);
 						isRunning = manager.IsBusy ().AsBoolean ();

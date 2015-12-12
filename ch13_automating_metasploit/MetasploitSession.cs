@@ -16,7 +16,7 @@ namespace ch13_automating_metasploit
 	{
 		string _host;
 		string _token;
-		
+
 		public MetasploitSession (string username, string password, string host)
 		{
 			_host = host;
@@ -31,23 +31,23 @@ namespace ch13_automating_metasploit
 			
 			if ((response ["result"] as string) == "success")
 				_token = response ["token"] as string;
-		} 
+		}
 
 		public MetasploitSession (string token, string host)
 		{
 			_token = token;
 			_host = host;
 		}
-		
+
 		public string Token { 
 			get { return _token; }
 		}
-		
+
 		public Dictionary<string, object> Authenticate (string username, string password)
 		{
 			return this.Execute ("auth.login", username, password);
 		}
-		
+
 		public Dictionary<string, object> Execute (string method, params object[] args)
 		{
 			if (string.IsNullOrEmpty (_host))
@@ -56,7 +56,9 @@ namespace ch13_automating_metasploit
 			if (method != "auth.login" && string.IsNullOrEmpty (_token))
 				throw new Exception ("Not authenticated.");
 		
-			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {return true;}; //dis be bad, no ssl check
+			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {
+				return true;
+			}; //dis be bad, no ssl check
 			
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create (_host);
 
@@ -66,13 +68,13 @@ namespace ch13_automating_metasploit
 
 			Stream requestStream = null;
 
-			try{
+			try {
 				requestStream = request.GetRequestStream ();
 			} catch (Exception ex) {
 				Console.WriteLine (ex);
 			}
 
-			Packer msgpackWriter = Packer.Create(requestStream);
+			Packer msgpackWriter = Packer.Create (requestStream);
 			
 			msgpackWriter.PackArrayHeader (args.Length + 1 + (string.IsNullOrEmpty (_token) ? 0 : 1));
 			
@@ -81,56 +83,51 @@ namespace ch13_automating_metasploit
 			if (!string.IsNullOrEmpty (_token) && method != "auth.login")
 				msgpackWriter.Pack (_token);
 			
-			foreach (object arg in args) 
-				Pack(msgpackWriter, arg);
+			foreach (object arg in args)
+				Pack (msgpackWriter, arg);
 			
-			requestStream.Close();
+			requestStream.Close ();
 
 			byte[] buffer = new byte[4096];
-			MemoryStream mstream = new MemoryStream();
+			MemoryStream mstream = new MemoryStream ();
 
 			try {
-			using (WebResponse response = request.GetResponse ())
-			{
-				using (Stream rstream = response.GetResponseStream())
-				{
-					int count = 0;
+				using (WebResponse response = request.GetResponse ()) {
+					using (Stream rstream = response.GetResponseStream ()) {
+						int count = 0;
 					
-					do
-					{
-						count = rstream.Read(buffer, 0, buffer.Length);
-						mstream.Write(buffer, 0, count);
-					} while (count != 0);
+						do {
+							count = rstream.Read (buffer, 0, buffer.Length);
+							mstream.Write (buffer, 0, count);
+						} while (count != 0);
 					
+					}
 				}
-			}
-			}
-			catch (WebException ex) {
+			} catch (WebException ex) {
 				if (ex.Response != null) {
 					string res = string.Empty;
-					using (StreamReader rdr = new StreamReader(ex.Response.GetResponseStream()))
-						res = rdr.ReadToEnd();
+					using (StreamReader rdr = new StreamReader (ex.Response.GetResponseStream ()))
+						res = rdr.ReadToEnd ();
 
-					Console.WriteLine(res) ;
+					Console.WriteLine (res);
 				}
 			}
 			
 			mstream.Position = 0;
 
-			MessagePackObjectDictionary resp = Unpacking.UnpackObject(mstream).AsDictionary();
+			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
 
-			Dictionary<string, object > returnDictionary = TypifyDictionary(resp);
+			Dictionary<string, object > returnDictionary = TypifyDictionary (resp);
 			
 			return returnDictionary;
 		}
 
 		//this is a ridiculous method
-		Dictionary<string, object> TypifyDictionary(MessagePackObjectDictionary dict)
+		Dictionary<string, object> TypifyDictionary (MessagePackObjectDictionary dict)
 		{
-			Dictionary<string, object> returnDictionary = new Dictionary<string, object>();
+			Dictionary<string, object> returnDictionary = new Dictionary<string, object> ();
 			
-			foreach (var pair in dict)
-			{
+			foreach (var pair in dict) {
 				MessagePackObject obj = (MessagePackObject)pair.Value;
 				string key = System.Text.Encoding.ASCII.GetString ((byte[])pair.Key);
 
@@ -143,13 +140,12 @@ namespace ch13_automating_metasploit
 							returnDictionary [key] = obj.AsString ();
 						else
 							returnDictionary [pair.Key.ToString ()] = obj.AsString ();
-					}
-					else if (obj.IsTypeOf (typeof(int)).Value)
+					} else if (obj.IsTypeOf (typeof(int)).Value)
 						returnDictionary [pair.Key.ToString ()] = (int)obj.ToObject ();
 					else if (obj.IsTypeOf (typeof(Byte[])).Value) {
-						if (key == "payload") 
+						if (key == "payload")
 							returnDictionary [key] = (byte[])obj;
-						else 
+						else
 							returnDictionary [key] = System.Text.Encoding.ASCII.GetString ((Byte[])obj.ToObject ());
 					} else
 						throw new Exception ("I don't know type: " + pair.Value.GetType ().Name);
@@ -176,9 +172,9 @@ namespace ch13_automating_metasploit
 					else
 						returnDictionary.Add (key, arr);
 				} else if (obj.IsDictionary) {
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf(typeof(Byte[])).Value)
+					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
 						returnDictionary [key] = TypifyDictionary (obj.AsDictionary ());
-					else 
+					else
 						returnDictionary [pair.Key.ToString ()] = TypifyDictionary (obj.AsDictionary ());
 				} else if (obj.IsTypeOf (typeof(UInt16)).Value) {
 					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
@@ -195,19 +191,18 @@ namespace ch13_automating_metasploit
 						returnDictionary [key] = obj.AsBoolean ();
 					else
 						returnDictionary [pair.Key.ToString ()] = obj.AsBoolean ();
-				}
-				else 
-					throw new Exception("Don't know type: " + obj.ToObject().GetType().Name);
+				} else
+					throw new Exception ("Don't know type: " + obj.ToObject ().GetType ().Name);
 			}
 			
 			return returnDictionary;
 		}
-		
+
 		void Pack (Packer packer, object o)
 		{
  	 	
 			if (o == null) {
-				packer.PackNull();
+				packer.PackNull ();
 				return;
 			}
  	
@@ -234,33 +229,29 @@ namespace ch13_automating_metasploit
 			else if (o is ushort)
 				packer.Pack ((ushort)o);
 			else if (o is string)
-				packer.PackString((string)o, Encoding.ASCII);
-			else if (o is Dictionary<string, object>)
-			{
-				packer.PackMapHeader((o as Dictionary<string, object>).Count);
+				packer.PackString ((string)o, Encoding.ASCII);
+			else if (o is Dictionary<string, object>) {
+				packer.PackMapHeader ((o as Dictionary<string, object>).Count);
 				
-				foreach (var pair in (o as Dictionary<string, object>))
-				{
-					Pack(packer, pair.Key);
-					Pack(packer, pair.Value);
+				foreach (var pair in (o as Dictionary<string, object>)) {
+					Pack (packer, pair.Key);
+					Pack (packer, pair.Value);
 				}
 				
-			}
-			else if (o is string[])
-			{
-				packer.PackArrayHeader((o as string[]).Length);
+			} else if (o is string[]) {
+				packer.PackArrayHeader ((o as string[]).Length);
 				
 				foreach (var obj in (o as string[]))
-					packer.Pack(obj as string);
-			}
-			else
-				throw new Exception("Cant handle type: " + o.GetType().Name);; 
+					packer.Pack (obj as string);
+			} else
+				throw new Exception ("Cant handle type: " + o.GetType ().Name);
+			; 
 		
 		}
-		
+
 		public void Dispose ()
 		{
-			this.Execute ("auth.logout", new object[] {});
+			this.Execute ("auth.logout", new object[] { });
 		}
 	}
 }
