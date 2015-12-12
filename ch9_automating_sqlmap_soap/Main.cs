@@ -96,7 +96,6 @@ namespace ch9_soap_fuzzer
 						soapBody));
 				
 				int k = 0;					
-				Dictionary<Guid, string> vulnValues = new Dictionary<Guid, string>();
 				foreach (Guid parm in paramList) {
 					string testSoap = soapDoc.ToString ().Replace (parm.ToString(), "fd'sa");
 					byte[] data = System.Text.Encoding.ASCII.GetBytes (testSoap);
@@ -117,22 +116,18 @@ namespace ch9_soap_fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error")) {
-							vulnValues.Add(parm, op.SoapAction);
 							Console.WriteLine ("Possible SQL injection vector in parameter: " + type.Parameters [k].Name);
+							TestPostRequestWithSqlmap(_endpoint, soapDoc.ToString(), op.SoapAction, parm.ToString());
 						}
 					}
 					k++;
 				}
-
-				foreach (var pair in vulnValues)
-					TestPostRequestWithSqlmap(_endpoint, soapDoc.ToString(), pair.Value, pair.Key.ToString());
 			}
 		}
 
 		static void FuzzHttpGetPort (SoapBinding binding)
 		{
 			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
-			List<string[]> vulns = new List<string[]> ();
 			foreach (SoapBindingOperation op in binding.Operations) {
 				Console.WriteLine ("Fuzzing operation: " + op.Name);
 
@@ -171,21 +166,17 @@ namespace ch9_soap_fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error")) {
-							vulns.Add (new string[] { url, input.Parts [k].Name });
 							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
+							TestGetRequestWithSqlmap (url, input.Parts [k].Name);
 						}
 					}
 					k++;
 				}
 			}
-
-			foreach (var vuln in vulns)
-				TestGetRequestWithSqlmap (vuln[0], vuln[1]);
 		}
 
 		static void FuzzHttpPostPort (SoapBinding binding) {
 			SoapPortType portType = _wsdl.PortTypes.Single (pt => pt.Name == binding.Type.Split (':') [1]);
-			List<string[]> vulns = new List<string[]> ();
 			foreach (SoapBindingOperation op in binding.Operations) {
 				Console.WriteLine ("Fuzzing operation: " + op.Name);
 
@@ -231,15 +222,13 @@ namespace ch9_soap_fuzzer
 							resp = rdr.ReadToEnd ();
 
 						if (resp.Contains ("syntax error")) {
-							vulns.Add (new string[] { url, testParams, guid.ToString() });
 							Console.WriteLine ("Possible SQL injection vector in parameter: " + input.Parts [k].Name);
+							TestPostRequestWithSqlmap (url, testParams, null, guid.ToString());
 						}
 					}
 					k++;
 				}
 			}
-			foreach (string[] vuln in vulns)
-				TestPostRequestWithSqlmap (vuln [0], vuln [1], null, vuln [2]);
 		}
 
 		static void TestGetRequestWithSqlmap (string url, string parameter)
@@ -247,30 +236,29 @@ namespace ch9_soap_fuzzer
 			Console.WriteLine("Testing url with sqlmap: " + url);
 			using (SqlmapSession session = new SqlmapSession("127.0.0.1", 8775)) {
 				using (SqlmapManager manager = new SqlmapManager(session)) {
-					string taskid = manager.NewTask();
-					var options = manager.GetOptions(taskid);
+					string taskID = manager.NewTask();
+					var options = manager.GetOptions(taskID);
 					options ["url"] = url;
 					options ["level"] = 1;
 					options ["risk"] = 1;
 					options ["dbms"] = "postgresql";
 					options ["testParameter"] = parameter;
-					options ["proxy"] = "http://192.168.2.207:8080";
 					options ["flushSession"] = "true";
-					manager.StartTask(taskid, options);
+					manager.StartTask(taskID, options);
 
-					SqlmapStatus status = manager.GetScanStatus(taskid);
+					SqlmapStatus status = manager.GetScanStatus(taskID);
 					while (status.Status != "terminated")
 					{
 						System.Threading.Thread.Sleep(new TimeSpan(0,0,10));
-						status = manager.GetScanStatus(taskid);
+						status = manager.GetScanStatus(taskID);
 					}
 
-					List<SqlmapLogItem> logItems = manager.GetLog(taskid);
+					List<SqlmapLogItem> logItems = manager.GetLog(taskID);
 
 					foreach (SqlmapLogItem item in logItems)
 						Console.WriteLine(item.Message);
 
-					manager.DeleteTask(taskid);
+					manager.DeleteTask(taskID);
 				}
 			}
 		}
@@ -280,17 +268,14 @@ namespace ch9_soap_fuzzer
 			using (SqlmapSession session = new SqlmapSession("127.0.0.1", 8775)) {
 				using (SqlmapManager manager = new SqlmapManager(session)) {
 
-					string taskid = manager.NewTask();
-					var options = manager.GetOptions(taskid);
-					options["url"] = url;
+					string taskID = manager.NewTask();
+					var options = manager.GetOptions(taskID);
+					options ["url"] = url;
 					options ["level"] = 1;
 					options ["risk"] = 1;
 					options ["dbms"] = "postgresql";
-					//options ["testParameter"] = parameter;
-					options["proxy"] = "http://192.168.2.207:8080";
-					options["data"] = data.Replace(vulnValue, "1*").Trim();
-					options["skipUrlEncode"] = "true";
-					options["flushSession"] = "true";
+					options ["data"] = data.Replace(vulnValue, "*").Trim();
+					options ["flushSession"] = "true";
 
 					string headers = string.Empty;
 					if (!string.IsNullOrEmpty (soapAction))
@@ -300,21 +285,21 @@ namespace ch9_soap_fuzzer
 	
 					options ["headers"] = headers;
 
-					manager.StartTask(taskid, options);
+					manager.StartTask(taskID, options);
 
-					SqlmapStatus status = manager.GetScanStatus(taskid);
+					SqlmapStatus status = manager.GetScanStatus(taskID);
 					while (status.Status != "terminated")
 					{
 						System.Threading.Thread.Sleep(new TimeSpan(0,0,10));
-						status = manager.GetScanStatus(taskid);
+						status = manager.GetScanStatus(taskID);
 					}
 
-					List<SqlmapLogItem> logItems = manager.GetLog(taskid);
+					List<SqlmapLogItem> logItems = manager.GetLog(taskID);
 
 					foreach (SqlmapLogItem item in logItems)
 						Console.WriteLine(item.Message);
 
-					manager.DeleteTask(taskid);
+					manager.DeleteTask(taskID);
 				}
 			}
 		}

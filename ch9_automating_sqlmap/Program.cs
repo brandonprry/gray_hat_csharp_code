@@ -1,6 +1,7 @@
 ﻿using System;
 using sqlmapsharp;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace ch9_automating_sqlmap
 {
@@ -9,7 +10,7 @@ namespace ch9_automating_sqlmap
 		public static void Main (string[] args)
 		{
 			using (SqlmapSession session = new SqlmapSession("127.0.0.1", 8775)) 
-			{ 
+			{   
 				using (SqlmapManager manager = new SqlmapManager(session)) 
 				{ 
 					string taskid = manager.NewTask();

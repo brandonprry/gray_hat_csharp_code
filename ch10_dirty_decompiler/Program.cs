@@ -21,7 +21,8 @@ namespace Decompiler {
 				if (!Directory.Exists(args[1] + Path.DirectorySeparatorChar + klass.namespase))
 					Directory.CreateDirectory(args[1] + Path.DirectorySeparatorChar + klass.namespase);
 
-				File.WriteAllText(args[1] + Path.DirectorySeparatorChar + klass.namespase + Path.DirectorySeparatorChar + klass.name + ".cs", klass.source);
+				string path = args [1] + Path.DirectorySeparatorChar + klass.namespase + Path.DirectorySeparatorChar + klass.name + ".cs";
+				File.WriteAllText(path, klass.source);
 			}
 		}
 
