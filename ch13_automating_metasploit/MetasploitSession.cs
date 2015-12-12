@@ -19,6 +19,10 @@ namespace ch13_automating_metasploit
 
 		public MetasploitSession (string username, string password, string host)
 		{
+			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {
+				return true;
+			};
+
 			_host = host;
 			_token = null;
 			
@@ -55,13 +59,8 @@ namespace ch13_automating_metasploit
 			
 			if (method != "auth.login" && string.IsNullOrEmpty (_token))
 				throw new Exception ("Not authenticated.");
-		
-			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {
-				return true;
-			}; //dis be bad, no ssl check
 			
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create (_host);
-
 			request.ContentType = "binary/message-pack";
 			request.Method = "POST";
 			request.KeepAlive = true;
@@ -75,9 +74,7 @@ namespace ch13_automating_metasploit
 			}
 
 			Packer msgpackWriter = Packer.Create (requestStream);
-			
 			msgpackWriter.PackArrayHeader (args.Length + 1 + (string.IsNullOrEmpty (_token) ? 0 : 1));
-			
 			msgpackWriter.PackString (method);
 			
 			if (!string.IsNullOrEmpty (_token) && method != "auth.login")
@@ -90,7 +87,6 @@ namespace ch13_automating_metasploit
 
 			byte[] buffer = new byte[4096];
 			MemoryStream mstream = new MemoryStream ();
-
 			try {
 				using (WebResponse response = request.GetResponse ()) {
 					using (Stream rstream = response.GetResponseStream ()) {
@@ -116,13 +112,10 @@ namespace ch13_automating_metasploit
 			mstream.Position = 0;
 
 			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
-
 			Dictionary<string, object > returnDictionary = TypifyDictionary (resp);
-			
 			return returnDictionary;
 		}
-
-		//this is a ridiculous method
+			
 		Dictionary<string, object> TypifyDictionary (MessagePackObjectDictionary dict)
 		{
 			Dictionary<string, object> returnDictionary = new Dictionary<string, object> ();
@@ -163,7 +156,7 @@ namespace ch13_automating_metasploit
 								array.Add (blah as object);
 
 							arr.Add (array.ToArray ());
-						} else if (o.ToObject ().GetType () == typeof(Byte)) //this is a hack because I don't know what type you are...
+						} else if (o.ToObject ().GetType () == typeof(Byte))
 							arr.Add (o.ToString ());
 					}
 
@@ -200,7 +193,6 @@ namespace ch13_automating_metasploit
 
 		void Pack (Packer packer, object o)
 		{
- 	 	
 			if (o == null) {
 				packer.PackNull ();
 				return;
@@ -232,7 +224,6 @@ namespace ch13_automating_metasploit
 				packer.PackString ((string)o, Encoding.ASCII);
 			else if (o is Dictionary<string, object>) {
 				packer.PackMapHeader ((o as Dictionary<string, object>).Count);
-				
 				foreach (var pair in (o as Dictionary<string, object>)) {
 					Pack (packer, pair.Key);
 					Pack (packer, pair.Value);
@@ -240,18 +231,18 @@ namespace ch13_automating_metasploit
 				
 			} else if (o is string[]) {
 				packer.PackArrayHeader ((o as string[]).Length);
-				
 				foreach (var obj in (o as string[]))
 					packer.Pack (obj as string);
 			} else
 				throw new Exception ("Cant handle type: " + o.GetType ().Name);
-			; 
-		
 		}
 
 		public void Dispose ()
 		{
-			this.Execute ("auth.logout", new object[] { });
+			if (this.Token != null){
+				this.Execute ("auth.logout", new object[] { });
+				_token = null;
+			}
 		}
 	}
 }

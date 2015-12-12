@@ -292,11 +292,10 @@ namespace ch13_automating_metasploit
 			else
 				return _session.Execute ("session.ring_read", sessionID);
 		}
-
-		
-		
+			
 		public void Dispose ()
 		{
+			_session = null;
 		}
 	}
 }

