@@ -66,4 +66,4 @@ In chapter fourteen, we conclude the book by focusing on automating the blackbox
 
 Conclusion
 --
-In the end, I want the reader to leave having a broad understanding of the potential the C# programming language can have at their home or organization, who may be struggling to enact and follow through with mature vulnerability management or security-oriented SDLCs.
+In the end, I want the reader to leave having a broad understanding of the potential the C# programming language can have at their home or organization, who may be struggling to enact and follow through with mature vulnerability management or security-oriented SDLCs due to resource constraints.
