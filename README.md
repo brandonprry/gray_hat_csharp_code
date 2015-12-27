@@ -28,17 +28,25 @@ Chapter 5
 --
 In chapter five, we start back again with HTTP in order to begin automating the Nessus vulnerability scanner. We go over how to create, watch, and report on scans on CIDR ranges programmatically.
 
+<https://www.tenable.com>
+
 Chapter 6
 --
 In chapter six, we maintain the focus on tool automation by moving onto automating the Nexpose vulnerability scanner. Nexpose, whose API is also HTTP based, can also achieve automated vulnerability scans and reports and offers a free year license for their Community product, very useful for home enthusiasts.
+
+<https://www.rapid7.com>
 
 Chapter 7
 --
 In chapter seven, we conclude the focus on vulnerability scanner automation with OpenVAS, a free and open source vulnerability scanner. OpenVAS has a fundamentally different kind of API than both Nessus and Nexpose, and is also very useful for hobbyists or home enthusiasts.
 
+<http://www.openvas.org>
+
 Chapter 8
 --
 In chapter eight, we move into the digital forensics area and focus on automating the Cuckoo Sandbox. Using an easy to consume RESTful JSON API, we automate submitting potential malware samples, then reporting on the results.
+
+<http://www.cuckoosandbox.org>
 
 Chapter 9
 --
@@ -56,13 +64,19 @@ Chapter 12
 --
 In chapter twelve, we focus on interacting with native, unmanaged libraries. ClamAV, a popular and open source antivirus project, is not written in a .NET language, but we can still interface with its core libraries as well as remotely via a TCP daemon. We cover how to automate ClamAV in both scenarios.
 
+<http://www.clamav.net>
+
 Chapter 13
 --
 In chapter thirteen, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework in order to exploit and report on shelled hosts.
 
+<https://www.rapid7.com>
+
 Chapter 14
 --
 In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project. Using the Arachni MSGPACK RPC that is the shipped with the project, we create a small tool to automatically scan a URL and report the findings as we scan.
+
+<http://www.arachni-scanner.com>
 
 Conclusion
 --
