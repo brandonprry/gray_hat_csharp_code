@@ -58,7 +58,7 @@ In chapter twelve, we focus on interacting with native, unmanaged libraries. Cla
 
 Chapter 13
 --
-In chapter thirteen, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework.
+In chapter thirteen, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework in order to exploit and report on shelled hosts.
 
 Chapter 14
 --
