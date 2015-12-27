@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace cuckoosharp
 {
-	public class CuckooSession : IDisposable
+	public class CuckooSession
 	{
 		public CuckooSession (string host, int port)
 		{
@@ -16,7 +16,6 @@ namespace cuckoosharp
 		}
 		
 		public string Host { get; set; }
-		
 		public int Port { get; set; }
 		
 		public JObject ExecuteCommand (string uri, string verb)
@@ -26,15 +25,9 @@ namespace cuckoosharp
 			
 			string resp = string.Empty;
 			using (Stream str = req.GetResponse().GetResponseStream())
-			using (StreamReader rdr = new StreamReader(str))
-				resp = rdr.ReadToEnd ();
-//			
-//			resp = resp.Replace(", \n        \"completed_on\": null", string.Empty);
-//			resp = resp.Replace(", \n        \"network\": null", string.Empty);
-//			
-//			JavaScriptSerializer serial = new JavaScriptSerializer ();
-//			IDictionary<string, object> r = serial.Deserialize<IDictionary<string, object>>(resp);
-//			
+				using (StreamReader rdr = new StreamReader(str))
+					resp = rdr.ReadToEnd ();
+
 			JObject obj = JObject.Parse(resp);
 
 			return obj;
@@ -57,10 +50,6 @@ namespace cuckoosharp
 			using (Stream str = req.GetResponse().GetResponseStream())
 				using (StreamReader rdr = new StreamReader(str))
 					resp = rdr.ReadToEnd ();
-//			
-//			resp = resp.Replace("\"completed_on\": null", string.Empty);
-//			JavaScriptSerializer serial = new JavaScriptSerializer ();
-//			IDictionary<string, object> r = serial.Deserialize<IDictionary<string, object>> (resp);
 			
 			JObject obj = JObject.Parse(resp);
 			return obj;
@@ -118,28 +107,13 @@ namespace cuckoosharp
 		}
 		
 		private System.Text.Encoding encoding = System.Text.Encoding.ASCII;
-
-		public void Dispose ()
-		{
-			
-		}
 	}
 	
 	public class FileParameter
 	{
 		public byte[] File { get; set; }
-
 		public string FileName { get; set; }
-
 		public string ContentType { get; set; }
-
-		public FileParameter (byte[] file) : this(file, null)
-		{
-		}
-
-		public FileParameter (byte[] file, string filename) : this(file, filename, null)
-		{
-		}
 
 		public FileParameter (byte[] file, string filename, string contenttype)
 		{

