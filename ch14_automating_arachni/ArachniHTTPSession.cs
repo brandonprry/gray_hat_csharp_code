@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace ch14_automating_arachni
 {
-	public class ArachniHTTPSession : IDisposable
+	public class ArachniHTTPSession
 	{
 		public ArachniHTTPSession (string host, int port)
 		{
@@ -43,10 +43,6 @@ namespace ch14_automating_arachni
 				resp = reader.ReadToEnd ();
 
 			return JObject.Parse (resp);
-		}
-
-		public void Dispose ()
-		{
 		}
 	}
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace ch14_automating_arachni
 {
-	public class ArachniHTTPManager : IDisposable
+	public class ArachniHTTPManager
 	{
 		ArachniHTTPSession _session;
 
@@ -23,11 +23,6 @@ namespace ch14_automating_arachni
 
 		public JObject GetScanStatus(Guid id){
 			return _session.ExecuteRequest ("GET", "/scans/" + id.ToString ().Replace("-", string.Empty));
-		}
-
-		public void Dispose ()
-		{
-			_session.Dispose ();
 		}
 	}
 }

@@ -21,7 +21,7 @@ namespace ch14_automating_arachni_rpc
 		{
 			this.Host = host;
 			this.Port = port;
-			GetDispatcherStream ();
+			GetStream (host, port);
 			this.IsInstanceStream = false;
 
 			if (initiateInstance) {
@@ -34,7 +34,7 @@ namespace ch14_automating_arachni_rpc
 				this.InstancePort = int.Parse (url [1]);
 				this.Token = resp ["token"].AsString ();
 
-				GetInstanceStream ();
+				GetStream (this.InstanceHost, this.InstancePort);
 
 				bool aliveResp = this.ExecuteCommand ("service.alive?", new object[]{ }, this.Token).AsBoolean ();
 
@@ -113,19 +113,9 @@ namespace ch14_automating_arachni_rpc
 			return buffer;
 		}
 
-		private void GetDispatcherStream ()
+		private void GetStream (string host, int port)
 		{
-			TcpClient client = new TcpClient (this.Host, this.Port);
-
-			_stream = new SslStream (client.GetStream (), false, new RemoteCertificateValidationCallback (ValidateServerCertificate), 
-				(sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) => null);
-
-			_stream.AuthenticateAsClient ("arachni", null, SslProtocols.Tls, false);
-		}
-
-		private void GetInstanceStream ()
-		{
-			TcpClient client = new TcpClient (this.InstanceHost, this.InstancePort);
+			TcpClient client = new TcpClient (host, port);
 
 			_stream = new SslStream (client.GetStream (), false, new RemoteCertificateValidationCallback (ValidateServerCertificate), 
 				(sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) => null);
