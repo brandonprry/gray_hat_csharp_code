@@ -1,6 +1,6 @@
 ﻿using System;
-using MsgPack;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace ch14_automating_arachni
 {
@@ -10,37 +10,19 @@ namespace ch14_automating_arachni
 
 		public ArachniManager (ArachniSession session)
 		{
-			if (!session.IsInstanceStream)
-				throw new Exception ("Session must be using an instance stream, not a dispatcher stream");
-
 			_session = session;
 		}
 
-		public MessagePackObject StartScan (string url, string checks = "*")
-		{
-			Dictionary<string, object> args = new Dictionary<string, object> ();
-			args ["url"] = url;
-			args ["checks"] = checks;
-			args ["audit"] = new Dictionary<string, object> ();
-			((Dictionary<string, object>)args ["audit"]) ["elements"] = new object[] { "links", "forms" };
+		public JObject StartScan(string url, JObject options = null) {
+			JObject data = new JObject ();
+			data ["url"] = url;
+			data.Merge (options);
 
-			return _session.ExecuteCommand ("service.scan", new object[]{ args }, _session.Token);
+			return _session.ExecuteRequest ("POST", "/scans", data);
 		}
 
-		public MessagePackObject GetProgress (List<uint> digests = null)
-		{
-			Dictionary<string, object> args = new Dictionary<string, object> ();
-			args ["with"] = "issues";
-			if (digests != null) {
-				args ["without"] = new Dictionary<string, object> ();
-				((Dictionary<string, object>)args ["without"]) ["issues"] = digests.ToArray ();
-			}
-			return _session.ExecuteCommand ("service.progress", new object[] { args }, _session.Token);
-		}
-
-		public MessagePackObject IsBusy ()
-		{
-			return _session.ExecuteCommand ("service.busy?", new object[]{ }, _session.Token);
+		public JObject GetScanStatus(Guid id){
+			return _session.ExecuteRequest ("GET", "/scans/" + id.ToString ().Replace("-", string.Empty));
 		}
 
 		public void Dispose ()
