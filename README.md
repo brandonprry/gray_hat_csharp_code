@@ -54,7 +54,7 @@ In chapter nine, we move onto more than just finding potential SQL injections wi
 
 Chapter 10
 --
-In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write one ourselves.
+In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves.
 
 Chapter 11
 --
