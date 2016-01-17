@@ -58,7 +58,7 @@ In chapter ten, we move into reverse engineering. There are easy to use .NET dec
 
 Chapter 11
 --
-In chapter eleven, we move into the incident response area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily see patch level information or even retrieve user's account and password hash information.
+In chapter eleven, we move into the incident response area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve user's account and password hash information.
 
 Chapter 12
 --
