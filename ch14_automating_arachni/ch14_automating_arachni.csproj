@@ -38,8 +38,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ArachniManager.cs" />
-    <Compile Include="ArachniSession.cs" />
+    <Compile Include="ArachniHTTPManager.cs" />
+    <Compile Include="ArachniHTTPSession.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

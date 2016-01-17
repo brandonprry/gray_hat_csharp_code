@@ -9,8 +9,11 @@ namespace ch14_automating_arachni
 	{
 		public static void Main (string[] args)
 		{
-			using (ArachniSession session = new ArachniSession ("127.0.0.1", 7331)) {
-				using (ArachniManager manager = new ArachniManager (session)) {
+			using (ArachniHTTPSession session = new ArachniHTTPSession ("127.0.0.1", 7331)) {
+				using (ArachniHTTPManager manager = new ArachniHTTPManager (session)) {
+
+					JObject scanOptions = new JObject ();
+
 					JObject scanId = manager.StartScan ("http://demo.testfire.net/default.aspx");
 					Guid id = Guid.Parse(scanId ["id"].ToString ());
 					JObject scan = manager.GetScanStatus (id);

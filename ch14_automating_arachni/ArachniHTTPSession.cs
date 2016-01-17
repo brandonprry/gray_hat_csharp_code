@@ -11,9 +11,9 @@ using Newtonsoft.Json.Linq;
 
 namespace ch14_automating_arachni
 {
-	public class ArachniSession : IDisposable
+	public class ArachniHTTPSession : IDisposable
 	{
-		public ArachniSession (string host, int port)
+		public ArachniHTTPSession (string host, int port)
 		{
 			this.Host = host;
 			this.Port = port;

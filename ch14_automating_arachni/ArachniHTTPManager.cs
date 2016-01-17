@@ -4,11 +4,11 @@ using Newtonsoft.Json.Linq;
 
 namespace ch14_automating_arachni
 {
-	public class ArachniManager : IDisposable
+	public class ArachniHTTPManager : IDisposable
 	{
-		ArachniSession _session;
+		ArachniHTTPSession _session;
 
-		public ArachniManager (ArachniSession session)
+		public ArachniHTTPManager (ArachniHTTPSession session)
 		{
 			_session = session;
 		}
