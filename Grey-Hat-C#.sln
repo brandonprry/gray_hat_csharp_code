@@ -55,7 +55,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vulnerable_json_endpoin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_automating_metasploit", "ch13_automating_metasploit\ch13_automating_metasploit.csproj", "{F1E0A90B-9F05-4D1F-AA4C-FA6DA7E7A57F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_automating_arachni", "ch14_automating_arachni\ch14_automating_arachni.csproj", "{C4AF9B5C-A4F1-44A1-8036-466154D9BE8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_automating_arachni_http", "ch14_automating_arachni\ch14_automating_arachni_http.csproj", "{C4AF9B5C-A4F1-44A1-8036-466154D9BE8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_automating_arachni_rpc", "ch14_automating_arachni_rpc\ch14_automating_arachni_rpc.csproj", "{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -151,6 +153,18 @@ Global
 		{430D3EB9-A13B-4951-82FE-347A29D88008}.PerformanceTest|Any CPU.Build.0 = Debug|x86
 		{430D3EB9-A13B-4951-82FE-347A29D88008}.Release|x86.ActiveCfg = Release|x86
 		{430D3EB9-A13B-4951-82FE-347A29D88008}.Release|x86.Build.0 = Release|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.CodeAnalysis|Any CPU.ActiveCfg = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.CodeAnalysis|Any CPU.Build.0 = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.CoreProfile|Any CPU.ActiveCfg = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.CoreProfile|Any CPU.Build.0 = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Debug|x86.ActiveCfg = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Debug|x86.Build.0 = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Instrument|Any CPU.ActiveCfg = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Instrument|Any CPU.Build.0 = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.PerformanceTest|Any CPU.ActiveCfg = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.PerformanceTest|Any CPU.Build.0 = Debug|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Release|x86.ActiveCfg = Release|x86
+		{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}.Release|x86.Build.0 = Release|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.CodeAnalysis|Any CPU.ActiveCfg = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.CodeAnalysis|Any CPU.Build.0 = Debug|x86
 		{5522B720-A3FC-4543-B6C6-4BE017727417}.CoreProfile|Any CPU.ActiveCfg = Debug|x86
