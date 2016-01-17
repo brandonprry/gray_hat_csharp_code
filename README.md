@@ -54,11 +54,11 @@ In chapter nine, we move onto more than just finding potential SQL injections wi
 
 Chapter 10
 --
-In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write one ourselves.
+In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves.
 
 Chapter 11
 --
-In chapter eleven, we move into the incident response area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily see patch level information or even retrieve user's account and password hash information.
+In chapter eleven, we move into the incident response area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily begin retrieving user's account and password hash information.
 
 Chapter 12
 --
@@ -74,7 +74,7 @@ In chapter thirteen, we put the focus back on Metasploit. We learn how to progra
 
 Chapter 14
 --
-In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project. Using the Arachni MSGPACK RPC that is the shipped with the project, we create a small tool to automatically scan a URL and report the findings as we scan.
+In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project, though dual-licensed. Using both the simpler RESTful HTTP API and the more powerful MSGPACK RPC that is the shipped with the project, we create small tools to automatically scan a URL and report the findings as we scan.
 
 <http://www.arachni-scanner.com>
 
