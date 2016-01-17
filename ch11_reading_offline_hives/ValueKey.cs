@@ -16,15 +16,11 @@ namespace ntregsharp
 			buf = hive.ReadBytes(2);
 			
 			this.NameLength = BitConverter.ToInt16(buf,0);
-			
 			this.DataLength = BitConverter.ToInt32(hive.ReadBytes(4),0);
-			
-			//dataoffset
+		
 			byte[] databuf = hive.ReadBytes(4);
 			
 			this.ValueType = hive.ReadInt32();
-			
-			//flag and trash, two words -- wordplay is fun
 			hive.BaseStream.Position += 4;
 			
 			buf = hive.ReadBytes(this.NameLength);

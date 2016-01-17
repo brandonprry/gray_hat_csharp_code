@@ -14,6 +14,23 @@ namespace ntregsharp
 			ReadChildValues (hive);
 		}
 
+		public List<NodeKey> ChildNodes { get; set; }
+		public List<ValueKey> ChildValues { get; set; }
+		public DateTime Timestamp { get; set; }
+		public int ParentOffset { get; set; }
+		public int SubkeysCount { get; set; }
+		public int LFRecordOffset { get; set; }
+		public int ClassnameOffset { get; set; }
+		public int SecurityKeyOffset { get; set; }
+		public int ValuesCount { get; set; }
+		public int ValueListOffset { get; set; }
+		public short NameLength { get; set; }
+		public bool IsRootKey { get; set; }
+		public short ClassnameLength { get; set; }
+		public string Name { get; set; }
+		public byte[] ClassnameData { get; set; }
+		public NodeKey ParentNodeKey { get; set; }
+
 		private void ReadNodeStructure(BinaryReader hive) {
 			byte[] buf = hive.ReadBytes(4);
 
@@ -117,22 +134,5 @@ namespace ntregsharp
 				}
 			}
 		}
-
-		public List<NodeKey> ChildNodes { get; set; }
-		public List<ValueKey> ChildValues { get; set; }
-		public DateTime Timestamp { get; set; }
-		public int ParentOffset { get; set; }
-		public int SubkeysCount { get; set; }
-		public int LFRecordOffset { get; set; }
-		public int ClassnameOffset { get; set; }
-		public int SecurityKeyOffset { get; set; }
-		public int ValuesCount { get; set; }
-		public int ValueListOffset { get; set; }
-		public short NameLength { get; set; }
-		public bool IsRootKey { get; set; }
-		public short ClassnameLength { get; set; }
-		public string Name { get; set; }
-		public byte[] ClassnameData { get; set; }
-		public NodeKey ParentNodeKey { get; set; }
 	}
 }
