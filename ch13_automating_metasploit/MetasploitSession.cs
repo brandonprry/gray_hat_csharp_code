@@ -26,15 +26,15 @@ namespace ch13_automating_metasploit
 			_host = host;
 			_token = null;
 			
-			Dictionary<string, object > response = this.Authenticate (username, password);
+			MessagePackObjectDictionary response = this.Authenticate (username, password);
 			
 			bool loggedIn = !response.ContainsKey ("error");
 
 			if (!loggedIn)
-				throw new Exception (response ["error_message"] as string);
+				throw new Exception (response ["error_message"].AsString());
 			
-			if ((response ["result"] as string) == "success")
-				_token = response ["token"] as string;
+			if ((response ["result"].AsString()) == "success")
+				_token = response ["token"].AsString();
 		}
 
 		public MetasploitSession (string token, string host)
@@ -47,12 +47,12 @@ namespace ch13_automating_metasploit
 			get { return _token; }
 		}
 
-		public Dictionary<string, object> Authenticate (string username, string password)
+		public MessagePackObjectDictionary Authenticate (string username, string password)
 		{
 			return this.Execute ("auth.login", username, password);
 		}
 
-		public Dictionary<string, object> Execute (string method, params object[] args)
+		public MessagePackObjectDictionary Execute (string method, params object[] args)
 		{
 			if (string.IsNullOrEmpty (_host))
 				throw new Exception ("Host null or empty");
@@ -112,83 +112,7 @@ namespace ch13_automating_metasploit
 			mstream.Position = 0;
 
 			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
-			Dictionary<string, object > returnDictionary = TypifyDictionary (resp);
-			return returnDictionary;
-		}
-			
-		Dictionary<string, object> TypifyDictionary (MessagePackObjectDictionary dict)
-		{
-			Dictionary<string, object> returnDictionary = new Dictionary<string, object> ();
-			
-			foreach (var pair in dict) {
-				MessagePackObject obj = (MessagePackObject)pair.Value;
-				string key = System.Text.Encoding.ASCII.GetString ((byte[])pair.Key);
-
-				if (obj.UnderlyingType == null)
-					continue;
-				
-				if (obj.IsRaw) {
-					if (obj.UnderlyingType == typeof(string)) {
-						if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-							returnDictionary [key] = obj.AsString ();
-						else
-							returnDictionary [pair.Key.ToString ()] = obj.AsString ();
-					} else if (obj.IsTypeOf (typeof(int)).Value)
-						returnDictionary [pair.Key.ToString ()] = (int)obj.ToObject ();
-					else if (obj.IsTypeOf (typeof(Byte[])).Value) {
-						if (key == "payload")
-							returnDictionary [key] = (byte[])obj;
-						else
-							returnDictionary [key] = System.Text.Encoding.ASCII.GetString ((Byte[])obj.ToObject ());
-					} else
-						throw new Exception ("I don't know type: " + pair.Value.GetType ().Name);
-				} else if (obj.IsArray) {
-					List<object> arr = new List<object> ();
-					foreach (var o in obj.ToObject() as MessagePackObject[]) {
-						if (o.IsDictionary)
-							arr.Add (TypifyDictionary (o.AsDictionary ()));
-						else if (o.IsRaw)
-							arr.Add (System.Text.Encoding.ASCII.GetString ((byte[])o));
-						else if (o.IsArray) {
-							var enu = o.AsEnumerable ();
-							List<object> array = new List<object> ();
-							foreach (var blah in enu)
-								array.Add (blah as object);
-
-							arr.Add (array.ToArray ());
-						} else if (o.ToObject ().GetType () == typeof(Byte))
-							arr.Add (o.ToString ());
-					}
-
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-						returnDictionary.Add (key, arr);
-					else
-						returnDictionary.Add (key, arr);
-				} else if (obj.IsDictionary) {
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-						returnDictionary [key] = TypifyDictionary (obj.AsDictionary ());
-					else
-						returnDictionary [pair.Key.ToString ()] = TypifyDictionary (obj.AsDictionary ());
-				} else if (obj.IsTypeOf (typeof(UInt16)).Value) {
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-						returnDictionary [key] = obj.AsUInt16 ();
-					else
-						returnDictionary [pair.Key.ToString ()] = obj.AsUInt16 ();
-				} else if (obj.IsTypeOf (typeof(UInt32)).Value) {
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-						returnDictionary [key] = obj.AsUInt32 ();
-					else
-						returnDictionary [pair.Key.ToString ()] = obj.AsUInt32 ();
-				} else if (obj.IsTypeOf (typeof(bool)).Value) {
-					if (pair.Key.IsRaw && pair.Key.IsTypeOf (typeof(Byte[])).Value)
-						returnDictionary [key] = obj.AsBoolean ();
-					else
-						returnDictionary [pair.Key.ToString ()] = obj.AsBoolean ();
-				} else
-					throw new Exception ("Don't know type: " + obj.ToObject ().GetType ().Name);
-			}
-			
-			return returnDictionary;
+			return resp;
 		}
 
 		void Pack (Packer packer, object o)

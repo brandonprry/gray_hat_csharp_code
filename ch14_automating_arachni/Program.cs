@@ -13,8 +13,11 @@ namespace ch14_automating_arachni
 				using (ArachniHTTPManager manager = new ArachniHTTPManager (session)) {
 
 					JObject scanOptions = new JObject ();
+					scanOptions ["checks"] = new JArray() { "xss*", "sql*" } ;
+					scanOptions ["audit"] = new JObject ();
+					scanOptions ["audit"]["elements"] = new JArray() { "links", "forms" };
 
-					JObject scanId = manager.StartScan ("http://demo.testfire.net/default.aspx");
+					JObject scanId = manager.StartScan ("http://demo.testfire.net/default.aspx", scanOptions);
 					Guid id = Guid.Parse(scanId ["id"].ToString ());
 					JObject scan = manager.GetScanStatus (id);
 

