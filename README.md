@@ -74,7 +74,7 @@ In chapter thirteen, we put the focus back on Metasploit. We learn how to progra
 
 Chapter 14
 --
-In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project. Using the Arachni MSGPACK RPC that is the shipped with the project, we create a small tool to automatically scan a URL and report the findings as we scan.
+In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project. Using the Arachni both the simpler RESTful HTTP server and the more powerful MSGPACK RPC that is the shipped with the project, we create a small tools to automatically scan a URL and report the findings as we scan.
 
 <http://www.arachni-scanner.com>
 
