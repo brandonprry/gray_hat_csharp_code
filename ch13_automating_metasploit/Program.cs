@@ -44,7 +44,7 @@ namespace ch13_automating_metasploit
 						response = manager.ListJobs ();
 					}
 
-					manager.StopJob (jobID.ToString ());
+					response = manager.StopJob (jobID.ToString ());
 
 					response = manager.ListSessions ();
 					foreach (var pair in response) {
