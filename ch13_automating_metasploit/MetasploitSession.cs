@@ -26,15 +26,15 @@ namespace ch13_automating_metasploit
 			_host = host;
 			_token = null;
 			
-			MessagePackObjectDictionary response = this.Authenticate (username, password);
+			Dictionary<object, object> response = this.Authenticate (username, password);
 			
 			bool loggedIn = !response.ContainsKey ("error");
 
 			if (!loggedIn)
-				throw new Exception (response ["error_message"].AsString());
+				throw new Exception (response ["error_message"] as string);
 			
-			if ((response ["result"].AsString()) == "success")
-				_token = response ["token"].AsString();
+			if ((response ["result"] as string) == "success")
+				_token = response ["token"] as string;
 		}
 
 		public MetasploitSession (string token, string host)
@@ -47,12 +47,12 @@ namespace ch13_automating_metasploit
 			get { return _token; }
 		}
 
-		public MessagePackObjectDictionary Authenticate (string username, string password)
+		public Dictionary<object, object> Authenticate (string username, string password)
 		{
 			return this.Execute ("auth.login", username, password);
 		}
 
-		public MessagePackObjectDictionary Execute (string method, params object[] args)
+		public Dictionary<object, object> Execute (string method, params object[] args)
 		{
 			if (string.IsNullOrEmpty (_host))
 				throw new Exception ("Host null or empty");
@@ -112,7 +112,37 @@ namespace ch13_automating_metasploit
 			mstream.Position = 0;
 
 			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
-			return resp;
+			return MessagePackToDictionary(resp);
+		}
+
+		private Dictionary<object, object> MessagePackToDictionary(MessagePackObjectDictionary dict){
+			Dictionary<object, object> newDict = new Dictionary<object, object> ();
+			foreach (var pair in dict) {
+				object newKey = GetObject (pair.Key);
+				if (pair.Value.IsTypeOf<MessagePackObjectDictionary> () == true)
+					newDict [newKey] = MessagePackToDictionary (pair.Value.AsDictionary ());
+				else {
+					if ((string)newKey != "payload")
+						newDict [newKey] = GetObject (pair.Value);
+					else
+						newDict [newKey] = pair.Value.AsString ();
+				}
+			}
+
+			return newDict;
+		}
+
+		private object GetObject(MessagePackObject str){
+			if (str.UnderlyingType == typeof(byte[]))
+				return System.Text.Encoding.ASCII.GetString (str.AsBinary ());
+			else if (str.UnderlyingType == typeof(string))
+				return str.AsString ();
+			else if (str.UnderlyingType == typeof(byte))
+				return str.AsByte ();
+			else if (str.UnderlyingType == typeof(bool))
+				return str.AsBoolean ();
+
+			return str;
 		}
 
 		void Pack (Packer packer, object o)
@@ -146,9 +176,9 @@ namespace ch13_automating_metasploit
 				packer.Pack ((ushort)o);
 			else if (o is string)
 				packer.PackString ((string)o, Encoding.ASCII);
-			else if (o is Dictionary<string, object>) {
-				packer.PackMapHeader ((o as Dictionary<string, object>).Count);
-				foreach (var pair in (o as Dictionary<string, object>)) {
+			else if (o is Dictionary<object, object>) {
+				packer.PackMapHeader ((o as Dictionary<object, object>).Count);
+				foreach (var pair in (o as Dictionary<object, object>)) {
 					Pack (packer, pair.Key);
 					Pack (packer, pair.Value);
 				}

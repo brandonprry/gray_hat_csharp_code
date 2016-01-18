@@ -16,7 +16,6 @@ namespace ch14_automating_arachni_rpc
 	public class ArachniRPCSession : IDisposable
 	{
 		SslStream _stream = null;
-
 		public ArachniRPCSession (string host, int port, bool initiateInstance = false)
 		{
 			this.Host = host;

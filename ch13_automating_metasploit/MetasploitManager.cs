@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using MsgPack;
 
 namespace ch13_automating_metasploit
@@ -12,47 +13,47 @@ namespace ch13_automating_metasploit
 			_session = session;
 		}
 
-		public MessagePackObjectDictionary GetCoreModuleStats ()
+		public Dictionary<object, object> GetCoreModuleStats ()
 		{
 			return _session.Execute ("core.module_stats");
 		}
 
-		public MessagePackObjectDictionary GetCoreVersionInformation ()
+		public Dictionary<object, object> GetCoreVersionInformation ()
 		{
 			return _session.Execute ("core.version");
 		}
 
-		public MessagePackObjectDictionary ListJobs ()
+		public Dictionary<object, object> ListJobs ()
 		{
 			return _session.Execute ("job.list");
 		}
 
-		public MessagePackObjectDictionary StopJob (string jobID)
+		public Dictionary<object, object> StopJob (string jobID)
 		{
 			return _session.Execute ("job.stop", jobID);
 		}
 
-		public MessagePackObjectDictionary ExecuteModule (string moduleType, string moduleName, MessagePackObjectDictionary options)
+		public Dictionary<object, object> ExecuteModule (string moduleType, string moduleName, Dictionary<object, object> options)
 		{
 			return _session.Execute ("module.execute", moduleType, moduleName, options);
 		}
 
-		public MessagePackObjectDictionary ListSessions ()
+		public Dictionary<object, object> ListSessions ()
 		{
 			return _session.Execute ("session.list");
 		}
 
-		public MessagePackObjectDictionary StopSession (string sessionID)
+		public Dictionary<object, object> StopSession (string sessionID)
 		{
 			return _session.Execute ("session.stop", sessionID);
 		}
 
-		public MessagePackObjectDictionary ReadSessionShell (string sessionID)
+		public Dictionary<object, object> ReadSessionShell (string sessionID)
 		{
 			return this.ReadSessionShell (sessionID, null);
 		}
 
-		public MessagePackObjectDictionary ReadSessionShell (string sessionID, int? readPointer)
+		public Dictionary<object, object> ReadSessionShell (string sessionID, int? readPointer)
 		{
 			if (readPointer.HasValue)
 				return _session.Execute ("session.shell_read", sessionID, readPointer.Value);
@@ -60,7 +61,7 @@ namespace ch13_automating_metasploit
 				return _session.Execute ("session.shell_read", sessionID);
 		}
 
-		public MessagePackObjectDictionary WriteToSessionShell (string sessionID, string data)
+		public Dictionary<object, object> WriteToSessionShell (string sessionID, string data)
 		{
 			return _session.Execute ("session.shell_write", sessionID, data);
 		}
