@@ -125,7 +125,7 @@ namespace ch13_automating_metasploit
 					if ((string)newKey != "payload")
 						newDict [newKey] = GetObject (pair.Value);
 					else
-						newDict [newKey] = pair.Value.AsString ();
+						newDict [newKey] = pair.Value;
 				}
 			}
 
@@ -154,26 +154,8 @@ namespace ch13_automating_metasploit
  	
 			if (o is int)
 				packer.Pack ((int)o);
-			else if (o is uint)
-				packer.Pack ((uint)o);
-			else if (o is float)
-				packer.Pack ((float)o);
-			else if (o is double)
-				packer.Pack ((double)o);
-			else if (o is long)
-				packer.Pack ((long)o);
-			else if (o is ulong)
-				packer.Pack ((ulong)o);
 			else if (o is bool)
 				packer.Pack ((bool)o);
-			else if (o is byte)
-				packer.Pack ((byte)o);
-			else if (o is sbyte)
-				packer.Pack ((sbyte)o);
-			else if (o is short)
-				packer.Pack ((short)o);
-			else if (o is ushort)
-				packer.Pack ((ushort)o);
 			else if (o is string)
 				packer.PackString ((string)o, Encoding.ASCII);
 			else if (o is Dictionary<object, object>) {
@@ -182,11 +164,6 @@ namespace ch13_automating_metasploit
 					Pack (packer, pair.Key);
 					Pack (packer, pair.Value);
 				}
-				
-			} else if (o is string[]) {
-				packer.PackArrayHeader ((o as string[]).Length);
-				foreach (var obj in (o as string[]))
-					packer.Pack (obj as string);
 			} else
 				throw new Exception ("Cant handle type: " + o.GetType ().Name);
 		}
