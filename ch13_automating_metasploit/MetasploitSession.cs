@@ -19,10 +19,6 @@ namespace ch13_automating_metasploit
 
 		public MetasploitSession (string username, string password, string host)
 		{
-			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {
-				return true;
-			};
-
 			_host = host;
 			_token = null;
 			
@@ -59,14 +55,7 @@ namespace ch13_automating_metasploit
 			request.Method = "POST";
 			request.KeepAlive = true;
 
-			Stream requestStream = null;
-
-			try {
-				requestStream = request.GetRequestStream ();
-			} catch (Exception ex) {
-				Console.WriteLine (ex);
-			}
-
+			Stream requestStream = request.GetRequestStream ();
 			Packer msgpackWriter = Packer.Create (requestStream);
 			msgpackWriter.PackArrayHeader (args.Length + 1 + (string.IsNullOrEmpty (_token) ? 0 : 1));
 			msgpackWriter.Pack (method);
@@ -81,28 +70,22 @@ namespace ch13_automating_metasploit
 
 			byte[] buffer = new byte[4096];
 			MemoryStream mstream = new MemoryStream ();
-			try {
-				using (WebResponse response = request.GetResponse ()) {
-					using (Stream rstream = response.GetResponseStream ()) {
-						int count = 0;
-					
-						do {
-							count = rstream.Read (buffer, 0, buffer.Length);
-							mstream.Write (buffer, 0, count);
-						} while (count != 0);
-					
-					}
-				}
-			} catch (WebException ex) {
-				if (ex.Response != null) {
-					string res = string.Empty;
-					using (StreamReader rdr = new StreamReader (ex.Response.GetResponseStream ()))
-						res = rdr.ReadToEnd ();
+			using (WebResponse response = request.GetResponse ()) {
+				using (Stream rstream = response.GetResponseStream ()) {
+					int count = 0;
+				
+					do {
+						count = rstream.Read (buffer, 0, buffer.Length);
+						mstream.Write (buffer, 0, count);
 
-					Console.WriteLine (res);
+						if (count == buffer.Length)
+							buffer = new byte[4096];
+	
+					} while (count != 0);
+				
 				}
 			}
-			
+
 			mstream.Position = 0;
 
 			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
@@ -139,8 +122,8 @@ namespace ch13_automating_metasploit
 
 		public void Dispose ()
 		{
-			if (this.Token != null) {
-				this.Execute ("auth.logout", new object[] { });
+			if (_token != null) {
+				this.Execute ("auth.logout", new object[] { _token });
 				_token = null;
 			}
 		}
