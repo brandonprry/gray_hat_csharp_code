@@ -37,12 +37,6 @@ namespace ch13_automating_metasploit
 				_token = response ["token"] as string;
 		}
 
-		public MetasploitSession (string token, string host)
-		{
-			_token = token;
-			_host = host;
-		}
-
 		public string Token { 
 			get { return _token; }
 		}
@@ -75,13 +69,13 @@ namespace ch13_automating_metasploit
 
 			Packer msgpackWriter = Packer.Create (requestStream);
 			msgpackWriter.PackArrayHeader (args.Length + 1 + (string.IsNullOrEmpty (_token) ? 0 : 1));
-			msgpackWriter.PackString (method);
+			msgpackWriter.Pack (method);
 			
 			if (!string.IsNullOrEmpty (_token) && method != "auth.login")
 				msgpackWriter.Pack (_token);
 			
 			foreach (object arg in args)
-				Pack (msgpackWriter, arg);
+				msgpackWriter.Pack (arg);
 			
 			requestStream.Close ();
 
@@ -112,27 +106,25 @@ namespace ch13_automating_metasploit
 			mstream.Position = 0;
 
 			MessagePackObjectDictionary resp = Unpacking.UnpackObject (mstream).AsDictionary ();
-			return MessagePackToDictionary(resp);
+			return MessagePackToDictionary (resp);
 		}
 
-		private Dictionary<object, object> MessagePackToDictionary(MessagePackObjectDictionary dict){
+		private Dictionary<object, object> MessagePackToDictionary (MessagePackObjectDictionary dict)
+		{
 			Dictionary<object, object> newDict = new Dictionary<object, object> ();
 			foreach (var pair in dict) {
 				object newKey = GetObject (pair.Key);
 				if (pair.Value.IsTypeOf<MessagePackObjectDictionary> () == true)
 					newDict [newKey] = MessagePackToDictionary (pair.Value.AsDictionary ());
-				else {
-					if ((string)newKey != "payload")
-						newDict [newKey] = GetObject (pair.Value);
-					else
-						newDict [newKey] = pair.Value;
-				}
+				else
+					newDict [newKey] = GetObject (pair.Value);
 			}
 
 			return newDict;
 		}
 
-		private object GetObject(MessagePackObject str){
+		private object GetObject (MessagePackObject str)
+		{
 			if (str.UnderlyingType == typeof(byte[]))
 				return System.Text.Encoding.ASCII.GetString (str.AsBinary ());
 			else if (str.UnderlyingType == typeof(string))
@@ -145,32 +137,9 @@ namespace ch13_automating_metasploit
 			return str;
 		}
 
-		void Pack (Packer packer, object o)
-		{
-			if (o == null) {
-				packer.PackNull ();
-				return;
-			}
- 	
-			if (o is int)
-				packer.Pack ((int)o);
-			else if (o is bool)
-				packer.Pack ((bool)o);
-			else if (o is string)
-				packer.PackString ((string)o, Encoding.ASCII);
-			else if (o is Dictionary<object, object>) {
-				packer.PackMapHeader ((o as Dictionary<object, object>).Count);
-				foreach (var pair in (o as Dictionary<object, object>)) {
-					Pack (packer, pair.Key);
-					Pack (packer, pair.Value);
-				}
-			} else
-				throw new Exception ("Cant handle type: " + o.GetType ().Name);
-		}
-
 		public void Dispose ()
 		{
-			if (this.Token != null){
+			if (this.Token != null) {
 				this.Execute ("auth.logout", new object[] { });
 				_token = null;
 			}
