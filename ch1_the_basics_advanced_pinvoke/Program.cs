@@ -19,9 +19,9 @@ namespace ch1_the_basics_advanced_pinvoke
 			if (os.Platform == PlatformID.Win32Windows 
 				|| os.Platform == PlatformID.Win32NT) {
 
-				MessageBox (IntPtr.Zero, "Text", "Caption", 0);
+				MessageBox (IntPtr.Zero, "Hello world!", "Hello world!", 0);
 			} else {
-				printf ("linux");
+				printf ("Hello world!");
 			}
 		}
 	}

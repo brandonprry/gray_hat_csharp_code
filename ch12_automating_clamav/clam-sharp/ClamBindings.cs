@@ -5,7 +5,7 @@ namespace ch13_automating_clamav_filesystem
 {
 	public static class ClamBindings
 	{
-		const string _clamLibPath = "/Users/bperry/Downloads/clamav-0.98.7/libclamav/.libs/libclamav.6.dylib";
+		const string _clamLibPath = "/Users/bperry/tmp/clamav-0.99/libclamav/.libs/libclamav.7.dylib";
 
 		[DllImport(_clamLibPath)]
 		public extern static ClamReturnCode cl_init(uint options);

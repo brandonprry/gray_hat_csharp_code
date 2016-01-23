@@ -30,12 +30,7 @@ namespace ch13_automating_clamav_filesystem
 				throw new Exception("Expected CL_SUCCESS, got " + ret);
 		}
 
-		public ClamResult ScanFile(string filepath)
-		{
-			return this.ScanFile(filepath, (uint)ClamScanOptions.CL_SCAN_STDOPT);
-		}
-
-		public ClamResult ScanFile(string filepath, uint options)
+		public ClamResult ScanFile(string filepath, uint options = (uint)ClamScanOptions.CL_SCAN_STDOPT)
 		{
 			ulong scanned = 0;
 			IntPtr vname = (IntPtr)null;
