@@ -23,12 +23,15 @@ namespace ntregsharp
 					
 					reader.ReadBytes(8);
 					buf = reader.ReadBytes(8);
-					
-					long timestamp = BitConverter.ToInt64(buf, 0);
+					//Array.Reverse(buf);
+					long timestamp = BitConverter.ToInt64 (buf, 0);
+					//long timestamp = reader.ReadInt64 ();
+					DateTime time = DateTime.FromBinary (timestamp);
+
 					this.WasExported = (timestamp == 0) ? true : false;
 					
 					//fast-forward
-					reader.BaseStream.Position += (0x1000 + 0x20 + 4)-reader.BaseStream.Position;
+					reader.BaseStream.Position += (4096 + 32 + 4)-reader.BaseStream.Position;
 					
 					this.RootKey = new NodeKey(reader);
 				}

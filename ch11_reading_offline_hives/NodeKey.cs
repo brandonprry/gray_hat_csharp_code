@@ -44,24 +44,24 @@ namespace ntregsharp
 
 			hive.BaseStream.Position += 4; 
 
-			this.ParentOffset = BitConverter.ToInt32(hive.ReadBytes (4),0);
-			this.SubkeysCount = BitConverter.ToInt32(hive.ReadBytes (4),0);
+			this.ParentOffset = hive.ReadInt32 ();
+			this.SubkeysCount = hive.ReadInt32();
 
 			hive.BaseStream.Position += 4;
 
-			this.LFRecordOffset = BitConverter.ToInt32(hive.ReadBytes (4),0);
+			this.LFRecordOffset = hive.ReadInt32 ();
 
 			hive.BaseStream.Position += 4;
 
-			this.ValuesCount = BitConverter.ToInt32(hive.ReadBytes (4),0);
-			this.ValueListOffset = BitConverter.ToInt32(hive.ReadBytes (4),0);
-			this.SecurityKeyOffset = BitConverter.ToInt32(hive.ReadBytes (4),0);
-			this.ClassnameOffset = BitConverter.ToInt32(hive.ReadBytes (4),0);
+			this.ValuesCount = hive.ReadInt32 ();
+			this.ValueListOffset = hive.ReadInt32 ();
+			this.SecurityKeyOffset = hive.ReadInt32 ();
+			this.ClassnameOffset = hive.ReadInt32 ();
 
-			hive.BaseStream.Position += (startingOffset + 0x0044) - hive.BaseStream.Position;
+			hive.BaseStream.Position += (startingOffset + 68) - hive.BaseStream.Position;
 
-			this.NameLength = BitConverter.ToInt16(hive.ReadBytes (2),0);
-			this.ClassnameLength = BitConverter.ToInt16(hive.ReadBytes (2),0);
+			this.NameLength = hive.ReadInt16 ();
+			this.ClassnameLength = hive.ReadInt16 ();
 
 			buf = hive.ReadBytes(this.NameLength);
 			this.Name = System.Text.Encoding.UTF8.GetString(buf);
@@ -77,11 +77,11 @@ namespace ntregsharp
 
 				//ri
 				if (buf [0] == 0x72 && buf [1] == 0x69) {
-					int count = BitConverter.ToInt16(hive.ReadBytes(2),0);
+					int count = hive.ReadInt16 ();
 
 					for (int i = 0; i < count; i++) {
 						long pos = hive.BaseStream.Position;
-						int offset = BitConverter.ToInt32 (hive.ReadBytes (4), 0);
+						int offset = hive.ReadInt32 ();
 						hive.BaseStream.Position =  4096 + offset + 4;
 						buf = hive.ReadBytes(2);
 
@@ -102,13 +102,13 @@ namespace ntregsharp
 		}
 
 		private void ParseChildNodes(BinaryReader hive){
-			int count = BitConverter.ToInt16(hive.ReadBytes(2),0);
+			int count = hive.ReadInt16 ();
 			long topOfList = hive.BaseStream.Position;
 
 			for (int i = 0; i < count; i++)
 			{
 				hive.BaseStream.Position = topOfList + (i*8);
-				int newoffset = BitConverter.ToInt32(hive.ReadBytes(4),0);
+				int newoffset = hive.ReadInt32 ();
 				hive.BaseStream.Position += 4;
 				//byte[] check = hive.ReadBytes(4);
 				hive.BaseStream.Position = 4096 + newoffset + 4;
@@ -128,7 +128,7 @@ namespace ntregsharp
 				for (int i = 0; i < this.ValuesCount; i++)
 				{
 					hive.BaseStream.Position = 4096 + this.ValueListOffset + 4 + (i*4);
-					int offset = BitConverter.ToInt32(hive.ReadBytes(4), 0);
+					int offset = hive.ReadInt32 ();
 					hive.BaseStream.Position = 4096 + offset + 4;
 					this.ChildValues.Add(new ValueKey(hive));
 				}

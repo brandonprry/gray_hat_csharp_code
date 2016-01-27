@@ -13,10 +13,9 @@ namespace ntregsharp
 			if (buf[0] != 0x76 && buf[1] != 0x6b)
 				throw new NotSupportedException("Bad vk header");
 			
-			buf = hive.ReadBytes(2);
-			
-			this.NameLength = BitConverter.ToInt16(buf,0);
-			this.DataLength = BitConverter.ToInt32(hive.ReadBytes(4),0);
+			this.NameLength = hive.ReadInt16();
+			this.DataLength = hive.ReadInt32 ();
+			//this.DataLength = BitConverter.ToInt32(hive.ReadBytes(4),0);
 		
 			byte[] databuf = hive.ReadBytes(4);
 			
@@ -30,7 +29,7 @@ namespace ntregsharp
 				this.Data = databuf;
 			else
 			{
-				hive.BaseStream.Position = 0x1000 + BitConverter.ToInt32(databuf, 0) + 0x04;
+				hive.BaseStream.Position = 4096 + BitConverter.ToInt32 (databuf, 0) + 4;
 				this.Data = hive.ReadBytes(this.DataLength);
 			}
 		}
