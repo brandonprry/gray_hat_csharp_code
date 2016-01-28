@@ -15,7 +15,6 @@ namespace ntregsharp
 			
 			this.NameLength = hive.ReadInt16();
 			this.DataLength = hive.ReadInt32 ();
-			//this.DataLength = BitConverter.ToInt32(hive.ReadBytes(4),0);
 		
 			byte[] databuf = hive.ReadBytes(4);
 			

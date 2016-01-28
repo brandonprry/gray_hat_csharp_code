@@ -21,15 +21,6 @@ namespace ntregsharp
 					if (buf[0] != 'r' || buf[1] != 'e' || buf[2] != 'g' || buf[3] != 'f')
 						throw new NotSupportedException();
 					
-					reader.ReadBytes(8);
-					buf = reader.ReadBytes(8);
-					//Array.Reverse(buf);
-					long timestamp = BitConverter.ToInt64 (buf, 0);
-					//long timestamp = reader.ReadInt64 ();
-					DateTime time = DateTime.FromBinary (timestamp);
-
-					this.WasExported = (timestamp == 0) ? true : false;
-					
 					//fast-forward
 					reader.BaseStream.Position += (4096 + 32 + 4)-reader.BaseStream.Position;
 					

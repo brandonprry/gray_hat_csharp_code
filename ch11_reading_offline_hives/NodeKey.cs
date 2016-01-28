@@ -34,13 +34,13 @@ namespace ntregsharp
 		private void ReadNodeStructure(BinaryReader hive) {
 			byte[] buf = hive.ReadBytes(4);
 
-			if (buf[0] != 110 || buf[1] != 107)
+			if (buf [0] != 0x6e || buf [1] != 0x6b)
 				throw new NotSupportedException("Bad nk header");
 
 			long startingOffset = hive.BaseStream.Position;
 			this.IsRootKey = (buf[2] == 0x2c) ? true : false;
 
-			this.Timestamp = DateTime.FromFileTime(BitConverter.ToInt64(hive.ReadBytes(8), 0));
+			this.Timestamp = DateTime.FromFileTime(hive.ReadInt64());
 
 			hive.BaseStream.Position += 4; 
 
