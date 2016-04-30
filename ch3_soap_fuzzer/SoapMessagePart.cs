@@ -12,8 +12,10 @@ namespace ch3_soap_fuzzer
 
 			if (part.Attributes["element"] != null)
 				this.Element = part.Attributes["element"].Value;
-			else 
+			else if (part.Attributes["type"] != null)
 				this.Type = part.Attributes["type"].Value;
+			else
+				throw new ArgumentException("Neither element nor type attribute exist", nameof(part));
 		}
 
 		public string Name { get; set; }

@@ -24,7 +24,9 @@ namespace ch3_soap_fuzzer
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create (_endpoint + "?WSDL");
 			XmlDocument wsdlDoc = new XmlDocument ();
 
-			wsdlDoc.Load (req.GetResponse ().GetResponseStream ());
+			using (WebResponse resp = req.GetResponse())
+			using (Stream respStream = resp.GetResponseStream())
+				wsdlDoc.Load(respStream);
 
 			_wsdl = new WSDL (wsdlDoc);
 
@@ -90,7 +92,7 @@ namespace ch3_soap_fuzzer
 				}
 
 
-				XDocument soapDoc = new XDocument (new XDeclaration ("1.0", "utf-16", "true"),
+				XDocument soapDoc = new XDocument (new XDeclaration ("1.0", "ascii", "true"),
 					                    new XElement (soapNS + "Envelope",
 						                    new XAttribute (XNamespace.Xmlns + "soap", soapNS),
 						                    new XAttribute ("xmlns", xmlNS),
@@ -105,7 +107,9 @@ namespace ch3_soap_fuzzer
 					req.Method = "POST";
 					req.ContentType = "text/xml";
 					req.ContentLength = data.Length;
-					req.GetRequestStream ().Write (data, 0, data.Length);
+
+					using (Stream stream = req.GetRequestStream())
+						stream.Write (data, 0, data.Length);
 
 					string resp = string.Empty;
 					try {
