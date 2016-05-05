@@ -113,8 +113,7 @@ namespace ch8_automating_openvas
 		public void Dispose ()
 		{
 			if (_stream != null) {
-				_stream.Flush ();
-				_stream = null;
+				_stream.Dispose ();
 			}
 		}
 	}

@@ -12,7 +12,7 @@ namespace ch8_automating_openvas
 			if (session != null)
 				_session = session;
 			else
-				throw new Exception ("Session cannot be null");
+				throw new ArgumentNullException ("session");
 		}
 
 		public XDocument GetVersion ()

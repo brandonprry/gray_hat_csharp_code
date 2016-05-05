@@ -65,6 +65,9 @@ namespace ntregsharp
 
 			buf = hive.ReadBytes(this.NameLength);
 			this.Name = System.Text.Encoding.UTF8.GetString(buf);
+
+			hive.BaseStream.Position = this.ClassnameOffset + 4 + 4096;
+			this.ClassnameData = hive.ReadBytes (this.ClassnameLength);
 		}
 
 		private void ReadChildrenNodes(BinaryReader hive) {
