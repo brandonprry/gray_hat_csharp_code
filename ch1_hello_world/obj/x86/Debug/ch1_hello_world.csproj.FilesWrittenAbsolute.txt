@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_hello_world/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_hello_world/bin/Debug/ch1_hello_world.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_hello_world/bin/Debug/ch1_hello_world.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_hello_world/obj/x86/Debug/ch1_hello_world.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_hello_world/obj/x86/Debug/ch1_hello_world.exe.mdb
