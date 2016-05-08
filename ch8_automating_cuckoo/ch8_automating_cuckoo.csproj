@@ -42,7 +42,6 @@
     <Compile Include="cuckoo-sharp\FileTask.cs" />
     <Compile Include="cuckoo-sharp\Task.cs" />
     <Compile Include="cuckoo-sharp\TaskFactory.cs" />
-    <Compile Include="cuckoo-sharp\URLTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

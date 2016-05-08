@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 
@@ -7,7 +6,7 @@ namespace cuckoosharp
 {
 	public abstract class Task
 	{	
-		public Task(JToken resp)
+		protected Task(JToken resp)
 		{
 			if (resp != null)
 			{
@@ -35,39 +34,22 @@ namespace cuckoosharp
 		}
 		
 		public string Package { get; set; }
-		
 		public int Timeout { get; set; }
-		
 		public string Options { get; set; }
-		
 		public string Machine { get; set; }
-		
 		public string Platform { get; set; }
-		
 		public string Custom { get; set; }
-		
 		public bool EnableMemoryDump { get; set; }
-		
 		public bool EnableEnforceTimeout { get; set; }
-		
 		public ArrayList Errors { get; set; }
-		
 		public string Target { get; set; }
-		
 		public int SampleID { get; set; }
-		
 		public JToken Guest { get; set; }
-		
 		public int Priority { get; set; }
-		
 		public string Status { get; set; }
-		
 		public int ID { get; set; }
-		
 		public DateTime AddedOn { get; set; }
-		
 		public DateTime CompletedOn { get; set; }
-		
 	}
 }
 

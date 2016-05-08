@@ -31,11 +31,6 @@ namespace cuckoosharp
 				val = new FileParameter(data, (task as FileTask).Filepath, "application/binary");
 				
 			}
-			else if (task is URLTask)
-			{
-				uri += (param = "url");
-				val = (task as URLTask).URL;
-			}
 			
 			IDictionary<string, object> parms = new Dictionary<string, object>();
 			

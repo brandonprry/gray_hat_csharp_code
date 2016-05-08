@@ -1,8 +1,7 @@
 using System;
-using System.Net;
-using System.IO;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.IO;
+using System.Net;
 using Newtonsoft.Json.Linq;
 
 namespace cuckoosharp
