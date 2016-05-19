@@ -1,5 +1,6 @@
 ﻿using System;
 using cuckoosharp;
+using Newtonsoft.Json.Linq;
 
 namespace Example
 {
@@ -7,16 +8,19 @@ namespace Example
 	{
 		public static void Main (string[] args)
 		{
-			CuckooSession session = new CuckooSession ("127.0.0.1", 8090);
+			CuckooSession session = new CuckooSession ("192.168.1.105", 8090);
+
+			JObject response = session.ExecuteCommand ("/cuckoo/status", "GET");
+			Console.WriteLine(response.ToString());
 
 			using (CuckooManager manager = new CuckooManager(session))
 			{
 				FileTask task = new FileTask();
-				task.Filepath = "/var/www/payload.exe";
+				task.Filepath = "/Users/bperry/Projects/metasploit-framework/data/post/bypassuac-x64.exe";
 
 				int taskID = manager.CreateTask(task);
 
-				while((task = (FileTask)manager.GetTaskDetails(taskID)).Status == "pending" || task.Status == "processing")
+				while((task = (FileTask)manager.GetTaskDetails(taskID)).Status == "pending" || task.Status == "running")
 				{
 					Console.WriteLine("Waiting 30 seconds..."+task.Status);
 					System.Threading.Thread.Sleep(30000);
@@ -25,7 +29,7 @@ namespace Example
 				if (task.Status == "failure")
 				{
 					Console.WriteLine ("There was an error:");
-					foreach (object error in task.Errors)
+					foreach (var error in task.Errors)
 						Console.WriteLine(error);
 
 					return;
