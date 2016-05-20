@@ -14,7 +14,7 @@ In chapter one, we learn the basics of C# object oriented programming with very 
 
 Chapter 2
 --
-In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types.
+In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types. We also write exploits for two types of SQL injection techniques; UNION and boolean-based. 
 
 Chapter 3
 --
