@@ -50,7 +50,7 @@ In chapter eight, we move into the digital forensics area and focus on automatin
 
 Chapter 9
 --
-In chapter nine, we move onto more than just finding potential SQL injections with fuzzers and begin exploiting SQL injections to their fullest extent by automating sqlmap. Using an easy to use JSON API shipped with sqlmap, we first create small tools to submit single URLs. Once done with the introduction, we integrate sqlmap into the SOAP WSDL fuzzer from chaper three, so any potential SQL injection vulnerabilities can be automatically exploited and validated.
+In chapter nine, we move onto more than just finding potential SQL injections with fuzzers and begin exploiting SQL injections to their fullest extent by automating sqlmap. Using an easy to use JSON API shipped with sqlmap, we first create small tools to submit single URLs. Once done with the introduction, we integrate sqlmap into the SOAP WSDL fuzzer from chapter three, so any potential SQL injection vulnerabilities can be automatically exploited and validated.
 
 Chapter 10
 --
