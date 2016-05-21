@@ -39,7 +39,6 @@ namespace Example
 
 				Console.WriteLine(report);
 			}
-
 		}
 	}
 }
