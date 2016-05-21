@@ -1,7 +1,7 @@
 Gray Hat C#
 ===============
 
-This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts whom are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
+This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts who are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
 
     
     
