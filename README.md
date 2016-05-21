@@ -1,7 +1,7 @@
 Gray Hat C#
 ===============
 
-This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts whom are looking to gain more experience with common security concepts and tools with real world examples.
+This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts whom are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
 
     
     
@@ -14,7 +14,7 @@ In chapter one, we learn the basics of C# object oriented programming with very 
 
 Chapter 2
 --
-In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types.
+In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types. We also write exploits for two types of SQL injection techniques; UNION and boolean-based. 
 
 Chapter 3
 --
@@ -50,11 +50,11 @@ In chapter eight, we move into the digital forensics area and focus on automatin
 
 Chapter 9
 --
-In chapter nine, we move onto more than just finding potential SQL injections with fuzzers and begin exploiting SQL injections to their fullest extent by automating sqlmap. Using an easy to use JSON API shipped with sqlmap, we first create small tools to submit single URLs. Once done with the introduction, we integrate sqlmap into the SOAP WSDL fuzzer from chaper three, so any potential SQL injection vulnerabilities can be automatically exploited and validated.
+In chapter nine, we move onto more than just finding potential SQL injections with fuzzers and begin exploiting SQL injections to their fullest extent by automating sqlmap. Using an easy to use JSON API shipped with sqlmap, we first create small tools to submit single URLs. Once done with the introduction, we integrate sqlmap into the SOAP WSDL fuzzer from chapter three, so any potential SQL injection vulnerabilities can be automatically exploited and validated.
 
 Chapter 10
 --
-In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves.
+In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves. We also discuss the useful ```monodis``` tool, which allows granular insight into the inner working of a .NET assembly.
 
 Chapter 11
 --
