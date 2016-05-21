@@ -1,7 +1,7 @@
 Gray Hat C#
 ===============
 
-This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts whom are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
+This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts who are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
 
     
     
@@ -44,7 +44,7 @@ In chapter seven, we conclude the focus on vulnerability scanner automation with
 
 Chapter 8
 --
-In chapter eight, we move into the digital forensics area and focus on automating the Cuckoo Sandbox. Using an easy to consume RESTful JSON API, we automate submitting potential malware samples, then reporting on the results.
+In chapter eight, we move into the incident response area and focus on automating the Cuckoo Sandbox. Using an easy to consume RESTful JSON API, we automate submitting potential malware samples, then reporting on the results.
 
 <http://www.cuckoosandbox.org>
 
@@ -58,7 +58,7 @@ In chapter ten, we move into reverse engineering. There are easy to use .NET dec
 
 Chapter 11
 --
-In chapter eleven, we move into the incident response area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily begin retrieving user's account and password hash information.
+In chapter eleven, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily begin retrieving user's account and password hash information.
 
 Chapter 12
 --
