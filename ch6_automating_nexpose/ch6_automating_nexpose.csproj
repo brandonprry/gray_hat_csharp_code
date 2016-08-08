@@ -7,7 +7,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ch6_automating_nexpose</RootNamespace>
     <AssemblyName>ch6_automating_nexpose</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -17,8 +16,8 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
@@ -33,6 +32,8 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Mono.Security.Providers.NewTls" />
+    <Reference Include="Mono.Security" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -44,5 +45,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="nexpose-sharp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

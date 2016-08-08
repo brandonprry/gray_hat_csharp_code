@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Threading;
 using System.IO;
+using System.Net;
 
 namespace ch6_automating_nexpose
 {
@@ -10,8 +11,13 @@ namespace ch6_automating_nexpose
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession ("admin", "Passw0rd!", "192.168.2.171")) {
+			ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+
+			using (NexposeSession session = new NexposeSession ("nxadmin", "nxpassword", "172.18.20.37")) {
 				using (NexposeManager manager =	new NexposeManager (session)) {
+					
+					Console.WriteLine (manager.GetSystemInformation ().ToString ());
+
 					string[][] ips = {
 						new string[] { "192.168.2.169", string.Empty }
 					};

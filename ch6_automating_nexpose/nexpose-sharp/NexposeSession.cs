@@ -5,20 +5,20 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ch6_automating_nexpose
 {
 	public class NexposeSession : IDisposable
 	{
-		public NexposeSession (string username, string password, string host, int port = 3780, NexposeAPIVersion version = NexposeAPIVersion.v11)
+		public NexposeSession(string username, string password, string host, int port = 3780, NexposeAPIVersion version = NexposeAPIVersion.v11)
 		{
 			this.Host = host;
 			this.Port = port;
 			this.APIVersion = version;
 
-			ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, ssl) => true;
-
-			this.Authenticate (username, password);
+			this.Authenticate(username, password);
 		}
 
 		public string Host { get; set; }
@@ -62,9 +62,9 @@ namespace ch6_automating_nexpose
 			default:
 				throw new Exception ("Unknown API version.");
 			}
-
 			byte[] byteArray = Encoding.ASCII.GetBytes (commandXml.ToString ());
-			HttpWebRequest request = WebRequest.Create ("https://" + this.Host + ":" + this.Port.ToString () + uri) as HttpWebRequest;
+			HttpWebRequest request = WebRequest.Create ("https://" + this.Host + ":" + this.Port + uri) as HttpWebRequest;
+			request.Proxy = new WebProxy("127.0.0.1:8080");
 			request.Method = "POST";
 			request.ContentType = "text/xml";
 			request.ContentLength = byteArray.Length;
