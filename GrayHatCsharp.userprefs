@@ -1,17 +1,22 @@
-﻿<Properties StartupItem="ch6_automating_nexpose/ch6_automating_nexpose.csproj" StartupConfiguration="{430D3EB9-A13B-4951-82FE-347A29D88008}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ch6_automating_nexpose/Program.cs">
+﻿<Properties StartupItem="ch9_automating_sqlmap/ch9_automating_sqlmap.csproj" StartupConfiguration="{430D3EB9-A13B-4951-82FE-347A29D88008}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ch9_automating_sqlmap_soap/Main.cs">
     <Files>
-      <File FileName="ch6_automating_nexpose/Program.cs" Line="5" Column="17" />
-      <File FileName="ch6_automating_nexpose/nexpose-sharp/NexposeSession.cs" Line="81" Column="53" />
+      <File FileName="ch9_automating_sqlmap/Program.cs" Line="27" Column="32" />
+      <File FileName="ch9_automating_sqlmap/SqlmapManager.cs" Line="78" Column="23" />
+      <File FileName="ch9_automating_sqlmap_soap/Main.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.ch6__automating__nexpose PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.ItemProperties.ch1__the__basics PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/SqlmapManager.cs" line="74" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap__soap PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch8__automating__cuckoo PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch1__hello__world PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

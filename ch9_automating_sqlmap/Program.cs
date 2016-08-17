@@ -16,8 +16,11 @@ namespace ch9_automating_sqlmap
 					string taskid = manager.NewTask();
 
 					Dictionary<string, object> options = manager.GetOptions(taskid); 
-					options["url"] = args[0]; 
-					options ["flushSession"] = true;
+					options["url"] = "http://testfire.net/bank/login.aspx?uid=fdsa&passw=fdsa";
+					options["flushSession"] = true;
+
+					foreach (var pair in options)
+						Console.WriteLine("Key: " + pair.Key + "\t::Value: " + pair.Value);
 
 					manager.StartTask(taskid, options); 
 
