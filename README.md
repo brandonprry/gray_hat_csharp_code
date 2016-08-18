@@ -58,7 +58,7 @@ In chapter ten, we move into reverse engineering. There are easy to use .NET dec
 
 Chapter 11
 --
-In chapter eleven, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily begin retrieving user's account and password hash information.
+In chapter eleven, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive..
 
 Chapter 12
 --
