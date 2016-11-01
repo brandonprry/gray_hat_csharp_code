@@ -1,9 +1,12 @@
-﻿<Properties StartupItem="ch9_automating_sqlmap/ch9_automating_sqlmap.csproj" StartupConfiguration="{430D3EB9-A13B-4951-82FE-347A29D88008}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ch9_automating_sqlmap_soap/Main.cs">
+﻿<Properties StartupConfiguration="{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gray_hat_csharp_code Status">
     <Files>
       <File FileName="ch9_automating_sqlmap/Program.cs" Line="27" Column="32" />
       <File FileName="ch9_automating_sqlmap/SqlmapManager.cs" Line="78" Column="23" />
       <File FileName="ch9_automating_sqlmap_soap/Main.cs" Line="1" Column="1" />
+      <File FileName="ch1_the_basics/Main.cs" Line="13" Column="18" />
+      <File FileName="ch1_the_basics_advanced/Main.cs" Line="24" Column="29" />
+      <File FileName="gray_hat_csharp_code Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.ch6__automating__nexpose PreferredExecutionTarget="MonoDevelop.Default" />
@@ -15,6 +18,7 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ch1__the__basics__advanced PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap__soap PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch8__automating__cuckoo PreferredExecutionTarget="MonoDevelop.Default" />
