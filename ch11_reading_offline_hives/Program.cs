@@ -11,18 +11,61 @@ namespace ch11_reading_offline_hives
 		public static void Main (string[] args)
 		{
 			RegistryHive systemHive = new RegistryHive (args [0]);
-			byte[] bootKey = GetBootKey (systemHive);
+			RegistryHive samHive = new RegistryHive(args[1]);
+			RegistryHive softwareHive = new RegistryHive(args[2]);
 
+			byte[] bootKey = GetBootKey (systemHive);
 			Console.WriteLine ("Boot key: " + BitConverter.ToString (bootKey));
+
+			ListSystemUsers(samHive);
+			ListInstalledSoftware(softwareHive);
+
+			Console.WriteLine("Dumping hive information complete");
 		}
 
-		static byte[] GetBootKey(RegistryHive hive){
-			ValueKey controlSet = GetValueKey (hive, "Select|Default");
+		static void ListSystemUsers(RegistryHive samHive)
+		{
+			NodeKey key = GetNodeKey(samHive, "SAM|Domains|Account|Users|Names");
+
+			foreach (NodeKey child in key.ChildNodes)
+				Console.WriteLine(child.Name);
+		}
+
+		static void ListInstalledSoftware(RegistryHive softwareHive)
+		{
+			NodeKey key = GetNodeKey(softwareHive, "Microsoft|Windows|CurrentVersion|Uninstall");
+
+			foreach (NodeKey child in key.ChildNodes)
+			{
+				Console.WriteLine("Found: " + child.Name);
+				ValueKey val = child.ChildValues.SingleOrDefault(v => v.Name == "DisplayVersion");
+
+				if (val != null)
+				{
+					string version = System.Text.Encoding.UTF8.GetString(val.Data);
+					Console.WriteLine("\tVersion: " + version);
+				}
+
+				val = child.ChildValues.SingleOrDefault(v => v.Name == "InstallLocation");
+
+				if (val != null)
+				{
+					string location = System.Text.Encoding.UTF8.GetString(val.Data);
+					Console.WriteLine("\tLocation: " + location);
+				}
+
+				Console.WriteLine("----");
+			}
+
+		}
+
+		static byte[] GetBootKey(RegistryHive systemHive){
+			ValueKey controlSet = GetValueKey (systemHive, "Select|Default");
 			int cs = BitConverter.ToInt32 (controlSet.Data, 0);
 
 			StringBuilder scrambledKey = new StringBuilder ();
 			foreach (string key in new string[] {"JD", "Skew1", "GBG", "Data"}) {
-				NodeKey nk = GetNodeKey (hive, "ControlSet00" + cs + "|Control|Lsa|" + key);
+				NodeKey nk = GetNodeKey (systemHive, "ControlSet00" + cs + "|Control|Lsa|" + key);
 
 				for (int i = 0; i < nk.ClassnameLength && i < 8; i++) 
 					scrambledKey.Append ((char)nk.ClassnameData [i*2]);

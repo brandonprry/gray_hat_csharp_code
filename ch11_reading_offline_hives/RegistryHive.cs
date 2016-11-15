@@ -22,7 +22,7 @@ namespace ntregsharp
 						throw new NotSupportedException();
 					
 					//fast-forward
-					reader.BaseStream.Position += (4096 + 32 + 4)-reader.BaseStream.Position;
+					reader.BaseStream.Position += 4132-reader.BaseStream.Position;
 					
 					this.RootKey = new NodeKey(reader);
 				}

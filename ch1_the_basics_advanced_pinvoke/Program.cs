@@ -9,7 +9,7 @@ namespace ch1_the_basics_advanced_pinvoke
 		static extern int MessageBox(IntPtr hWnd, 
 			String text, String caption, int options);
 
-		[DllImport("libc", EntryPoint="printf")]
+		[DllImport("libc")]
 		static extern void printf(string message);
 
 		static void Main(string[] args)

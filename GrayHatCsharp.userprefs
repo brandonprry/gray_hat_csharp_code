@@ -1,23 +1,25 @@
-﻿<Properties StartupConfiguration="{D6602908-DDFD-411A-B0A0-1D83AEDA1DF2}|Default" GitUserInfo="UsingGIT">
+﻿<Properties StartupConfiguration="{26A8091A-68C1-4636-931C-CB4538338572}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="gray_hat_csharp_code Status">
     <Files>
-      <File FileName="ch9_automating_sqlmap/Program.cs" Line="27" Column="32" />
-      <File FileName="ch9_automating_sqlmap/SqlmapManager.cs" Line="78" Column="23" />
-      <File FileName="ch9_automating_sqlmap_soap/Main.cs" Line="1" Column="1" />
-      <File FileName="ch1_the_basics/Main.cs" Line="13" Column="18" />
-      <File FileName="ch1_the_basics_advanced/Main.cs" Line="24" Column="29" />
+      <File FileName="ch1_the_basics_advanced_pinvoke/Program.cs" Line="8" Column="44" />
+      <File FileName="ch11_reading_offline_hives/Program.cs" Line="47" Column="6" />
+      <File FileName="ch11_reading_offline_hives/RegistryHive.cs" Line="25" Column="36" />
+      <File FileName="ch11_reading_offline_hives/NodeKey.cs" Line="1" Column="1" />
       <File FileName="gray_hat_csharp_code Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.ch6__automating__nexpose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.ch1__the__basics__advanced__pinvoke PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.ItemProperties.ch1__the__basics PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/SqlmapManager.cs" line="74" column="1" />
+      <Breakpoint file="/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/SqlmapManager.cs" relfile="ch9_automating_sqlmap/SqlmapManager.cs" line="74" column="1" />
+      <Breakpoint file="/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/Program.cs" relfile="ch1_the_basics_advanced_pinvoke/Program.cs" line="15" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ch11__reading__offline__hives PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch1__the__basics__advanced PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap__soap PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.ch9__automating__sqlmap PreferredExecutionTarget="MonoDevelop.Default" />
