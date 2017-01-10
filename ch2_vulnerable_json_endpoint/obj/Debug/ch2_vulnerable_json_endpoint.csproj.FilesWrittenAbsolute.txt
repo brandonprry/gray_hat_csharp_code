@@ -1,0 +1,7 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/bin/ch2_vulnerable_json_endpoint.dll.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/bin/ch2_vulnerable_json_endpoint.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/obj/Debug/ch2_vulnerable_json_endpoint.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/obj/Debug/ch2_vulnerable_json_endpoint.dll.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/bin/Newtonsoft.Json.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_vulnerable_json_endpoint/bin/Npgsql.dll

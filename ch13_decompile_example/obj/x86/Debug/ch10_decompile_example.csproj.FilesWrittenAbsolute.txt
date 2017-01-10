@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_decompile_example/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_decompile_example/bin/Debug/ch10_decompile_example.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_decompile_example/bin/Debug/ch10_decompile_example.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_decompile_example/obj/x86/Debug/ch10_decompile_example.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_decompile_example/obj/x86/Debug/ch10_decompile_example.exe.mdb

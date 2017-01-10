@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_sqli_blind/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_sqli_blind/bin/Debug/ch2_sqli_blind.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_sqli_blind/bin/Debug/ch2_sqli_blind.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_sqli_blind/obj/x86/Debug/ch2_sqli_blind.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch2_sqli_blind/obj/x86/Debug/ch2_sqli_blind.exe.mdb

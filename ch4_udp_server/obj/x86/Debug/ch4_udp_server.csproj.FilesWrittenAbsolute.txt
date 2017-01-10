@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch4_udp_server/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch4_udp_server/bin/Debug/ch4_udp_server.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch4_udp_server/bin/Debug/ch4_udp_server.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch4_udp_server/obj/x86/Debug/ch4_udp_server.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch4_udp_server/obj/x86/Debug/ch4_udp_server.exe.mdb

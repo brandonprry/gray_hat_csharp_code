@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/bin/Debug/ch1_the_basics_advanced_pinvoke.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/bin/Debug/ch1_the_basics_advanced_pinvoke.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/obj/x86/Debug/ch1_the_basics_advanced_pinvoke.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced_pinvoke/obj/x86/Debug/ch1_the_basics_advanced_pinvoke.exe.mdb

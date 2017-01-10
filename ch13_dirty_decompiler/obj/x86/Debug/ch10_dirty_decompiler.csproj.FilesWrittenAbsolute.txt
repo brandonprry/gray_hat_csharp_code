@@ -1,0 +1,14 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ch10_dirty_decompiler.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ch10_dirty_decompiler.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/obj/x86/Debug/ch10_dirty_decompiler.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/obj/x86/Debug/ch10_dirty_decompiler.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ICSharpCode.NRefactory.Cecil.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ICSharpCode.NRefactory.CSharp.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ICSharpCode.NRefactory.Xml.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/ICSharpCode.Decompiler.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/Mono.Cecil.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/bperry/Projects/gray_hat_csharp_code/ch10_dirty_decompiler/bin/Debug/Mono.Cecil.Rocks.dll

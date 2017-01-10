@@ -1,0 +1,6 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/bin/Debug/ch9_automating_sqlmap.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/bin/Debug/ch9_automating_sqlmap.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/obj/x86/Debug/ch9_automating_sqlmap.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/obj/x86/Debug/ch9_automating_sqlmap.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch9_automating_sqlmap/bin/Debug/Newtonsoft.Json.dll

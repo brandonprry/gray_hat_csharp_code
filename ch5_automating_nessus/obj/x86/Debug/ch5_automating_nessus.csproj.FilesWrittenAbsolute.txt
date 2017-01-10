@@ -1,0 +1,6 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/bin/Debug/ch6_automating_nessus.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/bin/Debug/ch6_automating_nessus.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/obj/x86/Debug/ch6_automating_nessus.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/obj/x86/Debug/ch6_automating_nessus.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch5_automating_nessus/bin/Debug/Newtonsoft.Json.dll

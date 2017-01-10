@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch14_reading_offline_hives/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch14_reading_offline_hives/bin/Debug/ch11_reading_offline_hives.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch14_reading_offline_hives/bin/Debug/ch11_reading_offline_hives.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch14_reading_offline_hives/obj/x86/Debug/ch11_reading_offline_hives.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch14_reading_offline_hives/obj/x86/Debug/ch11_reading_offline_hives.exe.mdb

@@ -1,0 +1,5 @@
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced/bin/Debug/ch1_the_basics_advanced.exe.mdb
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced/bin/Debug/ch1_the_basics_advanced.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced/obj/x86/Debug/ch1_the_basics_advanced.exe
+/Users/bperry/Projects/gray_hat_csharp_code/ch1_the_basics_advanced/obj/x86/Debug/ch1_the_basics_advanced.exe.mdb

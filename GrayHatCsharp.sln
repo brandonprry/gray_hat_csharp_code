@@ -17,15 +17,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch7_automating_openvas", "c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch8_automating_cuckoo", "ch8_automating_cuckoo\ch8_automating_cuckoo.csproj", "{7C6213E4-06AE-4E9B-AB7D-843CD024BF67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_dirty_decompiler", "ch10_dirty_decompiler\ch13_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_dirty_decompiler", "ch13_dirty_decompiler\ch13_dirty_decompiler.csproj", "{6A2658B6-036B-4D29-8057-ADFBBA98F933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_reading_offline_hives", "ch11_reading_offline_hives\ch14_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch14_reading_offline_hives", "ch14_reading_offline_hives\ch14_reading_offline_hives.csproj", "{26A8091A-68C1-4636-931C-CB4538338572}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_crossplatform_metasploit_payloads", "ch4_crossplatform_metasploit_payloads\ch4_crossplatform_metasploit_payloads.csproj", "{FB3CBBBB-EA67-4AF2-B344-62497952E7A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_connect_back_tcp", "ch4_connect_back\ch4_connect_back_tcp.csproj", "{E8EAF06C-458C-4702-9832-C32C329B1621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_clamav_filesystem", "ch12_automating_clamav\ch10_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_clamav_filesystem", "ch10_automating_clamav\ch10_automating_clamav_filesystem.csproj", "{0DFD4250-3A0F-460B-9B6A-7BB158864B75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch9_automating_sqlmap", "ch9_automating_sqlmap\ch9_automating_sqlmap.csproj", "{B7C4434F-9DFB-46A7-BC84-80835C6EF53B}"
 EndProject
@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_client", "ch4_bind_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch4_udp_server", "ch4_udp_server\ch4_udp_server.csproj", "{68074B20-EAB0-4146-A1B3-FE0BF88B498A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_clamav_clamd", "ch12_automating_clamav_clamd\ch10_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch10_automating_clamav_clamd", "ch10_automating_clamav_clamd\ch10_automating_clamav_clamd.csproj", "{CEDB50B7-7587-4F74-9A43-308FD607D8E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch6_automating_nexpose", "ch6_automating_nexpose\ch6_automating_nexpose.csproj", "{430D3EB9-A13B-4951-82FE-347A29D88008}"
 EndProject
@@ -53,15 +53,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch3_vulnerable_soap_endpoin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch2_vulnerable_json_endpoint", "ch2_vulnerable_json_endpoint\ch2_vulnerable_json_endpoint.csproj", "{C2DFFCB8-1ACD-4F55-9B42-7182031B9508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_automating_metasploit", "ch13_automating_metasploit\ch11_automating_metasploit.csproj", "{F1E0A90B-9F05-4D1F-AA4C-FA6DA7E7A57F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch11_automating_metasploit", "ch11_automating_metasploit\ch11_automating_metasploit.csproj", "{F1E0A90B-9F05-4D1F-AA4C-FA6DA7E7A57F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_arachni_http", "ch14_automating_arachni\ch12_automating_arachni_http.csproj", "{C4AF9B5C-A4F1-44A1-8036-466154D9BE8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_arachni_http", "ch12_automating_arachni\ch12_automating_arachni_http.csproj", "{C4AF9B5C-A4F1-44A1-8036-466154D9BE8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_arachni_rpc", "ch14_automating_arachni_rpc\ch12_automating_arachni_rpc.csproj", "{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch12_automating_arachni_rpc", "ch12_automating_arachni_rpc\ch12_automating_arachni_rpc.csproj", "{4EAFB18B-454F-4BF8-8AA5-8403E4C00685}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch1_hello_world", "ch1_hello_world\ch1_hello_world.csproj", "{1A8891C1-6FD2-4D97-9948-68E157374873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_decompile_example", "ch10_decompile_example\ch13_decompile_example.csproj", "{803D4622-5702-4405-A0CF-45A796F904AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ch13_decompile_example", "ch13_decompile_example\ch13_decompile_example.csproj", "{803D4622-5702-4405-A0CF-45A796F904AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
