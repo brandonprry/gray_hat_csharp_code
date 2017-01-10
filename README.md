@@ -54,29 +54,31 @@ In chapter nine, we move onto more than just finding potential SQL injections wi
 
 Chapter 10
 --
-In chapter ten, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves. We also discuss the useful ```monodis``` tool, which allows granular insight into the inner working of a .NET assembly.
-
-Chapter 11
---
-In chapter eleven, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive..
-
-Chapter 12
---
-In chapter twelve, we focus on interacting with native, unmanaged libraries. ClamAV, a popular and open source antivirus project, is not written in a .NET language, but we can still interface with its core libraries as well as remotely via a TCP daemon. We cover how to automate ClamAV in both scenarios.
+In chapter ten, we focus on interacting with native, unmanaged libraries. ClamAV, a popular and open source antivirus project, is not written in a .NET language, but we can still interface with its core libraries as well as remotely via a TCP daemon. We cover how to automate ClamAV in both scenarios.
 
 <http://www.clamav.net>
 
-Chapter 13
+Chapter 11
 --
-In chapter thirteen, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework in order to exploit and report on shelled hosts.
+In chapter eleven, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework in order to exploit and report on shelled hosts.
 
 <https://www.rapid7.com>
 
-Chapter 14
+Chapter 12
 --
-In chapter fourteen, we conclude the book by focusing on automating the blackbox web application scanner Arachni, a free and open source project, though dual-licensed. Using both the simpler RESTful HTTP API and the more powerful MSGPACK RPC that is the shipped with the project, we create small tools to automatically scan a URL and report the findings as we scan.
+In chapter twelve, we focus on automating the blackbox web application scanner Arachni, a free and open source project, though dual-licensed. Using both the simpler RESTful HTTP API and the more powerful MSGPACK RPC that is the shipped with the project, we create small tools to automatically scan a URL and report the findings as we scan.
 
 <http://www.arachni-scanner.com>
+
+Chapter 13
+--
+In chapter thirteen, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves. We also discuss the useful ```monodis``` tool, which allows granular insight into the inner working of a .NET assembly.
+
+
+Chapter 14
+--
+In chapter fourteen, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive..
+
 
 Conclusion
 --
