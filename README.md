@@ -44,7 +44,7 @@ Chapter 6 - Automating Nexpose
 --
 In chapter six, we maintain the focus on tool automation by moving onto automating the Nexpose vulnerability scanner. Nexpose, whose API is also HTTP based, can also achieve automated vulnerability scans and reports and offers a free year license for their Community product, very useful for home enthusiasts.
 
-<https://www.rapid7.com>
+<https://www.rapid7.com/products/nexpose/>
 
 Chapter 7 - Automating OpenVAS
 --
@@ -74,7 +74,7 @@ Chapter 11 - Automating Metasploit
 --
 In chapter eleven, we put the focus back on Metasploit. We learn how to programmatically drive Metasploit via the MSGPACK RPC that is shipped with the core framework in order to exploit and report on shelled hosts.
 
-<https://www.rapid7.com>
+<https://www.rapid7.com/products/metasploit/>
 
 Chapter 12 - Automating Arachni
 --
