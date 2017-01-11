@@ -21,6 +21,7 @@ Chapter 2 - Fuzzing and Exploiting XSS and SQL Injection
 In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types. We also write exploits for two types of SQL injection techniques; UNION and boolean-based. 
 
 <https://www.owasp.org/index.php/SQL_Injection>
+
 <https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)>
 
 Chapter 3 - Fuzzing SOAP Endpoints
