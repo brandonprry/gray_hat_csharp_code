@@ -90,7 +90,7 @@ In chapter thirteen, we move into reverse engineering. There are easy to use .NE
 
 Chapter 14 - Reading Offline Windows NT Registry Hives
 --
-In chapter fourteen, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive..
+In chapter fourteen, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive.
 
 <https://github.com/msuhanov/regf/blob/master/Windows%20registry%20file%20format%20specification.md>
 
