@@ -14,13 +14,20 @@ Chapter 1 - Crash Course
 --
 In chapter one, we learn the basics of C# object oriented programming with very simple examples. 
 
+<https://msdn.microsoft.com/en-us/library/kx37x362.aspx>
+
 Chapter 2 - Fuzzing and Exploiting XSS and SQL Injection
 --
 In chapter two, we are introduced to the HTTP library used to communicate with web servers in order to write small HTTP request fuzzers looking for XSS and SQL injection in a variety of different data types. We also write exploits for two types of SQL injection techniques; UNION and boolean-based. 
 
+<https://www.owasp.org/index.php/SQL_Injection>
+<https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)>
+
 Chapter 3 - Fuzzing SOAP Endpoints
 --
 In chapter three, we take the concept of the fuzzers in the previous chapter to the next level, and also introduce the excellent XML libraries available in the standard library. We write a small fuzzer that retrieves and parses a SOAP WSDL in order to automatically generate HTTP requests in order to find potential SQL injections.
+
+<https://en.wikipedia.org/wiki/SOAP>
 
 Chapter 4 - Writing Connect-backs, Binds, and Metasploit Payloads
 --
@@ -78,10 +85,13 @@ Chapter 13 - Decompiling and Reversing Managed Assemblies
 --
 In chapter thirteen, we move into reverse engineering. There are easy to use .NET decompilers for Windows, but not for Mac or Linux, so we write a small one ourselves. We also discuss the useful ```monodis``` tool, which allows granular insight into the inner working of a .NET assembly.
 
+<http://www.mono-project.com/docs/tools+libraries/libraries/Mono.Cecil/>
+
 Chapter 14 - Reading Offline Windows NT Registry Hives
 --
 In chapter fourteen, we move into the digital forensics area and focus on registry hives. Going over the binary structure of the Windows registry, we learn how to parse and read offline registry hives, which allows us to easily retrieve the system's boot key, used to encrypt password hash information in the SAM registry hive..
 
+<https://github.com/msuhanov/regf/blob/master/Windows%20registry%20file%20format%20specification.md>
 
 Conclusion
 --
