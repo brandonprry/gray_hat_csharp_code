@@ -1,4 +1,4 @@
-Gray Hat C# 
+Gray Hat C# - Creating and Automating Security Tools
 ===============
 
 <https://www.nostarch.com/grayhatcsharp>
