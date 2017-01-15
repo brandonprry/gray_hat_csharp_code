@@ -13,6 +13,16 @@ security concepts and tools with real world examples for both offensive and
 defensive purposes.
 
 
+We cover a broad slice of concepts a modern security engineer must be
+familiar with, starting with a brief introduction to the C# language.
+After the introduction, we focus on fuzzing web application
+vulnerabilities and writing exploits for them. This is followed by C#
+payloads for pentesters to use for remote command execution and
+persistence. Then, we move onto security tool automation using true APIs, not
+just calling programs from the system shell. Finally, we focus on
+reverse engineering and forensics in the final chapters.
+
+
 The solution was developed on Linux with MonoDevelop and OS X with Xamarin
 Studio. However, every line of code should work across all platforms and this
 should Just Work(tm) in Visual Studio on Windows.
