@@ -1,10 +1,18 @@
 Gray Hat C#
 ===============
 
-This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide variety of security oriented tools and libraries will be written using the C# programming language, allowing for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts who are looking to gain more experience with common security concepts and tools with real world examples for both offensive and defensive purposes.
+<https://www.nostarch.com/grayhatcsharp>
+
+This repository contains fully-fleshed out code examples from the book Gray Hat C#. In this book, a wide
+variety of security oriented tools and libraries will be written using the C# programming language, allowing
+for cross-platform automation of the most crucial aspects of a security engineer's roles in a modern
+organization. Many of the topics will also be highly useful for hobbyists and security enthusiasts who are
+looking to gain more experience with common security concepts and tools with real world examples for both offensive
+and defensive purposes.
 
 
-The solution was developed on Linux with MonoDevelop and OS X with Xamarin Studio. However, every line of code should work across all platforms and this should Just Work(tm) in Visual Studio on Windows.
+The solution was developed on Linux with MonoDevelop and OS X with Xamarin Studio. However, every line of code should
+work across all platforms and this should Just Work(tm) in Visual Studio on Windows.
 
 
 The Chapters
