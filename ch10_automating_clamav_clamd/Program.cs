@@ -11,7 +11,9 @@ namespace ch13_automating_clamav_clamd
 			ClamdManager manager = new ClamdManager (session);
 
 			Console.WriteLine(manager.GetVersion());
-			Console.WriteLine(manager.Scan("/Users/bperry/eicar.com.txt"));
+
+			foreach (string path in args)
+				Console.WriteLine(manager.Scan(path));
 		}
 	}
 }
