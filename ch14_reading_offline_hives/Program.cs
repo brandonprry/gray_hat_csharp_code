@@ -25,7 +25,7 @@ namespace ch11_reading_offline_hives
 
 		static void ListSystemUsers(RegistryHive samHive)
 		{
-			NodeKey key = GetNodeKey(samHive, "SAM|Domains|Account|Users|Names");
+			NodeKey key = GetNodeKey(samHive, "SAM\\Domains\\Account\\Users\\Names");
 
 			foreach (NodeKey child in key.ChildNodes)
 				Console.WriteLine(child.Name);
@@ -33,7 +33,7 @@ namespace ch11_reading_offline_hives
 
 		static void ListInstalledSoftware(RegistryHive softwareHive)
 		{
-			NodeKey key = GetNodeKey(softwareHive, "Microsoft|Windows|CurrentVersion|Uninstall");
+			NodeKey key = GetNodeKey(softwareHive, "Microsoft\\Windows\\CurrentVersion\\Uninstall");
 
 			foreach (NodeKey child in key.ChildNodes)
 			{
@@ -60,12 +60,12 @@ namespace ch11_reading_offline_hives
 		}
 
 		static byte[] GetBootKey(RegistryHive systemHive){
-			ValueKey controlSet = GetValueKey (systemHive, "Select|Default");
+			ValueKey controlSet = GetValueKey (systemHive, "Select\\Default");
 			int cs = BitConverter.ToInt32 (controlSet.Data, 0);
 
 			StringBuilder scrambledKey = new StringBuilder ();
 			foreach (string key in new string[] {"JD", "Skew1", "GBG", "Data"}) {
-				NodeKey nk = GetNodeKey (systemHive, "ControlSet00" + cs + "|Control|Lsa|" + key);
+				NodeKey nk = GetNodeKey (systemHive, "ControlSet00" + cs + "\\Control\\Lsa\\" + key);
 
 				for (int i = 0; i < nk.ClassnameLength && i < 8; i++) 
 					scrambledKey.Append ((char)nk.ClassnameData [i*2]);
@@ -92,7 +92,7 @@ namespace ch11_reading_offline_hives
 		static NodeKey GetNodeKey(RegistryHive hive, string path){
 
 			NodeKey node = null;
-			string[] paths = path.Split ('|');
+			string[] paths = path.Split ('\\');
 
 			for (int i = 0;i < paths.Length; i++) {
 
@@ -105,6 +105,8 @@ namespace ch11_reading_offline_hives
 						break;
 					}
 				}
+
+				throw new Exception("No child node found with name " + paths[i]);
 			}
 
 			return node;
@@ -112,7 +114,7 @@ namespace ch11_reading_offline_hives
 
 		static ValueKey GetValueKey(RegistryHive hive, string path) {
 
-			string keyname = path.Split ('|').Last ();
+			string keyname = path.Split ('\\').Last ();
 			NodeKey node = GetNodeKey (hive, path);
 
 			return node.ChildValues.SingleOrDefault (v => v.Name == keyname);
