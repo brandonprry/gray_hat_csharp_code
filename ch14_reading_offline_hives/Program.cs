@@ -94,19 +94,19 @@ namespace ch11_reading_offline_hives
 			NodeKey node = null;
 			string[] paths = path.Split ('\\');
 
-			for (int i = 0;i < paths.Length; i++) {
-
+			foreach (string ch in paths)
+			{
 				if (node == null)
 					node = hive.RootKey;
 				
 				foreach (NodeKey child in node.ChildNodes) {
-					if (child.Name == paths [i]) {
+					if (child.Name == ch) {
 						node = child;
 						break;
 					}
 				}
 
-				throw new Exception("No child node found with name " + paths[i]);
+				throw new Exception("No child node found with name " + ch);
 			}
 
 			return node;
