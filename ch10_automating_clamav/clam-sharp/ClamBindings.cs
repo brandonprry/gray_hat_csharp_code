@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace ch13_automating_clamav_filesystem
 {
-	public static class ClamBindings
+	static class ClamBindings
 	{
 		const string _clamLibPath = "/Users/bperry/tmp/clamav-0.99/libclamav/.libs/libclamav.7.dylib";
 

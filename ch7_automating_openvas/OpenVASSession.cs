@@ -98,7 +98,8 @@ namespace ch8_automating_openvas
 			if (_stream == null || !_stream.CanRead) {
 				TcpClient client = new TcpClient (this.ServerIPAddress.ToString (), this.ServerPort);
 
-				_stream = new SslStream (client.GetStream (), false, new RemoteCertificateValidationCallback (ValidateServerCertificate), 
+				_stream = new SslStream (client.GetStream (), false, 
+				    new RemoteCertificateValidationCallback (ValidateServerCertificate), 
 					(sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) => null);
 				
 				_stream.AuthenticateAsClient ("OpenVAS", null, SslProtocols.Tls, false);

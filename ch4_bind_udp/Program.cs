@@ -15,8 +15,9 @@ namespace ch4_bind_udp
 				string output;
 				byte[] bytes;
 
-				using (Socket sock = new Socket (AddressFamily.InterNetwork, SocketType.Dgram,
-					                     ProtocolType.Udp)) {
+				using (Socket sock = new Socket (AddressFamily.InterNetwork,
+				                                 SocketType.Dgram,
+					                     		 ProtocolType.Udp)) {
 
 					IPAddress addr = IPAddress.Parse (args [0]);
 					IPEndPoint addrEP = new IPEndPoint (addr, lport);
