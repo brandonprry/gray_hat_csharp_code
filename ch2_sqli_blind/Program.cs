@@ -76,7 +76,10 @@ namespace ch2_sqli_blind
 				}
 			}
 
-			return int.Parse (Encoding.ASCII.GetString (countBytes.ToArray ()));
+			if (countBytes.Count > 0)
+				return int.Parse(Encoding.ASCII.GetString(countBytes.ToArray()));
+			else
+				return 0;
 		}
 
 		private static string GetValue(string host, int row, string column, int length) {

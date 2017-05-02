@@ -30,9 +30,9 @@ namespace ch2_sqli_union
 			Regex payloadRegex = new Regex (frontMarker + "(.*?)" + middleMarker + "(.*?)" + endMarker);
 			MatchCollection matches = payloadRegex.Matches (response);
 
-			foreach (Match match in matches) {
+			foreach (Match match in matches) 
 				Console.WriteLine ("Username: " + match.Groups [1].Value + "\t Password hash: " + match.Groups[2].Value);
-			}
+			
 		}
 	}
 }
