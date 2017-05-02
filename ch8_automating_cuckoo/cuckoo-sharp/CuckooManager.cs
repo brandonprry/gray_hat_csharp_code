@@ -26,8 +26,8 @@ namespace cuckoosharp
 					data = new byte[str.Length];
 					str.Read(data, 0, data.Length);
 				}
-
-				uri += (param = "file");
+				param = "file";
+				uri += param;
 				val = new FileParameter(data, (task as FileTask).Filepath, "application/binary");
 
 			}

@@ -2,6 +2,7 @@ using System;
 
 namespace ch13_automating_clamav_filesystem
 {
+	[Flags]
 	public enum ClamDatabaseOptions
 	{
 		CL_DB_PHISHING = 0x2,

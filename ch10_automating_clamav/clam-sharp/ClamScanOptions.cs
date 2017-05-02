@@ -2,6 +2,7 @@ using System;
 
 namespace ch13_automating_clamav_filesystem
 {
+	[Flags]
 	public enum ClamScanOptions
 	{
 		CL_SCAN_ARCHIVE = 0x1,

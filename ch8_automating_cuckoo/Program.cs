@@ -19,11 +19,12 @@ namespace Example
 				task.Filepath = "/Users/bperry/Projects/metasploit-framework/data/post/bypassuac-x64.exe";
 
 				int taskID = manager.CreateTask(task);
-
-				while((task = (FileTask)manager.GetTaskDetails(taskID)).Status == "pending" || task.Status == "running")
+				task = (FileTask)manager.GetTaskDetails(taskID);
+				while(task.Status == "pending" || task.Status == "running")
 				{
 					Console.WriteLine("Waiting 30 seconds..."+task.Status);
 					System.Threading.Thread.Sleep(30000);
+					task = (FileTask)manager.GetTaskDetails(taskID);
 				}
 
 				if (task.Status == "failure")
