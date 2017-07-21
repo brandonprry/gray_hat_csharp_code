@@ -130,7 +130,7 @@ namespace ch12_crossplatform_metasploit_payloads
 					success = posix_memalign(ref ptr, (IntPtr)32, length);
 					if (success != IntPtr.Zero)
 					{
-						Console.WriteLine("Bail! memalign failed: " + success);
+						Console.WriteLine("Fail! memalign failed: " + success);
 						return;
 					}
 
@@ -141,7 +141,7 @@ namespace ch12_crossplatform_metasploit_payloads
 					if (success != IntPtr.Zero)
 					{
 						int err = Marshal.GetLastWin32Error();
-						Console.WriteLine("Bail! mprotect failed: " + err);
+						Console.WriteLine("Fail! mprotect failed: " + err);
 						return;
 					}
 
