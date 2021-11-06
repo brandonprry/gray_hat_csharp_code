@@ -1,5 +1,0 @@
-/Users/bperry/Projects/gray_hat_csharp_code/ch12_automating_clamav/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/Users/bperry/Projects/gray_hat_csharp_code/ch12_automating_clamav/bin/Debug/ch14_automating_clamav.exe.mdb
-/Users/bperry/Projects/gray_hat_csharp_code/ch12_automating_clamav/bin/Debug/ch14_automating_clamav.exe
-/Users/bperry/Projects/gray_hat_csharp_code/ch12_automating_clamav/obj/x86/Debug/ch14_automating_clamav.exe
-/Users/bperry/Projects/gray_hat_csharp_code/ch12_automating_clamav/obj/x86/Debug/ch14_automating_clamav.exe.mdb
